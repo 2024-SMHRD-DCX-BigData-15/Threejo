@@ -26,7 +26,7 @@ public class SqlSessionManager {
 		
 		e.printStackTrace();
 	}
-	}
+}
 	
 	// 다른 클래스에서 해당하는 sqlSessionFactory를 호출할 수 있는 메소드를 생성
 	public static SqlSessionFactory getSqlSession() {
