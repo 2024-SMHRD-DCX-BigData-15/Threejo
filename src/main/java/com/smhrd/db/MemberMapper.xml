@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="check" parameterType="String" resultType="com.smhrd.Model.Member">
-		SELECT * FROM MAVENMEMBER WHERE USER_ID =#{user_id}
+		SELECT * FROM service_db WHERE USER_ID =#{user_id}
 	</select>	
 	
 </mapper>
