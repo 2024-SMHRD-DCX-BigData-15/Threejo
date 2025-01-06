@@ -44,5 +44,7 @@ public class LoginController extends HttpServlet {
       // result에 값이 있다면 => session에 데이터를 저장한 후, index.jsp이동
       response.sendRedirect("index.jsp");
       
+      
+      //11
    }
 }
