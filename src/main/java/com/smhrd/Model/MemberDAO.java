@@ -36,7 +36,7 @@ public class MemberDAO {
          session.close();
          return result;
       }
-      public boolean checkAddr(String id) {
+      public boolean checkId(String id) {
   		// 0. DB에 접글할 수 있는 session 발급
   		SqlSession session = factory.openSession(true);
   		// 1. sesstion을 이용해서 쿼리문 접근
