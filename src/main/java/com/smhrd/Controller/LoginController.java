@@ -45,6 +45,6 @@ public class LoginController extends HttpServlet {
       response.sendRedirect("index.jsp");
       
       
-      //11
+
    }
 }
