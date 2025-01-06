@@ -4,5 +4,14 @@
 	<!-- MemberMapper.xml 파일은 DB를 실행하기 위해 SQL문장을 작성하는 파일 -->
 	<!-- 사용자가 입력한 데이터를 SQL 문장에 연결하기 위해서 #{필드명} 사용하고,
 		 실제 데이터는 MEMBER 클래스의 필드명을 기준으로 넣어준다! -->
+		 
+	<insert id="" parameterType="com.smhrd.Model.Member">
+		INSERT INTO service_db VALUES(#{user_id},#{user_pw},#{user_email},#{user_tell})
+	</insert>
+
+
+	<select id="" parameterType="String" resultType="com.smhrd.Model.Member">
+		SELECT * FROM service_db WHERE USER_ID =#{user_id} and USER_EMAIL =#{user_email}
+	</select>
 	
 </mapper>
