@@ -86,10 +86,10 @@ public class MemberDAO {
               // 결과가 있으면 Member 객체로 변환
               if (rs.next()) {
                   member = new Member(
-                      rs.getString("id"),
-                      rs.getString("pw"),
-                      rs.getString("email"),
-                      rs.getString("tell")
+                      rs.getString("user_id"),
+                      rs.getString("user_pw"),
+                      rs.getString("user_email"),
+                      rs.getString("user_tell")
                   );
               }
           } catch (SQLException e) {
@@ -101,16 +101,16 @@ public class MemberDAO {
       }
       // 사용자 정보를 수정하는 메소드
       public static boolean updateMember(Member member) {
-          String sql = "UPDATE members SET password = ?, email = ?, phone = ? WHERE username = ?";
+          String sql = "UPDATE members SET user_pw = ?, user_email = ?, user_tell = ? WHERE user_id = ?";
           boolean success = false;
           
           // DB 연결 및 쿼리 실행
           try (Connection conn = getConnection();
                PreparedStatement ps = conn.prepareStatement(sql)) {
-              ps.setString(1, member.getPw());  // 수정된 비밀번호 설정
-              ps.setString(2, member.getEmail());     // 수정된 이메일 설정
-              ps.setString(3, member.getTell());     // 수정된 전화번호 설정
-              ps.setString(4, member.getId());  // 수정할 아이디 설정
+              ps.setString(1, member.getId());  	 // 수정된 비밀번호 설정
+              ps.setString(2, member.getPw());   	 // 수정된 이메일 설정
+              ps.setString(3, member.getEmail());    // 수정된 전화번호 설정
+              ps.setString(4, member.getTell()); 	 // 수정할 아이디 설정
               
               // 쿼리 실행 후 수정된 행의 수 확인
               int rows = ps.executeUpdate();
