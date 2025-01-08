@@ -5,13 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.smhrd.db.SqlSessionManager;
 
 public class MemberDAO {
-   // 1. DB연결
+   private static final Statement DBConnection = null;
+// 1. DB연결
       SqlSessionFactory factory = SqlSessionManager.getSqlSession();
 
       // 회원가입을 위한 메소드
@@ -80,4 +82,35 @@ public class MemberDAO {
           return success;  // 수정 성공 여부 반환
       }
 
-}
+  
+	public static boolean deleteMember(String user_id, String user_pw) {
+		// 사용자가 입력한 비밀번호와 일치하는지 확인하는 SQL 쿼리
+        String sql = "SELECT * FROM members WHERE user_id = ? AND user_pw = ?";
+        
+        try (Connection conn = DBConnection.getConnection(); // DB 연결
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+             
+            // 사용자 아이디와 비밀번호를 쿼리로 전달
+            ps.setString(1, user_id);
+            ps.setString(2, user_pw);
+            
+            // 실행 결과 조회
+            ResultSet rs = ps.executeQuery();
+            
+            // 비밀번호가 일치하면 삭제 진행
+            if (rs.next()) {
+                // 비밀번호가 맞다면, 사용자를 삭제하는 SQL 쿼리
+                String deleteSql = "DELETE FROM members WHERE user_id = ?";
+                
+                try (PreparedStatement deletePs = conn.prepareStatement(deleteSql)) {
+                    deletePs.setString(1, user_id);  // 삭제할 회원의 user_id 설정
+                    int rows = deletePs.executeUpdate(); // 사용자 삭제 실행
+                    return rows > 0;  // 성공적으로 삭제되었으면 true 반환
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return false;
+	}
+  }
