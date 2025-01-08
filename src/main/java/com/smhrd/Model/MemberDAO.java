@@ -90,8 +90,7 @@ public class MemberDAO {
         try (Connection conn = DBConnection.getConnection(); // DB 연결
              PreparedStatement ps = conn.prepareStatement(sql)) {
              
-            // 사용자 아이디와 비밀번호를 쿼리로 전달
-            ps.setString(1, user_id);
+            // 사용자 비밀번호를 쿼리로 전달
             ps.setString(2, user_pw);
             
             // 실행 결과 조회
