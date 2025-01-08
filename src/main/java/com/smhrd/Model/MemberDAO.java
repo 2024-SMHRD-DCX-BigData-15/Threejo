@@ -60,7 +60,7 @@ public class MemberDAO {
   	}
       
       public static boolean updateId(Member member) {
-          String sql = "UPDATE members SET user_pw = ?, user_email = ?, user_tell = ? WHERE user_id = ?";
+          String sql = "UPDATE t_user SET user_pw = ?, user_email = ?, user_tell = ? WHERE user_id = ?";
           boolean success = false;
           
           // DB 연결과 쿼리 실행 부분을 생략하고, 이미 DB 연결이 되어 있다고 가정
@@ -70,7 +70,6 @@ public class MemberDAO {
               ps.setString(1, member.getUser_pw());   // 수정된 비밀번호
               ps.setString(2, member.getUser_email()); // 수정된 이메일
               ps.setString(3, member.getUser_tell());  // 수정된 전화번호
-              ps.setString(4, member.getUser_id());    // 수정할 회원 아이디
               
               int rows = ps.executeUpdate();  // 쿼리 실행 후, 수정된 행 수 확인
               if (rows > 0) {
@@ -85,7 +84,7 @@ public class MemberDAO {
   
 	public static boolean deleteMember(String user_id, String user_pw) {
 		// 사용자가 입력한 비밀번호와 일치하는지 확인하는 SQL 쿼리
-        String sql = "SELECT * FROM members WHERE user_id = ? AND user_pw = ?";
+        String sql = "SELECT * FROM t_user WHERE user_id = ? AND user_pw = ?";
         
         try (Connection conn = DBConnection.getConnection(); // DB 연결
              PreparedStatement ps = conn.prepareStatement(sql)) {

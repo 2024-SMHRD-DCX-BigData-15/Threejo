@@ -32,15 +32,12 @@ public class UpdateController extends HttpServlet {
 
         // 회원 정보 수정 처리
         boolean isUpdated = MemberDAO.updateId(member);
+        
 
         if (isUpdated) {
-            // 수정 성공 시, 수정된 회원 정보를 request에 저장하고, success 페이지로 이동
-            request.setAttribute("member", member);
-            response.sendRedirect("UpdateSuccess.jsp"); // 수정 완료 페이지로 리디렉션
+        	response.sendRedirect("UpdatSuccess.jsp"); // 수정 성공 시 success.jsp로 리다이렉트
         } else {
-            // 수정 실패 시, 오류 메시지 전달
-            request.setAttribute("error", "회원 정보 수정에 실패했습니다.");
-            request.getRequestDispatcher("UpdateFrom.jsp").forward(request, response);
+        	response.sendRedirect("error.jsp");   // 실패 시 error.jsp로 리다이렉트
         }
     }
 }

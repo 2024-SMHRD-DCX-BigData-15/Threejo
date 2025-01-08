@@ -10,7 +10,7 @@
 
  <h2>회원 탈퇴</h2>
     <!-- 사용자로부터 비밀번호를 입력받는 폼 -->
-    <form action="DeleteMember" method="POST">
+    <form action="DeleteSuccess.jsp" method="POST">
     
    		<label for="user_id">아이디 확인:</label>
         <input type="text" id="userId" name="userId" required/><br><br>
