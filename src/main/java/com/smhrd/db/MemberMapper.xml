@@ -22,6 +22,14 @@
 		SELECT * FROM service_db WHERE USER_ID =#{user_id}
 	</select>	
 	
-	<!-- 회원 정보 수정을 위한 쿼리문 -->
+	<!-- 회원 정보 수정 쿼리 -->
+    <update id="update" parameterType="com.smhrd.Model.Member">
+        UPDATE members SET 
+            pw = #{user_pw}, 			  <!-- 비밀번호 수정 -->
+            email = #{user_email},        <!-- 이메일 수정 -->
+            tell = #{user_tell}           <!-- 전화번호 수정 -->
+        WHERE user_id = #{user_id}  	  <!-- 아이디로 회원을 찾고 수정 -->
+    </update>
+    
 	
 </mapper>
