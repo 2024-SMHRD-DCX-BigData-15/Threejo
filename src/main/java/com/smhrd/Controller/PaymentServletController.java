@@ -49,30 +49,37 @@ public class PaymentServletController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
 
         try {
-            // `merchant_uid`를 요청 파라미터로 받음
             String merchantUid = request.getParameter("merchant_uid");
             if (merchantUid == null || merchantUid.isEmpty()) {
-                throw new RuntimeException("Invalid merchant_uid parameter.");
+                throw new RuntimeException("merchant_uid parameter is missing.");
             }
 
-            // 인증 토큰 가져오기
-            String authToken = paymentDAO.getAuthToken();
-            if (authToken == null) {
-                throw new RuntimeException("Failed to retrieve auth token.");
-            }
+            // 중복 제거: 인증 토큰 가져오기
+            String authToken = getAuthToken();
+            String status = paymentDAO.getPaymentStatus(authToken, merchantUid);
 
-            // 결제 상태 조회
-            String paymentStatus = paymentDAO.getPaymentStatus(authToken, merchantUid);
+            // 디버그 로그 추가
+            System.out.println("Merchant UID: " + merchantUid + ", Status: " + status);
 
-            // 응답 반환
-            response.getWriter().write(paymentStatus);
+            request.setAttribute("merchant_uid", merchantUid);
+            request.setAttribute("status", status);
+            request.getRequestDispatcher("PaymentResult.jsp").forward(request, response);
         } catch (Exception e) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            response.getWriter().write("{\"error\":\"" + e.getMessage() + "\"}");
-            e.printStackTrace();
+            // 명확한 에러 메시지 전달
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            request.setAttribute("error", "Failed to retrieve payment status: " + e.getMessage());
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
+        }
+    }
+
+    private String getAuthToken() {
+        try {
+            return paymentDAO.getAuthToken();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to retrieve auth token", e);
         }
     }
 }
