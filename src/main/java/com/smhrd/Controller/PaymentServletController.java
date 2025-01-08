@@ -1,6 +1,6 @@
 package com.smhrd.Controller;
 
-import com.smhrd.Model.IamportAPI;
+import com.smhrd.Model.PaymentDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,32 +11,68 @@ import java.io.IOException;
 
 @WebServlet("/payment")
 public class PaymentServletController extends HttpServlet {
-    private final IamportAPI iamportAPI = new IamportAPI();
+    private final PaymentDAO paymentDAO = new PaymentDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String authToken = iamportAPI.getAuthToken();
-        if (authToken == null) {
-            response.getWriter().write("Failed to get auth token");
-            return;
+        response.setContentType("text/html;charset=UTF-8");
+
+        try {
+            // 인증 토큰 가져오기
+            String authToken = paymentDAO.getAuthToken();
+            if (authToken == null) {
+                throw new RuntimeException("Failed to retrieve auth token.");
+            }
+
+            // 고유한 merchant_uid 생성
+            String merchantUid = "ORDER_" + System.currentTimeMillis();
+            int amount = Integer.parseInt(request.getParameter("amount"));
+
+            // 결제 준비 요청
+            String prepareResult = paymentDAO.preparePayment(authToken, merchantUid, amount);
+
+            if (prepareResult.contains("\"code\":1")) {
+                throw new RuntimeException("Duplicate merchant_uid detected. Please use a unique ID.");
+            }
+
+            // 결과를 JSP로 전달
+            request.setAttribute("result", prepareResult);
+            request.setAttribute("merchant_uid", merchantUid);
+            request.setAttribute("amount", amount);
+            request.getRequestDispatcher("PaymentResult.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            response.getWriter().write("An error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
+    }
 
-        // 고유한 merchant_uid 생성
-        String merchantUid = "ORDER_" + System.currentTimeMillis();
-        int amount = Integer.parseInt(request.getParameter("amount"));
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json;charset=UTF-8");
 
-        // 결제 준비 요청
-        String prepareResult = iamportAPI.preparePayment(authToken, merchantUid, amount);
+        try {
+            // `merchant_uid`를 요청 파라미터로 받음
+            String merchantUid = request.getParameter("merchant_uid");
+            if (merchantUid == null || merchantUid.isEmpty()) {
+                throw new RuntimeException("Invalid merchant_uid parameter.");
+            }
 
-        // 기존에 중복된 merchant_uid인지 확인
-        if (prepareResult.contains("\"code\":1")) {
-            System.out.println("중복된 merchant_uid로 인해 요청 실패");
-            response.getWriter().write("결제 실패: 중복된 merchant_uid");
-            return;
+            // 인증 토큰 가져오기
+            String authToken = paymentDAO.getAuthToken();
+            if (authToken == null) {
+                throw new RuntimeException("Failed to retrieve auth token.");
+            }
+
+            // 결제 상태 조회
+            String paymentStatus = paymentDAO.getPaymentStatus(authToken, merchantUid);
+
+            // 응답 반환
+            response.getWriter().write(paymentStatus);
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().write("{\"error\":\"" + e.getMessage() + "\"}");
+            e.printStackTrace();
         }
-
-        // 결과를 JSP로 전달
-        request.setAttribute("result", prepareResult);
-        request.getRequestDispatcher("PaymentResult.jsp").forward(request, response);
     }
 }
