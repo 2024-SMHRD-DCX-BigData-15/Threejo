@@ -20,11 +20,11 @@
     <form action="updateMember" method="post">
         
             <label for="user_id">아이디:</label>
-            <input type="text" id="userId" name="userId" value="${member.user_id}" /><br><br>
+            <input type="text" id="userId" name="userId" value="${member.user_id}" required/><br><br>
 
 
             <label for="user_pw">비밀번호:</label>
-            <input type="password" id="password" name="password" value="${member.user_pw}" /><br><br>
+            <input type="password" id="password" name="password" value="${member.user_pw}" required/><br><br>
 
 
             <label for="user_email">이메일:</label>
@@ -43,5 +43,6 @@
     <form action="main.jsp" method="get">
         <input type="submit" value="취소" />
     </form>
+    
 </body>
 </html>

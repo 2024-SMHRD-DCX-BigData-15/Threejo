@@ -11,8 +11,12 @@
  <h2>회원 탈퇴</h2>
     <!-- 사용자로부터 비밀번호를 입력받는 폼 -->
     <form action="DeleteMember" method="POST">
+    
+   		<label for="user_id">아이디 확인:</label>
+        <input type="text" id="userId" name="userId" required/><br><br>
+        
         <label for="user_pw">비밀번호 확인:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <input type="password" id="password" name="password" required/><br><br>
         
         <!-- 탈퇴하기 버튼 -->
         <button type="submit">탈퇴하기</button>
