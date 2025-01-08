@@ -22,4 +22,6 @@
 		SELECT * FROM service_db WHERE USER_ID =#{user_id}
 	</select>	
 	
+	<!-- 회원 정보 수정을 위한 쿼리문 -->
+	
 </mapper>
