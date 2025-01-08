@@ -63,7 +63,6 @@ public class MemberDAO {
           String sql = "UPDATE t_user SET user_pw = ?, user_email = ?, user_tell = ? WHERE user_id = ?";
           boolean success = false;
           
-          // DB 연결과 쿼리 실행 부분을 생략하고, 이미 DB 연결이 되어 있다고 가정
           try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/service_db", "ChangHwan", "1234");
                PreparedStatement ps = conn.prepareStatement(sql)) {
               

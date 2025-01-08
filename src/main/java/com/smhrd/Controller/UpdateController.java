@@ -40,5 +40,6 @@ public class UpdateController extends HttpServlet {
         	response.sendRedirect("Error.jsp");   // 실패 시 error.jsp로 리다이렉트
         }
     }
+	
 }
 
