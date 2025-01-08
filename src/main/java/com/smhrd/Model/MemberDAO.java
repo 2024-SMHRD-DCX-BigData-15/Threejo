@@ -1,5 +1,11 @@
 package com.smhrd.Model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.smhrd.db.SqlSessionManager;
@@ -50,4 +56,72 @@ public class MemberDAO {
 
   		}
   	}
-}
+      
+
+      
+   // DB 연결을 위한 메소드 (MySQL 데이터베이스 연결)
+      private static Connection getConnection() throws SQLException {
+          try {
+              // MySQL JDBC 드라이버 로딩
+              Class.forName("com.mysql.cj.jdbc.Driver");
+              // DB 연결 설정 (호스트, 데이터베이스, 사용자명, 비밀번호)
+              return DriverManager.getConnection("jdbc:mysql://localhost:3306/service_db", "ChangHwan", "1234");
+          } catch (ClassNotFoundException | SQLException e) {
+              // 예외 발생 시 오류 메시지 출력
+              e.printStackTrace();
+              throw new SQLException("DB 연결 실패");
+          }
+      }
+      // 사용자 정보를 아이디를 기준으로 가져오는 메소드
+      public static Member getMemberByUsername(String username) {
+          Member member = null;
+          String sql = "SELECT * FROM members WHERE username = ?";
+          
+          // DB 연결 및 쿼리 실행
+          try (Connection conn = getConnection();
+               PreparedStatement ps = conn.prepareStatement(sql)) {
+              ps.setString(1, username);  // 아이디를 쿼리에 설정
+              ResultSet rs = ps.executeQuery();
+              
+              // 결과가 있으면 Member 객체로 변환
+              if (rs.next()) {
+                  member = new Member(
+                      rs.getString("id"),
+                      rs.getString("pw"),
+                      rs.getString("email"),
+                      rs.getString("tell")
+                  );
+              }
+          } catch (SQLException e) {
+              // 예외 발생 시 오류 메시지 출력
+              e.printStackTrace();
+          }
+          // 조회된 회원 정보 반환
+          return member;
+      }
+      // 사용자 정보를 수정하는 메소드
+      public static boolean updateMember(Member member) {
+          String sql = "UPDATE members SET password = ?, email = ?, phone = ? WHERE username = ?";
+          boolean success = false;
+          
+          // DB 연결 및 쿼리 실행
+          try (Connection conn = getConnection();
+               PreparedStatement ps = conn.prepareStatement(sql)) {
+              ps.setString(1, member.getPw());  // 수정된 비밀번호 설정
+              ps.setString(2, member.getEmail());     // 수정된 이메일 설정
+              ps.setString(3, member.getTell());     // 수정된 전화번호 설정
+              ps.setString(4, member.getId());  // 수정할 아이디 설정
+              
+              // 쿼리 실행 후 수정된 행의 수 확인
+              int rows = ps.executeUpdate();
+              if (rows > 0) {
+                  success = true;  // 성공적으로 수정된 경우
+              }
+          } catch (SQLException e) {
+              // 예외 발생 시 오류 메시지 출력
+              e.printStackTrace();
+          }
+          // 수정 성공 여부 반환
+          return success;
+      }
+  }
