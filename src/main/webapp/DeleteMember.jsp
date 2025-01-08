@@ -13,10 +13,10 @@
     <form action="DeleteSuccess.jsp" method="POST">
     
    		<label for="user_id">아이디 확인:</label>
-        <input type="text" id="userId" name="userId" required/><br><br>
+        <input type="text" id="user_id" name="user_id" required/><br><br>
         
         <label for="user_pw">비밀번호 확인:</label>
-        <input type="password" id="password" name="password" required/><br><br>
+        <input type="password" id="user_pw" name="user_pw" required/><br><br>
         
         <!-- 탈퇴하기 버튼 -->
         <button type="submit">탈퇴하기</button>
