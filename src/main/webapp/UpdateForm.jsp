@@ -36,7 +36,7 @@
     </form>
     
     <!-- 취소 버튼 -->
-    <form action="main.jsp" method="get">
+    <form action="index.jsp" method="get">
         <input type="submit" value="취소" />
     </form>
     
