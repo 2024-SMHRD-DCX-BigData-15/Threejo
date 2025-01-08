@@ -13,10 +13,10 @@ import lombok.Setter;
 //@Data getter, setter, toString 기본생성자를 포함하여 한번에 생성
 public class Member {
 	
-	private String id;
-	private String pw;
-	private String email;
-	private String tell;
+	private String user_id;
+	private String user_pw;
+	private String user_email;
+	private String user_tell;
 	
 	
 }

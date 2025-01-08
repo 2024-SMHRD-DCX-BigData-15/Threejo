@@ -20,7 +20,7 @@ public class CheckIdController extends HttpServlet {
 		// 0. 한글 인코딩
 		request.setCharacterEncoding("UTF-8");
 		// 1. 주소 중복 체크
-		String id = request.getParameter("id");
+		String id = request.getParameter("user_id");
 		MemberDAO dao = new MemberDAO();
 
 		// MemberDao에서 checkAddr 메소드 생성 -> mapper까지 연결

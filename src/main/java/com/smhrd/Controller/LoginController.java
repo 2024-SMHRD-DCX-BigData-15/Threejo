@@ -28,8 +28,8 @@ public class LoginController extends HttpServlet {
       MemberDAO dao = new MemberDAO();
       // Member자료형의 vo라는 객체를 만든 이유 : id과 pw를 한번에 묶어서 전송하기 위함
       Member vo = new Member();
-      vo.setId(id);
-      vo.setPw(pw);
+      vo.setUser_id(id);
+      vo.setUser_pw(pw);
       
       Member result = dao.login(vo);// DB에 접근하기 위해 만들어놓은 메소드를 사용하겠다.
       // 4. 결과 출력하기 (result에 값이 있는지 없는지를 판별)

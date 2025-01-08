@@ -36,6 +36,7 @@
 
 
             <input type="submit" value="수정하기" /><br><br>
+            
     </form>
     
     <!-- 취소 버튼 -->

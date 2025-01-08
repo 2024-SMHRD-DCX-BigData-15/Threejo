@@ -26,20 +26,20 @@ public class JoinController extends HttpServlet {
 		
 		// 1. 받아온 요청 데이터 꺼내오기 -> 4개
 		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String email = request.getParameter("email");
-		String tell = request.getParameter("tell");
+		String user_id = request.getParameter("user_id");
+		String user_pw = request.getParameter("user_pw");
+		String user_email = request.getParameter("user_email");
+		String user_tell = request.getParameter("user_tell");
 		
 		//System.out.println(id + pw + tell + address);
 		
 		// 2. Mybatis의 특징 -> 데이터를 하나로 묶어서 전달해야한다!
 		// Member -> 우리만의 새로운 자료형을 만들어보자! -> 객체형    
 		Member vo = new Member();
-		vo.setId(id);
-		vo.setPw(pw);
-		vo.setEmail(email);
-		vo.setTell(tell);
+		vo.setUser_id(user_id);
+		vo.setUser_pw(user_pw);
+		vo.setUser_email(user_email);
+		vo.setUser_tell(user_tell);
 		
 		// 3. 데이터베이스에 해당 값을 전달 -> vo
 		MemberDAO dao = new MemberDAO();

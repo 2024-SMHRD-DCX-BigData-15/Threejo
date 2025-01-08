@@ -65,10 +65,10 @@ public class MemberDAO {
           try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/service_db", "ChangHwan", "1234");
                PreparedStatement ps = conn.prepareStatement(sql)) {
               
-              ps.setString(1, member.getPw());   // 수정된 비밀번호
-              ps.setString(2, member.getEmail()); // 수정된 이메일
-              ps.setString(3, member.getTell());  // 수정된 전화번호
-              ps.setString(4, member.getId());    // 수정할 회원 아이디
+              ps.setString(1, member.getUser_pw());   // 수정된 비밀번호
+              ps.setString(2, member.getUser_email()); // 수정된 이메일
+              ps.setString(3, member.getUser_tell());  // 수정된 전화번호
+              ps.setString(4, member.getUser_id());    // 수정할 회원 아이디
               
               int rows = ps.executeUpdate();  // 쿼리 실행 후, 수정된 행 수 확인
               if (rows > 0) {

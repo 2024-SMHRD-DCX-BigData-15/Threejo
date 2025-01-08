@@ -18,6 +18,9 @@ public class UpdateController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 한글 인코딩 (post방식으로 요청을 받았기 때문에)
+		request.setCharacterEncoding("UTF-8");
+		
 		// 폼에서 전달된 데이터를 받아옴
 		String user_id = request.getParameter("user_id");
         String user_pw = request.getParameter("user_pw");
@@ -33,11 +36,11 @@ public class UpdateController extends HttpServlet {
         if (isUpdated) {
             // 수정 성공 시, 수정된 회원 정보를 request에 저장하고, success 페이지로 이동
             request.setAttribute("member", member);
-            response.sendRedirect("updateSuccess.jsp"); // 수정 완료 페이지로 리디렉션
+            response.sendRedirect("UpdateSuccess.jsp"); // 수정 완료 페이지로 리디렉션
         } else {
             // 수정 실패 시, 오류 메시지 전달
             request.setAttribute("error", "회원 정보 수정에 실패했습니다.");
-            request.getRequestDispatcher("updateForm.jsp").forward(request, response);
+            request.getRequestDispatcher("UpdateFrom.jsp").forward(request, response);
         }
     }
 }
