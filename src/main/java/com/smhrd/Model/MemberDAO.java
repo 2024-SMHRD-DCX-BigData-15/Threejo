@@ -91,14 +91,12 @@ public class MemberDAO {
              
             // 사용자 비밀번호를 쿼리로 전달
             ps.setString(2, user_pw);
-            
             // 실행 결과 조회
             ResultSet rs = ps.executeQuery();
-            
             // 비밀번호가 일치하면 삭제 진행
             if (rs.next()) {
                 // 비밀번호가 맞다면, 사용자를 삭제하는 SQL 쿼리
-                String deleteSql = "DELETE FROM members WHERE user_id = ?";
+                String deleteSql = "DELETE FROM t_user WHERE user_id = ?";
                 
                 try (PreparedStatement deletePs = conn.prepareStatement(deleteSql)) {
                     deletePs.setString(1, user_id);  // 삭제할 회원의 user_id 설정
