@@ -17,47 +17,28 @@ public class UpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 // 수정할 회원의 아이디를 요청 파라미터에서 받음
-        String user_id = request.getParameter("user_id");
-
-        // 회원 정보를 DB에서 가져오는 로직 (예시)
-        Member member = MemberDAO.getMemberByUsername(user_id);
-        
-        // 만약 회원 정보가 있으면 수정 페이지로 전달
-        if (member != null) {
-            // member 객체를 JSP로 전달
-            request.setAttribute("member", member);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/updateForm.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            // 회원 정보가 없다면 오류 페이지로 이동
-            response.sendRedirect("error.jsp");
-        }
-    }
-
-    // doPost() 메서드는 수정된 회원 정보를 DB에 반영
-    // 사용자가 수정한 정보를 처리하고 DB에 업데이트함
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 수정된 회원 정보를 요청 파라미터에서 받음
-        String user_id = request.getParameter("user_id");
+		
+		// 폼에서 전달된 데이터를 받아옴
+		String user_id = request.getParameter("user_id");
         String user_pw = request.getParameter("user_pw");
         String user_email = request.getParameter("user_email");
         String user_tell = request.getParameter("user_tell");
-
-        // 수정된 정보를 Member 객체에 담음
+        
+        // Member 객체 생성 (입력된 데이터를 객체에 담음)
         Member member = new Member(user_id, user_pw, user_email, user_tell);
-        
-        // DB에 수정된 회원 정보 업데이트
-        boolean result = MemberDAO.updateMember(member);
-        
-        // * 메인페이지로 수정 
-        // 수정 성공 시 프로필 페이지로 이동
-        if (result) {
-            response.sendRedirect("profile.jsp");
-        } else {
-            // 수정 실패 시 오류 페이지로 이동
-            response.sendRedirect("error.jsp");
-        }
-	}
 
+        // 회원 정보 수정 처리
+        boolean isUpdated = MemberDAO.updateId(member);
+
+        if (isUpdated) {
+            // 수정 성공 시, 수정된 회원 정보를 request에 저장하고, success 페이지로 이동
+            request.setAttribute("member", member);
+            response.sendRedirect("updateSuccess.jsp"); // 수정 완료 페이지로 리디렉션
+        } else {
+            // 수정 실패 시, 오류 메시지 전달
+            request.setAttribute("error", "회원 정보 수정에 실패했습니다.");
+            request.getRequestDispatcher("updateForm.jsp").forward(request, response);
+        }
+    }
 }
+

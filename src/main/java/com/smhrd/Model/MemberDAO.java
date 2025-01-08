@@ -57,71 +57,27 @@ public class MemberDAO {
   		}
   	}
       
-
-      
-   // DB 연결을 위한 메소드 (MySQL 데이터베이스 연결)
-      private static Connection getConnection() throws SQLException {
-          try {
-              // MySQL JDBC 드라이버 로딩
-              Class.forName("com.mysql.cj.jdbc.Driver");
-              // DB 연결 설정 (호스트, 데이터베이스, 사용자명, 비밀번호)
-              return DriverManager.getConnection("jdbc:mysql://localhost:3306/service_db", "ChangHwan", "1234");
-          } catch (ClassNotFoundException | SQLException e) {
-              // 예외 발생 시 오류 메시지 출력
-              e.printStackTrace();
-              throw new SQLException("DB 연결 실패");
-          }
-      }
-      // 사용자 정보를 아이디를 기준으로 가져오는 메소드
-      public static Member getMemberByUsername(String username) {
-          Member member = null;
-          String sql = "SELECT * FROM members WHERE username = ?";
-          
-          // DB 연결 및 쿼리 실행
-          try (Connection conn = getConnection();
-               PreparedStatement ps = conn.prepareStatement(sql)) {
-              ps.setString(1, username);  // 아이디를 쿼리에 설정
-              ResultSet rs = ps.executeQuery();
-              
-              // 결과가 있으면 Member 객체로 변환
-              if (rs.next()) {
-                  member = new Member(
-                      rs.getString("user_id"),
-                      rs.getString("user_pw"),
-                      rs.getString("user_email"),
-                      rs.getString("user_tell")
-                  );
-              }
-          } catch (SQLException e) {
-              // 예외 발생 시 오류 메시지 출력
-              e.printStackTrace();
-          }
-          // 조회된 회원 정보 반환
-          return member;
-      }
-      // 사용자 정보를 수정하는 메소드
-      public static boolean updateMember(Member member) {
+      public static boolean updateId(Member member) {
           String sql = "UPDATE members SET user_pw = ?, user_email = ?, user_tell = ? WHERE user_id = ?";
           boolean success = false;
           
-          // DB 연결 및 쿼리 실행
-          try (Connection conn = getConnection();
+          // DB 연결과 쿼리 실행 부분을 생략하고, 이미 DB 연결이 되어 있다고 가정
+          try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/service_db", "ChangHwan", "1234");
                PreparedStatement ps = conn.prepareStatement(sql)) {
-              ps.setString(1, member.getId());  	 // 수정된 비밀번호 설정
-              ps.setString(2, member.getPw());   	 // 수정된 이메일 설정
-              ps.setString(3, member.getEmail());    // 수정된 전화번호 설정
-              ps.setString(4, member.getTell()); 	 // 수정할 아이디 설정
               
-              // 쿼리 실행 후 수정된 행의 수 확인
-              int rows = ps.executeUpdate();
+              ps.setString(1, member.getPw());   // 수정된 비밀번호
+              ps.setString(2, member.getEmail()); // 수정된 이메일
+              ps.setString(3, member.getTell());  // 수정된 전화번호
+              ps.setString(4, member.getId());    // 수정할 회원 아이디
+              
+              int rows = ps.executeUpdate();  // 쿼리 실행 후, 수정된 행 수 확인
               if (rows > 0) {
-                  success = true;  // 성공적으로 수정된 경우
+                  success = true;  // 수정이 성공했으면 true 반환
               }
           } catch (SQLException e) {
-              // 예외 발생 시 오류 메시지 출력
-              e.printStackTrace();
+              e.printStackTrace();  // 예외 발생 시 오류 메시지 출력
           }
-          // 수정 성공 여부 반환
-          return success;
+          return success;  // 수정 성공 여부 반환
       }
-  }
+
+}
