@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>의뢰목록</title>
+  <link rel="stylesheet" href="order_list.css">
+</head>
+
+<body>
+  <header class="header">
+    <h1>
+      <a href="../Main/main.html" class="logo">재능을IT다  ㅣ  의뢰 목록</a>
+    </h1>
+    <div class="auth-buttons">
+      <a href="../Mypage/mypage.html" class="auth-link">마이페이지</a>
+      <a href="../Main/main.html" class="auth-link">로그아웃</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+      
+      <table class="board-table">
+        <thead>
+          <tr>
+            <th>작성자</th>
+            <th>
+            <div class="category-filter-container">
+              <label for="category-filter">카테고리</label>
+              <select id="category-filter">
+                <option value="all">전체 보기</option>
+                <optgroup label="웹 빌더">
+                  <option value="워드프레스">워드프레스</option>
+                  <option value="카페24">카페24</option>
+                  <option value="아임웹">아임웹</option>
+                  <option value="노션">노션</option>
+                </optgroup>
+                <optgroup label="웹 제작">
+                  <option value="홈페이지 신규 제작">홈페이지 신규 제작</option>
+                  <option value="쇼핑몰 신규 제작">쇼핑몰 신규 제작</option>
+                  <option value="랜딩페이지">랜딩페이지</option>
+                </optgroup>
+                <optgroup label="웹 유지보수">
+                  <option value="홈페이지 수정, 유지보수">홈페이지 수정, 유지보수</option>
+                  <option value="쇼핑몰 수정, 유지보수">쇼핑몰 수정, 유지보수</option>
+                  <option value="퍼블리싱">퍼블리싱</option>
+                  <option value="검색최적화, SEO">검색최적화, SEO</option>
+                  <option value="애널리틱스">애널리틱스</option>
+                </optgroup>
+                <optgroup label="프로그램">
+                  <option value="프로그램 스토어">프로그램 스토어</option>
+                  <option value="수익 자동화">수익 자동화</option>
+                  <option value="업무 자동화">업무 자동화</option>
+                  <option value="크롤링, 스크래핑">크롤링, 스크래핑</option>
+                  <option value="일반 프로그램">일반 프로그램</option>
+                  <option value="프로그램 수정, 유지보수">프로그램 수정, 유지보수</option>
+                  <option value="서버, 클라우드">서버, 클라우드</option>
+                  <option value="엑셀, 스프레드시트">엑셀, 스프레드시트</option>
+                  <option value="봇, 챗봇">봇, 챗봇</option>
+                </optgroup>
+                <optgroup label="모바일">
+                  <option value="앱">앱</option>
+                  <option value="앱 패키징">앱 패키징</option>
+                  <option value="앱 수정, 유지보수">앱 수정, 유지보수</option>
+                </optgroup>
+                <optgroup label="AI">
+                  <option value="AI, GPT 서비스 개발">AI, GPT 서비스 개발</option>
+                  <option value="AI, GPT 챗봇">AI, GPT 챗봇</option>
+                  <option value="AI, GPT 자동화 프로그램">AI, GPT 자동화 프로그램</option>
+                  <option value="프롬프트 엔지니어링">프롬프트 엔지니어링</option>
+                  <option value="머신러닝, 딥러닝">머신러닝, 딥러닝</option>
+                  <option value="컴퓨터 비전, 자연어 처리">컴퓨터 비전, 자연어 처리</option>
+                </optgroup>
+                <optgroup label="데이터">
+                  <option value="데이터 구매, 구축">데이터 구매, 구축</option>
+                  <option value="데이터 라벨링">데이터 라벨링</option>
+                  <option value="데이터 전처리, 분석, 시각화">데이터 전처리, 분석, 시각화</option>
+                  <option value="데이터베이스">데이터베이스</option>
+                </optgroup>
+                <optgroup label="보안 품질관리">
+                  <option value="정보 보안">정보 보안</option>
+                  <option value="QA, 테스트">QA, 테스트</option>
+                </optgroup>
+                <optgroup label="트렌드">
+                  <option value="게임, AR, VR">게임, AR, VR</option>
+                  <option value="메타버스">메타버스</option>
+                  <option value="블록체인, NFT">블록체인, NFT</option>
+                </optgroup>
+                <optgroup label="직무직군">
+                  <option value="UI, UX 기획">UI, UX 기획</option>
+                  <option value="프론트엔드">프론트엔드</option>
+                  <option value="백엔드">백엔드</option>
+                  <option value="풀스텍">풀스텍</option>
+                  <option value="데브옵스, 인프라">데브옵스, 인프라</option>
+                  <option value="데이터, ML, DL">데이터, ML, DL</option>
+                </optgroup>
+                <optgroup label="기타">
+                  <option value="서비스, MVP 개발">서비스, MVP 개발</option>
+                  <option value="컴퓨터 기술지원">컴퓨터 기술지원</option>
+                  <option value="하드웨어, 임베디드">하드웨어, 임베디드</option>
+                  <option value="파일변환">파일변환</option>
+                  <option value="기타">기타</option>
+                </optgroup>
+              </select>
+            </div>
+            </th>
+            <th>제목</th>
+            <th>마감기간</th>
+            <th>상태</th>
+          </tr>
+        </thead>
+        <tbody id="board-content">
+          <!-- JavaScript로 데이터를 동적으로 추가 -->
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="order_list.js"></script>
+</body>
+</html>

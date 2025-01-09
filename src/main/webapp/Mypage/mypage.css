@@ -1,0 +1,227 @@
+/* 전체적인 스타일 초기화 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  /* 기본 텍스트 색상 */
+}
+
+.container {
+  display: flex;
+  margin-top: 70px;
+  /* 헤더 높이만큼 여백 추가 */
+}
+
+/* 헤더 스타일 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+  height: 70px;
+  /* 헤더 높이 지정 */
+}
+
+/* 재능을IT다 로고 스타일 */
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.header h1 a {
+  text-decoration: none;
+  color: #333;
+  /* 기본 색상 */
+  font-weight: bold;
+}
+
+.header h1 a:hover {
+  color: #007BFF;
+  /* 마우스 오버 시 색상 변경 */
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+  /* 버튼 간 간격 */
+  align-items: center;
+  /* 세로 중앙 정렬 */
+  flex-wrap: nowrap;
+  /* 줄바꿈 방지 */
+
+}
+
+.auth-buttons a {
+  text-decoration: none;
+  color: #333;
+  /* 기본 버튼 색상 */
+  font-size: 14px;
+  white-space: nowrap;
+  /* 텍스트 줄바꿈 방지 */
+  padding: 10px 20px;
+  /* 내부 여백 추가 */
+  border: 1px solid transparent;
+  /* 기본 테두리 제거 */
+}
+
+.auth-buttons a:hover {
+  color: #007BFF;
+  /* 마우스 오버 시 색상 변경 */
+  border-color: #007BFF;
+  /* 테두리 강조 */
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  /* 화면 전체 높이 */
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #007BFF;
+  /* hover 시 배경색 변경 */
+  color: #fff;
+  /* hover 시 글자색 변경 */
+}
+
+/* 메인 콘텐츠 스타일 */
+.main-content {
+  width: 80%;
+  padding: 20px;
+}
+
+.main-content h1 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* 아이디, 이메일, 전화번호 input 스타일 */
+#nickname,
+#email,
+#phone {
+  width: 100%; /* 부모 요소의 100% 너비 사용 */
+  padding: 8px; /* 내부 여백 */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+/* 각 input 필드를 동일하게 정렬하기 위해 래퍼 적용 */
+.info-item {
+  width: 28%; /* 모든 input 필드의 너비를 동일하게 설정 */
+  margin-bottom: 20px;
+}
+
+.info-item label {
+  font-weight: bold;
+  display: inline-block; /* 레이블과 input을 정렬 */
+  margin-bottom: 5px; /* 레이블과 input 간격 추가 */
+}
+
+/* 전화번호 input 래퍼 스타일 */
+.phone-wrapper {
+  position: relative;
+  width: 100%; /* 전화번호 래퍼도 동일한 크기로 유지 */
+}
+
+.button-group {
+  display: inline-block;
+  position: relative;
+}
+
+.edit-btn, .save-btn {
+  position: absolute;
+  bottom: -40px; /* input 필드 아래에 위치 */
+  right: 0; /* input 필드의 오른쪽 정렬 */
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background-color: #28a745;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.save-btn[style*="display: none;"] {
+  display: none;
+}
+
+.connected-accounts span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.refund-options label {
+  margin-right: 20px;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
