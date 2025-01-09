@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>일정 관리</title>
+  <link rel="stylesheet" href="calendar.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.15/index.global.min.js"></script>
+  <script src="calendar.js" defer></script>
+</head>
+
+<body>
+  <!-- 상단 헤더 -->
+  <header class="header">
+    <h1>
+      <a href="../Main/main.html">재능을IT다 | 일정 관리</a>
+    </h1>
+    <div class="auth-buttons">
+      <a href="../Mypage/mypage.html">마이페이지</a>
+      <a href="../Main/main.html">로그아웃</a>
+    </div>
+  </header>
+
+  <!-- 전체 레이아웃 -->
+  <div class="container">
+    <!-- 사이드바 -->
+    <aside class="sidebar">
+      <h2>일정 추가</h2>
+      <form id="controls">
+        <label for="eventTitle">일정:</label>
+        <input type="text" id="eventTitle" placeholder="일정 입력" required />
+        <label for="startDate">시작 날짜:</label>
+        <input type="date" id="startDate" required />
+        <label for="endDate">종료 날짜:</label>
+        <input type="date" id="endDate" />
+        <button id="addEventBtn" type="button">일정 등록</button>
+      </form>
+    </aside>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+      <div id="calendar"></div>
+    </main>
+    </div>
+
+    <!-- 모달 창 -->
+    <div id="modal">
+    <p>수정 또는 삭제를 선택하세요</p>
+    <button id="editEventBtn">수정</button>
+    <button id="deleteEventBtn">삭제</button>
+    </div>
+    <div id="modal-overlay"></div>
+</body>
+
+</html>
