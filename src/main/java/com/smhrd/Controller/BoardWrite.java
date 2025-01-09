@@ -40,10 +40,10 @@ public class BoardWrite extends HttpServlet {
       System.out.println(uploadPath);
       int maxSize = 500*1024*124; // 5MB
       MultipartRequest multi = new MultipartRequest(request, uploadPath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-      String title = multi.getParameter("title");
-      String content = multi.getParameter("content");
-      String writer = multi.getParameter("writer");
-      String img = multi.getFilesystemName("img");
+      String svc_title = multi.getParameter("svc_title");
+      String svc_content = multi.getParameter("svc_content");
+      String user_id = multi.getParameter("user_id");
+      String svc_file = multi.getFilesystemName("svc_file");
       // 파일명만 가져와서 DB에는 파일명만 저장한다.
       // 실제 파일은 현재 사용하고 있는 컴퓨터 서버에만 저장하고 있다.
 //      System.out.println(title);
@@ -51,7 +51,7 @@ public class BoardWrite extends HttpServlet {
 //      System.out.println(writer);
 //      System.out.println(img);
       
-      MyBoard uploadBoard = new MyBoard(title, content, writer, img);
+      MyBoard uploadBoard = new MyBoard(svc_title, svc_content, user_id, svc_file);
       BoardDAO dao = new BoardDAO();
       int result = dao.writeBoard(uploadBoard);
       System.out.println(result);
