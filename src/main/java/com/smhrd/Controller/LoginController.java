@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
       }
       // result에 값이 없다면 => DB에 일치하는 로그인 정보가 없다. => index.jsp이동
       // result에 값이 있다면 => session에 데이터를 저장한 후, index.jsp이동
-      response.sendRedirect("index.jsp");
+      response.sendRedirect("main.html");
       
       
 

@@ -13,7 +13,7 @@
 
 	<!-- 로그인을 위한 쿼리문 -->
 	<select id="login" parameterType="String" resultType="com.smhrd.Model.Member">
-		SELECT * FROM service_db WHERE USER_ID =#{user_id} and USER_EMAIL =#{user_email}
+		SELECT * FROM service_db WHERE USER_ID =#{user_id} and USER_PW =#{user_pw}
 	</select>
 	
 	
@@ -24,12 +24,19 @@
 	
 	<!-- 회원 정보 수정 쿼리 -->
     <update id="update" parameterType="com.smhrd.Model.Member">
-        UPDATE members SET 
-            pw = #{user_pw}, 			  <!-- 비밀번호 수정 -->
-            email = #{user_email},        <!-- 이메일 수정 -->
-            tell = #{user_tell}           <!-- 전화번호 수정 -->
-        WHERE user_id = #{user_id}  	  <!-- 아이디로 회원을 찾고 수정 -->
+        UPDATE service_db 
+        SET USER_PW = #{user_pw}, 		  <!-- 비밀번호 수정 -->
+            USER_EMAIL = #{user_email},   <!-- 이메일 수정 -->
+            USER_TELL = #{user_tell}      <!-- 전화번호 수정 -->
+        WHERE USER_ID = #{user_id}  	  <!-- 아이디로 회원을 찾고 수정 -->
     </update>
     
-   
+    <!-- 회원 탈퇴 쿼리 -->
+    <delete id="delete" parameterType="com.smhrd.Model.Member">
+    DELETE FROM t_user
+    WHERE USER_ID = #{user_id} AND USER_PW = #{user_pw};
+	</delete>
+    
 </mapper>
+
+

@@ -19,7 +19,8 @@
   
   <!-- mapper (쿼리 구문)을 찾아 갈 수 있도록 mapping 해주는 영역 -->
   <mappers>
-    <mapper resource="com/smhrd/db/Mapper.xml"/>
+    <mapper resource="com/smhrd/db/MemberMapper.xml"/>
+    <mapper resource="com/smhrd/db/BoardMapper.xml"/>
   </mappers>
 </configuration>
 
