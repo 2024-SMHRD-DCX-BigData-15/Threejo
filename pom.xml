@@ -88,6 +88,13 @@
 		    <artifactId>json</artifactId>
 		    <version>20210307</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/servlets.com/cos -->
+		<!-- 사진 파일을 가져올 수 있도록 해주는 라이브러리-->
+		<dependency>
+			<groupId>servlets.com</groupId>
+			<artifactId>cos</artifactId>
+			<version>05Nov2002</version>
+		</dependency>
   </dependencies>
 
   <build>
