@@ -16,7 +16,7 @@ public class MemberDAO {
 // 1. DB연결
       SqlSessionFactory factory = SqlSessionManager.getSqlSession();
 
-      // 회원가입을 위한 메소드
+      // 회원가입을 위한 메소드111111111
       public int join(Member vo) {
          SqlSession session = factory.openSession(true); // auto commit -> true 자동 커밋이 가능
          // 2. sql 문장을 실행
