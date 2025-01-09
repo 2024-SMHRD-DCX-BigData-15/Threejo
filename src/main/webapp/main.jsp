@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -37,25 +37,25 @@
     
     <nav class="services">
         <div class="service-item">
-            <a href="../News/news.jsp">
+            <a href="news.jsp">
                 <img src="customer-service.png" alt="고객센터">
             </a>
             <p>고객센터</p>
         </div>
         <div class="service-item">
-            <a href="../Order/order.jsp">
+            <a href="order.jsp">
                 <img src="To_request.png" alt="의뢰하기">
             </a>
             <p>의뢰하기</p>
         </div>
         <div class="service-item">
-            <a href="../Order_list/order_list.jsp">
+            <a href="order_list.jsp">
                 <img src="requestlist.png" alt="의뢰목록">
             </a>
             <p>의뢰목록</p>
         </div>
         <div class="service-item">
-            <a href="../Calendar/calendar.jsp">
+            <a href="calender.jsp">
                 <img src="Schedule_Management.png" alt="일정관리">
             </a>
             <p>일정관리</p>
