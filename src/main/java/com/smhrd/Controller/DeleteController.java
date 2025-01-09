@@ -42,7 +42,7 @@ public class DeleteController extends HttpServlet {
         if (isDeleted) {
             // 탈퇴가 성공적으로 처리되면 세션 종료
             session.invalidate();  // 세션 무효화
-            response.sendRedirect("DeleteSuccess.jsp");  // 탈퇴 성공 페이지로 리디렉션
+            response.sendRedirect("deleteSuccess.jsp");  // 탈퇴 성공 페이지로 리디렉션
         } else {
             // 삭제 실패 시 오류 메시지 처리
             request.setAttribute("error", "비밀번호가 일치하지 않거나 삭제에 실패했습니다.");

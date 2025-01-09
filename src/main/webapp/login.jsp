@@ -1,13 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
     <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
     <form action="LoginController" method="post">
         <h2>로그인</h2>
@@ -19,10 +19,8 @@
         
         <div class="button-group">
             <button type="submit">로그인</button>
-            <a href="join.html" class="register-button">회원가입</a>
-
+            <a href="join.jsp" class="register-button">회원가입</a>
         </div>
     </form>
 </body>
-
 </html>

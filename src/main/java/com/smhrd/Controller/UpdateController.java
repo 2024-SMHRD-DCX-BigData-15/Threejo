@@ -35,7 +35,7 @@ public class UpdateController extends HttpServlet {
         
 
         if (isUpdated) {
-        	response.sendRedirect("UpdatSuccess.jsp"); // 수정 성공 시 success.jsp로 리다이렉트
+        	response.sendRedirect("main.jsp"); // 수정 성공 시 success.jsp로 리다이렉트
         } else {
         	response.sendRedirect("Error.jsp");   // 실패 시 error.jsp로 리다이렉트
         }

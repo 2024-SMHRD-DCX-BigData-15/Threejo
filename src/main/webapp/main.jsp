@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,19 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
-    <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
     <script src="https://kit.fontawesome.com/3baaf0c2a4.js" crossorigin="anonymous"></script>
-    
 </head>
-
 <body>
     <header class="header">
         <h1>
-            <a href="main.html">재능을IT다</a>
+            <a href="main.jsp">재능을IT다</a>
         </h1>
         <div class="auth-buttons">
-            <a href="join.html">회원가입</a>
-            <a href="login.html">로그인</a>
+            <a href="join.jsp">회원가입</a>
+            <a href="login.jsp">로그인</a>
         </div>
     </header>
 
@@ -26,7 +26,7 @@
             <h2>WELCOME TO TALENT MARKET</h2>
             <p>내게 필요한 전문가를 찾아보세요</p>
             
-            <form class = "search-box" action="" method="get">
+            <form class="search-box" action="" method="get">
                 <input type="text" placeholder="검색어를 입력하세요.">
                 <button class="search-btn" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -36,28 +36,27 @@
     </div>
     
     <nav class="services">
-     
         <div class="service-item">
-            <a href="../News/news.html">
-                <img src="../img/customer-service.png" alt="고객센터">
+            <a href="../News/news.jsp">
+                <img src="customer-service.png" alt="고객센터">
             </a>
             <p>고객센터</p>
         </div>
         <div class="service-item">
-            <a href="../Order/order.html">
-                <img src="../img/To_request.png" alt="의뢰하기">
+            <a href="../Order/order.jsp">
+                <img src="To_request.png" alt="의뢰하기">
             </a>
             <p>의뢰하기</p>
         </div>
         <div class="service-item">
-            <a href="../Order_list/order_list.html">
-                   <img src="../img/requestlist.png" alt="의뢰목록">
-                </a>
-                <p>의뢰목록</p>
+            <a href="../Order_list/order_list.jsp">
+                <img src="requestlist.png" alt="의뢰목록">
+            </a>
+            <p>의뢰목록</p>
         </div>
         <div class="service-item">
-            <a href="../Calendar/calendar.html">
-                <img src="../img/Schedule_Management.png" alt="일정관리">
+            <a href="../Calendar/calendar.jsp">
+                <img src="Schedule_Management.png" alt="일정관리">
             </a>
             <p>일정관리</p>
         </div>

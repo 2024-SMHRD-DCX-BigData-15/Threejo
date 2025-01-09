@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -12,10 +14,10 @@
   <!-- 상단 헤더 -->
   <header class="header">
     <h1>
-      <a href="../Main/main.html">재능을IT다</a>
+      <a href="main.jsp">재능을IT다</a>
     </h1>
     <div class="auth-buttons">
-      <a href="../Main/main.html">로그아웃</a>
+      <a href="logout.jsp">로그아웃</a>
     </div>
   </header>
 
@@ -25,10 +27,10 @@
     <aside class="sidebar">
       <h2>마이페이지</h2>
       <ul>
-        <li><a href="../Mypage/mypage.html">내 프로필</a></li>
-        <li><a href="../Message_box/message_box.html">쪽지함</a></li>
-        <li><a href="order_manage.html">의뢰관리</a></li>
-        <li><a href="../Delete/delete_account.html">회원탈퇴</a></li>
+        <li><a href="mypage.jsp">내 프로필</a></li>
+        <li><a href="message_box.jsp">쪽지함</a></li>
+        <li><a href="order_manage.jsp">의뢰관리</a></li>
+        <li><a href="delete_account.jsp">회원탈퇴</a></li>
       </ul>
     </aside>
 
@@ -86,10 +88,11 @@
 
       <!-- 목록으로 돌아가기 버튼 -->
       <div class="back-button-container">
-        <a href="order_manage.html" class="back-button">목록으로 돌아가기</a>
+        <a href="order_manage.jsp" class="back-button">목록으로 돌아가기</a>
       </div>
     </main>
   </div>
 </body>
 
 </html>
+    
