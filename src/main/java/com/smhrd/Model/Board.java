@@ -11,7 +11,7 @@ import lombok.Setter;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyBoard {
+public class Board {
    // idx, title, content, writer, img, indate를 한번에 
    // 묶을 수 있는 나만의 자료형 MyBoard
    private int svc_idx;
@@ -20,7 +20,7 @@ public class MyBoard {
    private String user_id;
    private String svc_file;
    private String created_at;
-   public MyBoard(String title, String content, String writer, String img) {
+   public Board(String title, String content, String writer, String img) {
       super();
       this.svc_title = svc_title;
       this.svc_content = svc_content;

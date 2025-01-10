@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.smhrd.Model.BoardDAO;
-import com.smhrd.Model.MyBoard;
+import com.smhrd.Model.Board;
 
 @WebServlet("/write")
 public class BoardWrite extends HttpServlet {
@@ -51,7 +51,7 @@ public class BoardWrite extends HttpServlet {
 //      System.out.println(writer);
 //      System.out.println(img);
       
-      MyBoard uploadBoard = new MyBoard(svc_title, svc_content, user_id, svc_file);
+      Board uploadBoard = new Board(svc_title, svc_content, user_id, svc_file);
       BoardDAO dao = new BoardDAO();
       int result = dao.writeBoard(uploadBoard);
       System.out.println(result);

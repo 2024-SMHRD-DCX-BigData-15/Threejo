@@ -7,24 +7,24 @@
 		 
 	<!-- 회원가입을 위한 쿼리문 -->
 	<insert id="join" parameterType="com.smhrd.Model.Member">
-		INSERT INTO service_db VALUES(#{user_id},#{user_pw},#{user_email},#{user_tell})
+		INSERT INTO t_user VALUES(#{user_id},#{user_pw},#{user_email},#{user_tell})
 	</insert>
 
 
 	<!-- 로그인을 위한 쿼리문 -->
 	<select id="login" parameterType="String" resultType="com.smhrd.Model.Member">
-		SELECT * FROM service_db WHERE USER_ID =#{user_id} and USER_PW =#{user_pw}
+		SELECT * FROM t_user WHERE USER_ID =#{user_id} and USER_PW =#{user_pw}
 	</select>
 	
 	
 	<!-- id중복검사를 위한 쿼리문 -->
 	<select id="check" parameterType="String" resultType="com.smhrd.Model.Member">
-		SELECT * FROM service_db WHERE USER_ID =#{user_id}
+		SELECT * FROM t_user WHERE USER_ID =#{user_id}
 	</select>	
 	
 	<!-- 회원 정보 수정 쿼리 -->
     <update id="update" parameterType="com.smhrd.Model.Member">
-        UPDATE service_db 
+        UPDATE t_user 
         SET USER_PW = #{user_pw}, 		  <!-- 비밀번호 수정 -->
             USER_EMAIL = #{user_email},   <!-- 이메일 수정 -->
             USER_TELL = #{user_tell}      <!-- 전화번호 수정 -->
