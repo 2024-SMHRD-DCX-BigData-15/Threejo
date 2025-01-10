@@ -22,7 +22,7 @@
     </select>
     
     <!-- 모든 의뢰 목록을 가져오는 SQL 쿼리 -->
-    <select id="getAllOrders" resultType="OrderVO">
+    <select id="getAllOrders" resultType="com.smhrd.Model.OrderVO">
         SELECT writer, create_date, status, description
         FROM orders
     </select>

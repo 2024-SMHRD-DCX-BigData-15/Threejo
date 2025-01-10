@@ -1,5 +1,7 @@
 package com.smhrd.Model;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor // 기본생성자
 //@Data getter, setter, toString 기본생성자를 포함하여 한번에 생성
 public class OrderVO {
+	
 		private int svc_idx;          // 의뢰 ID
 	    private String svc_title;     // 의뢰 제목
 	    private String svc_content;   // 의뢰 내용
@@ -22,5 +25,7 @@ public class OrderVO {
 	    private String status;			// 의뢰의 현재 상태 (예: 진행 중, 완료 등)
 	    private String description;		// 의뢰에 대한 설명 (요구 사항, 작업 내용 등)
 	    
-	    
+	    private int orderId;
+	    private String title;
+	    private Date deadline;
 }
