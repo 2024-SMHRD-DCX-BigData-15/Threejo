@@ -6,24 +6,24 @@
 		 실제 데이터는 MEMBER 클래스의 필드명을 기준으로 넣어준다! -->
 		 
 	<!-- 회원가입을 위한 쿼리문 -->
-	<insert id="join" parameterType="com.smhrd.Model.Member">
+	<insert id="join" parameterType="com.smhrd.Model.MemberVO">
 		INSERT INTO service_db VALUES(#{user_id},#{user_pw},#{user_email},#{user_tell})
 	</insert>
 
 
 	<!-- 로그인을 위한 쿼리문 -->
-	<select id="login" parameterType="String" resultType="com.smhrd.Model.Member">
+	<select id="login" parameterType="String" resultType="com.smhrd.Model.MemberVO">
 		SELECT * FROM service_db WHERE USER_ID =#{user_id} and USER_PW =#{user_pw}
 	</select>
 	
 	
 	<!-- id중복검사를 위한 쿼리문 -->
-	<select id="check" parameterType="String" resultType="com.smhrd.Model.Member">
+	<select id="check" parameterType="String" resultType="com.smhrd.Model.MemberVO">
 		SELECT * FROM t_user WHERE USER_ID =#{user_id}
 	</select>	
 	
 	<!-- 회원 정보 수정 쿼리 -->
-    <update id="update" parameterType="com.smhrd.Model.Member">
+    <update id="update" parameterType="com.smhrd.Model.MemberV0">
         UPDATE service_db 
         SET USER_PW = #{user_pw}, 		  <!-- 비밀번호 수정 -->
             USER_EMAIL = #{user_email},   <!-- 이메일 수정 -->
@@ -32,7 +32,7 @@
     </update>
     
     <!-- 회원 탈퇴 쿼리 -->
-    <delete id="delete" parameterType="com.smhrd.Model.Member">
+    <delete id="delete" parameterType="com.smhrd.Model.MemberV0">
     DELETE FROM t_user
     WHERE USER_ID = #{user_id} AND USER_PW = #{user_pw};
 	</delete>
