@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet {
         } else {
             // 로그인 성공 처리
             request.getSession().setAttribute("info", result);
-            response.sendRedirect("loginmain.jsp");
+            response.sendRedirect("loginsuccess.jsp");
         }
     }
 
