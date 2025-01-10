@@ -25,7 +25,7 @@
     <aside class="sidebar">
       <h2>마이페이지</h2>
       <ul>
-        <li><a href="mypage.jsp">내 프로필</a></li>
+        <li><a href="mypage.jsp">내 프로필 수정</a></li>
         <li><a href="message_box.jsp">쪽지함</a></li>
         <li><a href="order_manage.jsp">의뢰관리</a></li>
         <li><a href="delete_account.jsp" class="active">회원탈퇴</a></li>
@@ -40,10 +40,12 @@
       </p>
 
       <!-- 회원탈퇴 폼 -->
-      <form id="deleteForm" action="delete_account_process.jsp" method="POST">
+      <form id="deleteForm" action="DeleteController" method="POST">
         <div class="form-item">
+          <label for="password">아이디 확인</label>
+          <input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" required>
           <label for="password">비밀번호 확인</label>
-          <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+          <input type="password" id="user_pw" name="user_pw" placeholder="비밀번호를 입력하세요" required>
         </div>
 
         <div class="form-item">

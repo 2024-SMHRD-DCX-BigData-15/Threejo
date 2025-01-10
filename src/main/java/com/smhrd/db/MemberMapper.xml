@@ -21,7 +21,7 @@
         WHERE user_id = #{user_id};
     </update>
 
-    <delete id="delete" parameterType="com.smhrd.Model.MemberVO">
+   <delete id="deleteMember" parameterType="com.smhrd.Model.MemberVO">
         DELETE FROM t_user WHERE user_id = #{user_id} AND user_pw = #{user_pw};
     </delete>
     
