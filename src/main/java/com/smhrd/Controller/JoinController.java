@@ -36,7 +36,7 @@ public class JoinController extends HttpServlet {
 
         // 5. 결과에 따른 페이지 이동
         if (result > 0) {
-            request.getRequestDispatcher("main.jsp").forward(request, response);
+            request.getRequestDispatcher("joinsuccess.jsp").forward(request, response);
         } else {
             response.sendRedirect("join.jsp");
         }
