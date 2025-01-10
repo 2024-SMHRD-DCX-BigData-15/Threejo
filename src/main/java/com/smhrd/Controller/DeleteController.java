@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.smhrd.Model.MemberVO;
 import com.smhrd.Model.MemberDAO;
+import com.smhrd.Model.MemberDTO;
 
 @WebServlet("/DeleteController")
 public class DeleteController extends HttpServlet {
@@ -25,7 +26,7 @@ public class DeleteController extends HttpServlet {
         }
 
         // 2. 세션에서 MemberVO 객체 가져오기
-        MemberVO sessionUser = (MemberVO) session.getAttribute("info");
+        MemberDTO sessionUser = (MemberDTO) session.getAttribute("info");
         String user_id = sessionUser.getUser_id(); // 세션에서 user_id 추출
 
         // 3. 요청에서 클라이언트가 입력한 비밀번호 가져오기
