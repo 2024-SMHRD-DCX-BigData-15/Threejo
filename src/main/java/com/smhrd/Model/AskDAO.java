@@ -18,14 +18,14 @@ public class AskDAO {
 
 	        try {
 	        	// 1. DB연결
-	        	   SqlSessionFactory factory = SqlSessionManager.getSqlSession();
+	        	SqlSessionFactory factory = SqlSessionManager.getSqlSession();
 	        	   
 	            // SQL 쿼리 작성 (1:1 문의사항을 DB에 저장하는 INSERT 문)
 	            String sql = "INSERT INTO inquiries (title, writer, content) VALUES (?, ?, ?)";
 	            pstmt = conn.prepareStatement(sql);
 
 	            // 쿼리 파라미터 설정
-	            pstmt.setString(1, inquiry.getTitle());
+	            pstmt.setString(1, inquiry.getTitle());	
 	            pstmt.setString(2, inquiry.getWriter());
 	            pstmt.setString(3, inquiry.getContent());
 

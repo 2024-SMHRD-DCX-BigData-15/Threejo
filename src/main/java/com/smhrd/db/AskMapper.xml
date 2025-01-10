@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.AskMapper">
+
+ 	<!-- 1:1 문의사항을 삽입하는 SQL 쿼리 -->
+    <insert id="insertInquiry" parameterType="com.smhrd.Model.AskVO">
+        INSERT INTO inquiries (title, writer, content)
+        VALUES (#{title}, #{writer}, #{content})
+    </insert>
+
+    <!-- 1:1 문의사항을 조회하는 SQL 쿼리 -->
+    <select id="getInquiryById" resultType="com.smhrd.Model.AskVO">
+        SELECT 	id, title, writer, content, created_at
+        FROM 	inquiries
+        WHERE id = #{id}
+    </select>
+
+    <!-- 1:1 문의사항 목록을 조회하는 SQL 쿼리 (예시) -->
+    <select id="getAllInquiries" resultType="com.smhrd.Model.AskVO">
+        SELECT id, title, writer, content, created_at
+        FROM   inquiries
+        ORDER BY created_at DESC
+    </select>
+
+</mapper>
