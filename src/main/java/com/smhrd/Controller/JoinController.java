@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.Model.Member;
+import com.smhrd.Model.MemberVO;
 import com.smhrd.Model.MemberDAO;
 
 @WebServlet("/JoinController")
@@ -35,7 +35,7 @@ public class JoinController extends HttpServlet {
 		
 		// 2. Mybatis의 특징 -> 데이터를 하나로 묶어서 전달해야한다!
 		// Member -> 우리만의 새로운 자료형을 만들어보자! -> 객체형    
-		Member vo = new Member();
+		MemberVO vo = new MemberVO();
 		vo.setUser_id(user_id);
 		vo.setUser_pw(user_pw);
 		vo.setUser_email(user_email);
