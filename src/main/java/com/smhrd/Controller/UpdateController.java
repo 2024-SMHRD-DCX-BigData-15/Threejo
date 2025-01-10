@@ -38,12 +38,12 @@ public class UpdateController extends HttpServlet {
          // email이라는 이름으로 email데이터를 넣을거임.
          HttpSession session = request.getSession();
          session.setAttribute("info", dto);
-         response.sendRedirect("main.jsp");
+         response.sendRedirect("updatesuccess.jsp");
 
       } else {
          // 회원정보 수정 실패
          System.out.println("정보 수정 실패");
-         response.sendRedirect("main.jsp");
+         response.sendRedirect("mypage.jsp");
       }
 
    }
