@@ -84,9 +84,15 @@ public class MemberDAO {
       public boolean deleteMember(MemberVO member) {
           // 1. MyBatis의 SqlSession 객체 열기 (auto-commit 활성화)
           SqlSession session = factory.openSession(true);
+          
+          // 디버깅: VO 객체에 담긴 값 출력
+          System.out.println("삭제 요청된 user_id: " + member.getUser_id());
+          System.out.println("삭제 요청된 user_pw: " + member.getUser_pw());
 
           // 2. delete 쿼리 실행 및 결과 반환
           int result = session.delete("deleteMember", member);
+          
+          System.out.println("MyBatis 삭제 결과 (영향받은 행 수): " + result);
 
           // 3. 세션 닫기
           session.close();
