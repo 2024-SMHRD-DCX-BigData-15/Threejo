@@ -80,34 +80,18 @@ public class MemberDAO {
     	    return cnt;
     	}
 
+      // 회원 삭제 메소드
+      public boolean deleteMember(MemberVO member) {
+          // 1. MyBatis의 SqlSession 객체 열기 (auto-commit 활성화)
+          SqlSession session = factory.openSession(true);
 
+          // 2. delete 쿼리 실행 및 결과 반환
+          int result = session.delete("deleteMember", member);
 
-  
-	public static boolean deleteMember(String user_id, String user_pw) {
-		// 사용자가 입력한 비밀번호와 일치하는지 확인하는 SQL 쿼리
-        String sql = "SELECT * FROM t_user WHERE user_id = ? AND user_pw = ?";
-        
-        try (Connection conn = DBConnection.getConnection(); // DB 연결
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-             
-            // 사용자 비밀번호를 쿼리로 전달
-            ps.setString(2, user_pw);
-            // 실행 결과 조회
-            ResultSet rs = ps.executeQuery();
-            // 비밀번호가 일치하면 삭제 진행
-            if (rs.next()) {
-                // 비밀번호가 맞다면, 사용자를 삭제하는 SQL 쿼리
-                String deleteSql = "DELETE FROM t_user WHERE user_id = ?";
-                
-                try (PreparedStatement deletePs = conn.prepareStatement(deleteSql)) {
-                    deletePs.setString(1, user_id);  // 삭제할 회원의 user_id 설정
-                    int rows = deletePs.executeUpdate(); // 사용자 삭제 실행
-                    return rows > 0;  // 성공적으로 삭제되었으면 true 반환
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-		return false;
-	}
+          // 3. 세션 닫기
+          session.close();
+
+          // 4. 삭제 성공 여부 반환
+          return result > 0;
+      }
   }
