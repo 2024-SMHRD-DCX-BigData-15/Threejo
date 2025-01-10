@@ -12,6 +12,7 @@ public class BoardDAO {
    SqlSessionFactory factory = SqlSessionManager.getSqlSession();
    
    // 2. getList메소드 생성
+
    public List<BoardVO> getList() {
       // 전체 게시글 조회하는 메소드
       SqlSession session = factory.openSession(true);
