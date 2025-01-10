@@ -17,4 +17,5 @@ public class MemberVO {
 	private String user_pw;
 	private String user_email;
 	private String user_tell;
+	private String user_role;
 }

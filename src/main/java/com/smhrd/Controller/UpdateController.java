@@ -26,9 +26,10 @@ public class UpdateController extends HttpServlet {
         String user_pw = request.getParameter("user_pw");
         String user_email = request.getParameter("user_email");
         String user_tell = request.getParameter("user_tell");
+        String user_role = request.getParameter("user_role");
         
         // Member 객체 생성 (입력된 데이터를 객체에 담음)
-        MemberVO member = new MemberVO(user_id, user_pw, user_email, user_tell);
+        MemberVO member = new MemberVO(user_id, user_pw, user_email, user_tell, user_role);
 
         // 회원 정보 수정 처리
         boolean isUpdated = MemberDAO.updateId(member);

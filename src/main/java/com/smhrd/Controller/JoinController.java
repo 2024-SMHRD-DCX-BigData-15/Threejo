@@ -30,6 +30,7 @@ public class JoinController extends HttpServlet {
 		String user_pw = request.getParameter("user_pw");
 		String user_email = request.getParameter("user_email");
 		String user_tell = request.getParameter("user_tell");
+		String user_role = request.getParameter("user_role");
 		
 		//System.out.println(id + pw + tell + address);
 		
@@ -40,6 +41,7 @@ public class JoinController extends HttpServlet {
 		vo.setUser_pw(user_pw);
 		vo.setUser_email(user_email);
 		vo.setUser_tell(user_tell);
+		vo.setUser_tell(user_role);
 		
 		// 3. 데이터베이스에 해당 값을 전달 -> vo
 		MemberDAO dao = new MemberDAO();

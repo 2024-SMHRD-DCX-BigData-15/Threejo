@@ -7,7 +7,7 @@
 		 
 	<!-- 회원가입을 위한 쿼리문 -->
 	<insert id="join" parameterType="com.smhrd.Model.MemberVO">
-		INSERT INTO t_user VALUES(#{user_id},#{user_pw},#{user_email},#{user_tell})
+		INSERT INTO t_user VALUES(#{user_id},#{user_pw},#{user_email},#{user_tell},#{user_role})
 	</insert>
 
 
