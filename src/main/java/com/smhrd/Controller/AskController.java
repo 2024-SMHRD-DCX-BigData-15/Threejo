@@ -24,14 +24,14 @@ public class AskController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			
 			// 폼에서 전달된 데이터 받기
-	        String title = request.getParameter("title");
-	        String writer = request.getParameter("writer");
-	        String content = request.getParameter("content");
+	        String ask_title = request.getParameter("ask_title");
+	        String ask_id = request.getParameter("ask_id");
+	        String ask_content = request.getParameter("ask_content");
 
 	        // 입력 값 검증
-	        if (title != null && !title.trim().isEmpty() && writer != null && !writer.trim().isEmpty() && content != null && !content.trim().isEmpty()) {
+	        if (ask_title != null && !ask_title.trim().isEmpty() && ask_id != null && !ask_id.trim().isEmpty() && ask_content != null && !ask_content.trim().isEmpty()) {
 	            // VO 객체 생성 및 데이터 설정
-	            AskVO inquiry = new AskVO(title, writer, content);
+	            AskVO inquiry = new AskVO(ask_title, ask_content, ask_id);
 
 	            // DAO 객체를 사용하여 DB에 저장
 	            AskDAO dao = new AskDAO();

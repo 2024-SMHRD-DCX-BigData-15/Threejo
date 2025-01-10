@@ -12,9 +12,11 @@ import lombok.Setter;
 //@Data getter, setter, toString 기본생성자를 포함하여 한번에 생성
 public class CalendarVO {
 	
-		private String title;
-	    private String startDate;
-	    private String endDate;
+		private String sche_idx;
+		private String sche_title;
+	    private String sche_st_dt;
+	    private String sche_ed_dt;
+	    private String user_id;
 
 
 }

@@ -23,15 +23,15 @@ public class CalenderController extends HttpServlet {
         // 'action' 값이 "addEvent"인 경우, 일정을 추가하는 작업을 진행합니다.
         if ("addEvent".equals(action)) {
             // 클라이언트에서 전달된 일정의 제목, 시작일, 종료일을 각각 가져옵니다.
-            String title = request.getParameter("title");
-            String startDate = request.getParameter("start");
-            String endDate = request.getParameter("end");
+            String sche_title = request.getParameter("sche_title");
+            String sche_st_dt = request.getParameter("sche_st_dt");
+            String sche_ed_dt = request.getParameter("sche_ed_dt");
 
             // CalendarVO 객체를 생성하여 일정을 담을 준비를 합니다.
             CalendarVO calendarVO = new CalendarVO();
-            calendarVO.setTitle(title);    // 일정을 저장할 VO 객체에 제목을 설정
-            calendarVO.setStartDate(startDate);  // 시작일 설정
-            calendarVO.setEndDate(endDate);  // 종료일 설정
+            calendarVO.setSche_title(sche_title);    // 일정을 저장할 VO 객체에 제목을 설정
+            calendarVO.setSche_st_dt(sche_st_dt);  // 시작일 설정
+            calendarVO.setSche_ed_dt(sche_ed_dt);  // 종료일 설정
 
             // CalendarDAO 객체를 생성하여 데이터베이스와 상호작용할 준비를 합니다.
             CalendarDAO calendarDAO = new CalendarDAO();

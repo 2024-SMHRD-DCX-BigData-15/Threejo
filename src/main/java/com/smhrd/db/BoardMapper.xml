@@ -3,8 +3,8 @@
 <mapper namespace="com.smhrd.db.BoardMapper">
 
 	<insert id="writeBoard" parameterType="com.smhrd.Model.BoardVO">
-    INSERT INTO t_service (svc_title, svc_content, user_id, svc_file)
-    VALUES (#{svc_title}, #{svc_content}, #{user_id}, #{svc_file});
+    INSERT INTO t_service (svc_title, svc_content, svc_file, user_id)
+    VALUES (#{svc_title}, #{svc_content},#{svc_file}, #{user_id});
 	</insert>
 	
 	<select id="getList" resultType="com.smhrd.Model.BoardVO">

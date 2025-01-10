@@ -11,8 +11,18 @@ import lombok.Setter;
 @NoArgsConstructor // 기본생성자
 //@Data getter, setter, toString 기본생성자를 포함하여 한번에 생성
 public class AskVO {
-	
-		private String title;   // 제목
-	    private String writer;  // 작성자
-	    private String content; // 내용
+		
+		private String ask_idx;   // 제목
+		private String ask_title;   // 제목
+	    private String ask_content;  // 작성자
+	    private String ask_file; // 내용
+	    private String ask_id; // 내용
+	    
+	    public AskVO(String ask_title, String ask_content, String ask_id) {
+	        this.ask_title = ask_title;
+	        this.ask_content = ask_content;
+	        this.ask_id = ask_id;
+	    }
+
 }
+

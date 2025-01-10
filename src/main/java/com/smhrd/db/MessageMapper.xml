@@ -5,7 +5,7 @@
  <!-- 메시지 목록 조회 -->
     <select id="getMessages" resultType="com.smhrd.Model.MessageVO">
         SELECT sender, title, date, status
-        FROM message
+        FROM t_message
         WHERE receiver_id = #{userId}  <!-- 사용자 ID로 필터링 -->
         ORDER BY date DESC;
     </select>

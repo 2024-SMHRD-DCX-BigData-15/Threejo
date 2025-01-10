@@ -17,15 +17,14 @@ public class BoardVO {
    private int svc_idx;
    private String svc_title;
    private String svc_content;
-   private String user_id;
    private String svc_file;
-   private String created_at;
+   private String user_id;
    public BoardVO(String title, String content, String writer, String img) {
       super();
       this.svc_title = svc_title;
       this.svc_content = svc_content;
-      this.user_id = user_id;
       this.svc_file = svc_file;
+      this.user_id = user_id;
       
    }
    
