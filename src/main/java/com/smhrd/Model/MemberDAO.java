@@ -30,17 +30,24 @@ public class MemberDAO {
       // 로그인을 위한 메소드
       public MemberVO login(MemberVO vo) {
     	    SqlSession session = factory.openSession(true);
-    	    
+
+    	    // 디버깅 출력
     	    System.out.println("DAO로 전달된 user_id: " + vo.getUser_id());
     	    System.out.println("DAO로 전달된 user_pw: " + vo.getUser_pw());
-    	    
+
+    	    // 쿼리 실행
     	    MemberVO result = session.selectOne("login", vo);
-    	    
-    	    System.out.println("쿼리 결과: " + result);
-    	    
+
+    	    // 쿼리 결과 확인
+    	    if (result != null && "NOT_FOUND".equals(result.getUser_id())) {
+    	        System.out.println("사용자를 찾을 수 없습니다.");
+    	        result = null; // 더미 데이터를 null로 처리
+    	    }
+
     	    session.close();
     	    return result;
     	}
+
 
       
       
