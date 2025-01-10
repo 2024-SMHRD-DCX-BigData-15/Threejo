@@ -14,7 +14,7 @@
   <!-- 상단 헤더 -->
   <header class="header">
     <h1>
-      <a href="main.jsp">재능을IT다</a>
+      <a href="loginmain.jsp">재능을IT다</a>
     </h1>
     <div class="auth-buttons">
       <a href="logou

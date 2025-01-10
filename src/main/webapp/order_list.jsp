@@ -13,7 +13,7 @@
   <!-- 헤더 -->
   <header class="header">
     <h1>
-      <a href="main.jsp" class="logo">재능을IT다 ㅣ 의뢰 목록</a>
+      <a href="loginmain.jsp" class="logo">재능을IT다 ㅣ 의뢰 목록</a>
     </h1>
     <div class="auth-buttons">
       <a href="mypage.jsp" class="auth-link">마이페이지</a>

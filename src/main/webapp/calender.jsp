@@ -17,7 +17,7 @@
   <!-- 상단 헤더 -->
   <header class="header">
     <h1>
-      <a href="main.jsp">재능을IT다 | 일정 관리</a>
+      <a href="loginmain.jsp">재능을IT다 | 일정 관리</a>
     </h1>
     <div class="auth-buttons">
       <a href="mypage.jsp">마이페이지</a>
