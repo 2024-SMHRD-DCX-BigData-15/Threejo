@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.Model.Member;
+import com.smhrd.Model.MemberVO;
 import com.smhrd.Model.MemberDAO;
 
 @WebServlet("/UpdateController")
@@ -28,7 +28,7 @@ public class UpdateController extends HttpServlet {
         String user_tell = request.getParameter("user_tell");
         
         // Member 객체 생성 (입력된 데이터를 객체에 담음)
-        Member member = new Member(user_id, user_pw, user_email, user_tell);
+        MemberVO member = new MemberVO(user_id, user_pw, user_email, user_tell);
 
         // 회원 정보 수정 처리
         boolean isUpdated = MemberDAO.updateId(member);

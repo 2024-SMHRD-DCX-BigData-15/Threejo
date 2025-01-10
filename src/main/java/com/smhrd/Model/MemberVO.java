@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor // 모든 매개변수를 가진 생성자(모든 필드를 포함)
 @NoArgsConstructor // 기본생성자
 //@Data getter, setter, toString 기본생성자를 포함하여 한번에 생성
-public class Member {
+public class MemberVO {
 	
 	private String user_id;
 	private String user_pw;

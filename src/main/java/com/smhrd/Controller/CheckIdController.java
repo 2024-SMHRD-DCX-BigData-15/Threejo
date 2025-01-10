@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.Model.Member;
+import com.smhrd.Model.MemberVO;
 import com.smhrd.Model.MemberDAO;
 
 @WebServlet("/CheckIdController")

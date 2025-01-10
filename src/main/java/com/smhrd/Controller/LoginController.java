@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.smhrd.Model.Member;
+import com.smhrd.Model.MemberVO;
 import com.smhrd.Model.MemberDAO;
 
 @WebServlet("/LoginController")
@@ -27,11 +27,11 @@ public class LoginController extends HttpServlet {
       // 3. 데이터 처리하기(DB에 값을 보내서 원하는 조건 판단) Member DAO로 보내야한다.
       MemberDAO dao = new MemberDAO();
       // Member자료형의 vo라는 객체를 만든 이유 : id과 pw를 한번에 묶어서 전송하기 위함
-      Member vo = new Member();
+      MemberVO vo = new MemberVO();
       vo.setUser_id(user_id);
       vo.setUser_pw(user_pw);
       
-      Member result = dao.login(vo);// DB에 접근하기 위해 만들어놓은 메소드를 사용하겠다.
+      MemberVO result = dao.login(vo);// DB에 접근하기 위해 만들어놓은 메소드를 사용하겠다.
       // 4. 결과 출력하기 (result에 값이 있는지 없는지를 판별)
       if (result != null) {
          // result에 값이 있다면
