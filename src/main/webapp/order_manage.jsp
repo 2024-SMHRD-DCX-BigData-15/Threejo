@@ -17,7 +17,8 @@
       <a href="main.jsp">재능을IT다</a>
     </h1>
     <div class="auth-buttons">
-      <a href="logout.jsp">로그아웃</a>
+      <a href="logou
+      t.jsp">로그아웃</a>
     </div>
   </header>
 
@@ -58,26 +59,26 @@
 
     // 의뢰 데이터 정의
     const requests = [
-      { 번호: 1, 제목: "첫 번째 의뢰", 마감일: "2025-01-15", 상태: "진행 중", id: "1" },
-      { 번호: 2, 제목: "두 번째 의뢰", 마감일: "2025-01-20", 상태: "완료", id: "2" },
-    ];
+    { number: 1, title: "첫 번째 의뢰", deadline: "2025-01-15", status: "진행 중", id: "1" },
+    { number: 2, title: "두 번째 의뢰", deadline: "2025-01-20", status: "완료", id: "2" },
+];
 
     // 테이블에 게시물 렌더링
-    function renderTable() {
-      boardContent.innerHTML = ""; // 기존 데이터 초기화
-      requests.forEach((request) => {
+function renderTable() {
+    boardContent.innerHTML = ""; // 기존 데이터 초기화
+    requests.forEach((request) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td>${request.번호}</td>
-          <td><a href="order_detail.jsp?id=${request.id}">${request.제목}</a></td>
-          <td>${request.마감일}</td>
-          <td>${request.상태}</td>
+            <td>${request.number}</td>
+            <td><a href="order_detail.jsp?id=${request.id}">${request.title}</a></td>
+            <td>${request.deadline}</td>
+            <td>${request.status}</td>
         `;
         boardContent.appendChild(row);
-      });
-    }
+    });
+}
 
-    renderTable();
+renderTable();
   </script>
 </body>
 
