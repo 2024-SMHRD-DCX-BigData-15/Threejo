@@ -17,10 +17,10 @@ public class MessageDAO {
 	    }
 
 	    // 메시지를 조회하는 메소드
-	    public List<MessageVO> getMessages(String userId) {
+	    public List<MessageVO> getMessages(String user_id) {
 	        try (SqlSession session = sqlSessionFactory.openSession()) {
 	            // 매퍼에 정의된 쿼리 ID 호출
-	            return session.selectList("com.example.MessageMapper.getMessages", userId);
+	            return session.selectList("com.smhrd.db.MessageMapper.getMessages", user_id);
 	        }
 	    }
 
