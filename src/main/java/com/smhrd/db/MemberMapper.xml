@@ -19,7 +19,7 @@
 	
 	<!-- id중복검사를 위한 쿼리문 -->
 	<select id="check" parameterType="String" resultType="com.smhrd.Model.Member">
-		SELECT * FROM service_db WHERE USER_ID =#{user_id}
+		SELECT * FROM t_user WHERE USER_ID =#{user_id}
 	</select>	
 	
 	<!-- 회원 정보 수정 쿼리 -->
