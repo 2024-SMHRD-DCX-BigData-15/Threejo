@@ -36,7 +36,7 @@
 
     <!-- 메인 콘텐츠 -->
     <main class="main-content">
-      <h1>내 프로필</h1>
+      <h1>내 프로필 수정</h1>
       <div class="info-item">
         <label for="nickname">아이디:</label>
         <input type="text" id="nickname" disabled>
