@@ -21,4 +21,6 @@ public class OrderVO {
 	    private String createDate;		// 의뢰 작성 날짜
 	    private String status;			// 의뢰의 현재 상태 (예: 진행 중, 완료 등)
 	    private String description;		// 의뢰에 대한 설명 (요구 사항, 작업 내용 등)
+	    
+	    
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="RequestMapper">
+<mapper namespace="com.smhrd.db.OrderMapper">
 
     <!-- 모든 의뢰 데이터 조회 -->
     <select id="selectAllRequests" resultType="com.smhrd.Model.OrderVO">
@@ -16,11 +15,19 @@
     </select>
     
      <!-- 의뢰 상세 정보 조회 -->
-    <select id="getOrderById" resultType="com.smhrd.OrderVO">
+    <select id="getOrderById" resultType="com.smhrd.Model.OrderVO">
         SELECT writer, create_date AS createDate, status, description
         FROM orders
         WHERE order_id = #{orderId}
     </select>
+    
+    <!-- 모든 의뢰 목록을 가져오는 SQL 쿼리 -->
+    <select id="getAllOrders" resultType="OrderVO">
+        SELECT writer, create_date, status, description
+        FROM orders
+    </select>
+    
+    
 
 
 </mapper>
