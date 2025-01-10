@@ -14,54 +14,31 @@ import com.smhrd.Model.MemberDAO;
 
 @WebServlet("/JoinController")
 public class JoinController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// index.jsp -> 회원가입 폼으로부터 넘어온 회원 가입의 데이터를
-		// 데이터베이스로 전달해서 회원가입 기능을 실행하는 Servlet
-		
-		// 0. 한글 인코딩 (post방식으로 요청을 받았기 때문에)
-		request.setCharacterEncoding("UTF-8");
-		
-		// 1. 받아온 요청 데이터 꺼내오기 -> 4개
-		
-		String user_id = request.getParameter("user_id");
-		String user_pw = request.getParameter("user_pw");
-		String user_email = request.getParameter("user_email");
-		String user_tell = request.getParameter("user_tell");
-		String user_role = request.getParameter("user_role");
-		
-		//System.out.println(id + pw + tell + address);
-		
-		// 2. Mybatis의 특징 -> 데이터를 하나로 묶어서 전달해야한다!
-		// Member -> 우리만의 새로운 자료형을 만들어보자! -> 객체형    
-		MemberVO vo = new MemberVO();
-		vo.setUser_id(user_id);
-		vo.setUser_pw(user_pw);
-		vo.setUser_email(user_email);
-		vo.setUser_tell(user_tell);
-		vo.setUser_tell(user_role);
-		
-		// 3. 데이터베이스에 해당 값을 전달 -> vo
-		MemberDAO dao = new MemberDAO();
-		int result = dao.join(vo);
-		
-		// 4. 결과에 따른 페이지 이동! 
-		
-		if(result > 0) {
-			// joinsuccess.jsp로 이동
-			RequestDispatcher rd = request.getRequestDispatcher("joinSuccess.jsp");
-			rd.forward(request, response);
-			
-			
-		}else {
-			// 그렇지 않다면 index.jsp
-			// -> 리다이렉트 방식으로 index.jsp
-			response.sendRedirect("index.jsp");
-		}
-		
-		
-	}
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1. 요청 데이터 인코딩
+        request.setCharacterEncoding("UTF-8");
 
+        // 2. 요청 파라미터로부터 데이터 가져오기
+        String user_id = request.getParameter("user_id");
+        String user_pw = request.getParameter("user_pw");
+        String user_email = request.getParameter("user_email");
+        String user_tell = request.getParameter("user_tell");
+        String user_role = request.getParameter("user_role");
+
+        // 3. VO 생성 및 값 설정
+        MemberVO vo = new MemberVO(user_id, user_pw, user_email, user_tell, user_role);
+
+        // 4. DAO를 사용하여 회원가입 처리
+        MemberDAO dao = new MemberDAO();
+        int result = dao.join(vo);
+
+        // 5. 결과에 따른 페이지 이동
+        if (result > 0) {
+            request.getRequestDispatcher("main.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("join.jsp");
+        }
+    }
 }

@@ -6,6 +6,7 @@
     <select id="getMessages" resultType="com.smhrd.Model.MessageVO">
         SELECT * FROM t_message 
         WHERE user_id = #{user_id}  <!-- 사용자 ID로 필터링 -->
+        FROM t_message
         ORDER BY date DESC;
     </select>
 

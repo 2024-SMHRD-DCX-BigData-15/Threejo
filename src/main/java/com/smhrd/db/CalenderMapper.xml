@@ -4,26 +4,26 @@
 
  <!-- 일정 추가 -->
     <insert id="addEvent" parameterType="com.smhrd.Model.CalendarVO">
-        INSERT INTO calendar_events (title, start_date, end_date)
-        VALUES (#{title}, #{startDate}, #{endDate});
+        INSERT INTO t_schedule (sche_title, sche_st_dt, sche_ed_dt)
+        VALUES (#{sche_title}, #{sche_st_dt}, #{sche_ed_dt});
     </insert>
 
     <!-- 일정 조회 -->
     <select id="getAllEvents" resultType="com.smhrd.Model.CalendarVO">
-        SELECT title, start_date, end_date
-        FROM calendar_events;
+        SELECT sche_title, sche_st_dt, sche_ed_dt
+        FROM t_schedule;
     </select>
 
     <!-- 일정 삭제 -->
     <delete id="deleteEvent" parameterType="int">
-        DELETE FROM calendar_events WHERE event_id = #{eventId};
+        DELETE FROM t_schedule WHERE sche_idx = #{sche_idx};
     </delete>
     
     <!-- 일정 수정 -->
     <update id="updateEvent" parameterType="com.smhrd.Model.CalendarVO">
-        UPDATE calendar_events
-        SET title = #{title}, start_date = #{startDate}, end_date = #{endDate}
-        WHERE event_id = #{eventId};
+        UPDATE t_schedule
+        SET sche_title = #{sche_title}, sche_st_dt = #{sche_st_dt}, sche_ed_dt = #{sche_ed_dt}
+        WHERE sche_idx = #{sche_idx};
     </update>
 
 </mapper>

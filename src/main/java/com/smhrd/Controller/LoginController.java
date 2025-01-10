@@ -15,36 +15,29 @@ import com.smhrd.Model.MemberDAO;
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
-   private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   
-      // 1. 인코딩
-      request.setCharacterEncoding("UTF-8");
-      // 2. index.jsp에서 받아온 데이터를 꺼내오기
-      String user_id = request.getParameter("user_id");
-      String user_pw = request.getParameter("user_pw");
-      // 3. 데이터 처리하기(DB에 값을 보내서 원하는 조건 판단) Member DAO로 보내야한다.
-      MemberDAO dao = new MemberDAO();
-      // Member자료형의 vo라는 객체를 만든 이유 : id과 pw를 한번에 묶어서 전송하기 위함
-      MemberVO vo = new MemberVO();
-      vo.setUser_id(user_id);
-      vo.setUser_pw(user_pw);
-      
-      MemberVO result = dao.login(vo);// DB에 접근하기 위해 만들어놓은 메소드를 사용하겠다.
-      // 4. 결과 출력하기 (result에 값이 있는지 없는지를 판별)
-      if (result != null) {
-         // result에 값이 있다면
-         // (1)세션 영역 활용!
-         HttpSession session = request.getSession();
-         session.setAttribute("info", result);
-         System.out.println("일치하는 값을 세션에 저장");
-      }
-      // result에 값이 없다면 => DB에 일치하는 로그인 정보가 없다. => index.jsp이동
-      // result에 값이 있다면 => session에 데이터를 저장한 후, index.jsp이동
-      response.sendRedirect("main.html");
-      
-      
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1. 요청 데이터 인코딩
+        request.setCharacterEncoding("UTF-8");
 
-   }
+        // 2. 요청 데이터 가져오기
+        String user_id = request.getParameter("user_id");
+        String user_pw = request.getParameter("user_pw");
+
+        // 3. VO 객체 생성 및 설정
+        MemberVO vo = new MemberVO();
+        vo.setUser_id(user_id);
+        vo.setUser_pw(user_pw);
+
+        // 4. DAO를 사용하여 로그인 처리
+        MemberDAO dao = new MemberDAO();
+        MemberVO result = dao.login(vo);
+
+        // 5. 결과에 따른 세션 저장 및 페이지 이동
+        if (result != null) {
+            request.getSession().setAttribute("info", result);
+        }
+        response.sendRedirect("main.jsp");
+    }
 }

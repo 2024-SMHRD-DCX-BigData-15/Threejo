@@ -12,10 +12,11 @@ import lombok.Setter;
 //@Data getter, setter, toString 기본생성자를 포함하여 한번에 생성
 public class MessageVO {
 	
-	private String sender;	 // 쪽지를 보낸 사람의 이름
-    private String title;	 // 쪽지의 제목
-    private String date;	 // 쪽지를 받은 날짜
-    private String status;	 // 쪽지의 상태 (예: 읽음, 읽지 않음)
-
-
+	private String msg_idx;	 
+	private String send_id;	
+    private String user_id;	 
+    private String msg_content;	
+    private String sended_at;	
+    private String receive_y;
+    private String received_at;	 
 }

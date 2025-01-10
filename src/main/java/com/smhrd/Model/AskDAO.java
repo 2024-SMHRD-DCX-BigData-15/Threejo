@@ -21,13 +21,13 @@ public class AskDAO {
 	        	SqlSessionFactory factory = SqlSessionManager.getSqlSession();
 	        	   
 	            // SQL 쿼리 작성 (1:1 문의사항을 DB에 저장하는 INSERT 문)
-	            String sql = "INSERT INTO inquiries (title, writer, content) VALUES (?, ?, ?)";
+	            String sql = "INSERT INTO inquiries (ask_title, ask_content, ask_id) VALUES (?, ?, ?)";
 	            pstmt = conn.prepareStatement(sql);
 
 	            // 쿼리 파라미터 설정
-	            pstmt.setString(1, inquiry.getTitle());	
-	            pstmt.setString(2, inquiry.getWriter());
-	            pstmt.setString(3, inquiry.getContent());
+	            pstmt.setString(1, inquiry.getask_title());	
+	            pstmt.setString(2, inquiry.getask_Content());
+	            pstmt.setString(3, inquiry.getask_id());
 
 	            // SQL 실행
 	            pstmt.executeUpdate();
@@ -41,17 +41,17 @@ public class AskDAO {
 	        }
 	    }
 
-		private String getContent() {
+		private String getask_title() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
-		private String getWriter() {
+		private String getask_Content() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
-		private String getTitle() {
+		private String getask_id() {
 			// TODO Auto-generated method stub
 			return null;
 		}
