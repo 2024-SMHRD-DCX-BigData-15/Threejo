@@ -17,7 +17,7 @@
         </h1>
         <div class="auth-buttons">
             <a href="mypage.jsp">마이페이지</a>
-            <a href="LogoutController.java">로그아웃</a>
+            <a href="LogoutController">로그아웃</a>
         </div>
     </header>
 
