@@ -23,7 +23,7 @@
 
             <!-- 비밀번호 입력 -->
             <label for="userPassword">비밀번호:</label>
-            <input type="password" id="userPassword" name="userPassword" placeholder="비밀번호를 입력하세요" required>
+            <input type="password" id="user_pw" name="user_pw" placeholder="비밀번호를 입력하세요" required>
             
             <!-- 비밀번호 확인 -->
             <label for="confirmPassword">비밀번호 확인:</label>
@@ -31,12 +31,20 @@
             
             <!-- 이메일 입력 -->
             <label for="userEmail">이메일:</label>
-            <input type="email" id="userEmail" name="userEmail" placeholder="이메일을 입력하세요" required>
+            <input type="email" id="user_email" name="user_email" placeholder="이메일을 입력하세요" required>
             
             <!-- 전화번호 입력 -->
             <label for="userPhone">전화번호:</label>
-            <input type="tel" id="userPhone" name="userPhone" placeholder="전화번호를 입력하세요" required>
+            <input type="tel" id="user_tell" name="user_tell" placeholder="전화번호를 입력하세요" required>
             
+            <!-- 역할 입력 -->
+            <label for="user_role">회원 유형:</label>
+		    <select name="user_role" id="user_role" required>
+		        <option value="" disabled selected>회원 유형을 선택하세요</option>
+		        <option value="buyer">구매자</option>
+		        <option value="seller">판매자</option>
+		    </select>
+
             <!-- 회원가입 버튼 -->
             <button type="submit" class="submit-btn">회원가입</button>
             

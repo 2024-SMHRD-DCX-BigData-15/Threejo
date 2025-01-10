@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
+		<!-- 로그인 실패 메시지 출력 (알림창) -->
+	<c:if test="${not empty errorMessage}">
+	    <script>
+	        // JavaScript에서 조건 확인
+	        const errorMessage = "${errorMessage}";
+	        if (errorMessage) {
+	            alert(errorMessage);
+	        }
+	    </script>
+	</c:if>
+
     <form action="LoginController" method="post">
         <h2>로그인</h2>
         <label for="loginId">아이디:</label>

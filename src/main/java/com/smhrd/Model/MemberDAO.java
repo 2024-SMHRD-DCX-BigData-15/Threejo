@@ -29,14 +29,19 @@ public class MemberDAO {
       
       // 로그인을 위한 메소드
       public MemberVO login(MemberVO vo) {
-         SqlSession session = factory.openSession(true);
-         // sql문장을 실행	
-         // 회원이 입력한 id와 pw가 DB에 있는 데이터 중에서 일치하는 것이 있는지 확인!->select
-         // session.selectOne("login", "memberMapper.xml과 연결고리 = id값", 같이 보내는 데이터);
-         MemberVO result = session.selectOne("login", vo);
-         session.close();
-         return result;
-      }
+    	    SqlSession session = factory.openSession(true);
+    	    
+    	    System.out.println("DAO로 전달된 user_id: " + vo.getUser_id());
+    	    System.out.println("DAO로 전달된 user_pw: " + vo.getUser_pw());
+    	    
+    	    MemberVO result = session.selectOne("login", vo);
+    	    
+    	    System.out.println("쿼리 결과: " + result);
+    	    
+    	    session.close();
+    	    return result;
+    	}
+
       
       
       // id중복검사를 위한 메소드
