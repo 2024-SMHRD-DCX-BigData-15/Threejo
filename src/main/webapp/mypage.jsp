@@ -67,6 +67,7 @@
           <label for="phone">전화번호:</label>
           <div class="phone-wrapper">
             <input type="text" id="phone" name="user_tell" value="${info.user_tell}" disabled>
+            
             <button type="button" class="edit-btn" onclick="enableEdit()">수정</button>
             <button type="button" class="save-btn" style="display: none;" onclick="validateAndSubmit()">저장</button>
           </div>
