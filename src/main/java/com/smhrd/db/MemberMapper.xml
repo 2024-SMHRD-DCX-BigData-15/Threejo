@@ -15,9 +15,9 @@
         SELECT * FROM t_user WHERE user_id = #{user_id};
     </select>
 
-    <update id="update" parameterType="com.smhrd.Model.MemberVO">
+    <update id="update" parameterType="com.smhrd.Model.MemberDTO">
         UPDATE t_user
-        SET user_pw = #{user_pw}, user_email = #{user_email}, user_tell = #{user_tell}
+        SET user_email = #{user_email}, user_tell = #{user_tell}
         WHERE user_id = #{user_id};
     </update>
 
