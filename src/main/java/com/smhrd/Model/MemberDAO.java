@@ -40,11 +40,11 @@ public class MemberDAO {
       
       
       // id중복검사를 위한 메소드
-      public boolean checkId(String id) {
+      public boolean checkId(String user_id) {
   		// 0. DB에 접글할 수 있는 session 발급
   		SqlSession session = factory.openSession(true);
   		// 1. session을 이용해서 쿼리문 접근
-  		Member result = session.selectOne("check",id);
+  		Member result = session.selectOne("check",user_id);
   		// 2. 쿼리문(MemberMapper.xml)작성
   		// 3. 그에 대한 결과값을 통해서 결과 값 처리
   		session.close();

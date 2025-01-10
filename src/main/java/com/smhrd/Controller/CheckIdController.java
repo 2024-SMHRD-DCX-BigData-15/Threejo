@@ -22,7 +22,7 @@ public class CheckIdController extends HttpServlet {
 		// 1. 주소 중복 체크
 		String user_id = request.getParameter("user_id");
 		MemberDAO dao = new MemberDAO();
-
+		
 		// MemberDao에서 checkAddr 메소드 생성 -> mapper까지 연결
 		// sql문 : login과 비슷한 맥락으로 유추! (집 주소가 DB에 동일한 값이 있는지)
 		boolean isDuplicate = dao.checkId(user_id);
