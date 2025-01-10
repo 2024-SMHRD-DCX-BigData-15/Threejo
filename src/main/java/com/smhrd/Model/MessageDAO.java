@@ -1,0 +1,27 @@
+package com.smhrd.Model;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.smhrd.db.SqlSessionManager;
+
+public class MessageDAO {
+	
+	 private SqlSessionFactory sqlSessionFactory;
+
+	    public MessageDAO() {
+	        // MyBatis 설정을 통해 SqlSessionFactory 객체 가져오기
+	        sqlSessionFactory = SqlSessionManager.getSqlSession();
+	    }
+
+	    // 메시지를 조회하는 메소드
+	    public List<MessageVO> getMessages(String userId) {
+	        try (SqlSession session = sqlSessionFactory.openSession()) {
+	            // 매퍼에 정의된 쿼리 ID 호출
+	            return session.selectList("com.example.MessageMapper.getMessages", userId);
+	        }
+	    }
+
+}
