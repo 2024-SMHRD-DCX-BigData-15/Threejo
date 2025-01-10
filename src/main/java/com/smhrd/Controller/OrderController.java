@@ -1,6 +1,6 @@
 package com.smhrd.Controller;
 
-import com.smhrd.Model.Order;
+import com.smhrd.Model.OrderVO;
 import com.smhrd.Model.OrderDAO;
 
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class OrderController extends HttpServlet {
         String svcFile = request.getParameter("svc_file"); // 첨부 파일 경로
 
         // Request 객체 생성
-        Order newRequest = new Order();
+        OrderVO newRequest = new OrderVO();
         newRequest.setUser_id(userId);
         newRequest.setSvc_title(svcTitle);
         newRequest.setSvc_content(svcContent);

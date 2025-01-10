@@ -3,8 +3,8 @@
 
 <mapper namespace="RequestMapper">
 
-    <!-- 2. 모든 의뢰 데이터 조회 -->
-    <select id="selectAllRequests" resultType="com.smhrd.Model.Request">
+    <!-- 모든 의뢰 데이터 조회 -->
+    <select id="selectAllRequests" resultType="com.smhrd.Model.OrderVO">
         SELECT 
             svc_idx AS svcIdx,
             svc_title AS svcTitle,
@@ -14,5 +14,13 @@
             created_at AS createdAt
         FROM requests;
     </select>
+    
+     <!-- 의뢰 상세 정보 조회 -->
+    <select id="getOrderById" resultType="com.smhrd.OrderVO">
+        SELECT writer, create_date AS createDate, status, description
+        FROM orders
+        WHERE order_id = #{orderId}
+    </select>
+
 
 </mapper>
