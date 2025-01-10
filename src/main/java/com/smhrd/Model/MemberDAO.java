@@ -13,7 +13,7 @@ import com.smhrd.db.SqlSessionManager;
 
 public class MemberDAO {
    private static final Statement DBConnection = null;
-// 1. DB연결
+      // 1. DB연결
       SqlSessionFactory factory = SqlSessionManager.getSqlSession();
 
       // 회원가입을 위한 메소드

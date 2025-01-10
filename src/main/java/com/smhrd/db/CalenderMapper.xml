@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.CalenderMapper">
+
+ <!-- 일정 추가 -->
+    <insert id="addEvent" parameterType="com.smhrd.Model.CalendarVO">
+        INSERT INTO calendar_events (title, start_date, end_date)
+        VALUES (#{title}, #{startDate}, #{endDate});
+    </insert>
+
+    <!-- 일정 조회 -->
+    <select id="getAllEvents" resultType="com.smhrd.Model.CalendarVO">
+        SELECT title, start_date, end_date
+        FROM calendar_events;
+    </select>
+
+    <!-- 일정 삭제 -->
+    <delete id="deleteEvent" parameterType="int">
+        DELETE FROM calendar_events WHERE event_id = #{eventId};
+    </delete>
+    
+    <!-- 일정 수정 -->
+    <update id="updateEvent" parameterType="com.smhrd.Model.CalendarVO">
+        UPDATE calendar_events
+        SET title = #{title}, start_date = #{startDate}, end_date = #{endDate}
+        WHERE event_id = #{eventId};
+    </update>
+
+</mapper>
