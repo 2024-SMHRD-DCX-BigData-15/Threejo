@@ -72,25 +72,19 @@ public class MemberDAO {
   	}
       
       public static boolean updateId(MemberVO member) {
-          String sql = "UPDATE t_user SET user_pw = ?, user_email = ?, user_tell = ? WHERE user_id = ?";
-          boolean success = false;
-          
-          try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/service_db", "ChangHwan", "1234");
-               PreparedStatement ps = conn.prepareStatement(sql)) {
-              
-              ps.setString(1, member.getUser_pw());   // 수정된 비밀번호
-              ps.setString(2, member.getUser_email()); // 수정된 이메일
-              ps.setString(3, member.getUser_tell());  // 수정된 전화번호
-              
-              int rows = ps.executeUpdate();  // 쿼리 실행 후, 수정된 행 수 확인
-              if (rows > 0) {
-                  success = true;  // 수정이 성공했으면 true 반환
-              }
-          } catch (SQLException e) {
-              e.printStackTrace();  // 예외 발생 시 오류 메시지 출력
-          }
-          return success;  // 수정 성공 여부 반환
-      }
+    	    String sql = "UPDATE t_user SET user_email = ?, user_tell = ? WHERE user_id = ?";
+    	    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/service_db", "Changwan", "1234");
+    	         PreparedStatement ps = conn.prepareStatement(sql)) {
+    	        ps.setString(1, member.getUser_email());
+    	        ps.setString(2, member.getUser_tell());
+    	        ps.setString(3, member.getUser_id());
+    	        return ps.executeUpdate() > 0;
+    	    } catch (SQLException e) {
+    	        e.printStackTrace();
+    	    }
+    	    return false;
+    	}
+
 
   
 	public static boolean deleteMember(String user_id, String user_pw) {
