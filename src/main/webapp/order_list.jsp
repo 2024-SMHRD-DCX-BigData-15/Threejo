@@ -85,11 +85,10 @@
       posts.forEach((post) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${post.category}</td>
-          <td>${post.title}</td>
-          <td>${post.content}</td>
-          <td>${post.price}</td>
-          <td>${post.fileName || '없음'}</td>
+          <td>${post.svc_id }</td>
+          <td>${post.svc_categori}</td>
+          <td>${post.svc_title}</td>
+          <td>${post.svc_ed_td}</td>
         `;
         tbody.appendChild(row);
       });
