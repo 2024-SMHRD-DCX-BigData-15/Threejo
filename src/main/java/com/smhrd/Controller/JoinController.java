@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.Model.MemberVO;
 import com.smhrd.Model.MemberDAO;
-//1
 @WebServlet("/JoinController")
 public class JoinController extends HttpServlet {
     private static final long serialVersionUID = 1L;

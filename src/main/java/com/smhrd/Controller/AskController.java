@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.smhrd.Model.AskDAO;
 import com.smhrd.Model.AskVO;
 
-//1
 @WebServlet("/AskController")
 public class AskController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
