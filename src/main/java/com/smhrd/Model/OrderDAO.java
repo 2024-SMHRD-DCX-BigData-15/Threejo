@@ -59,4 +59,24 @@ public class OrderDAO {
         System.out.println("[OrderDAO] getAllOrders() 종료"); // 디버깅: 메서드 종료
         return orderList; // 조회한 의뢰 데이터 리스트 반환
     }
+    
+    //OrderManageController
+    public List<OrderVO> getOrdersByUserId(String userId) {
+        System.out.println("[OrderDAO] getOrdersByUserId() 호출"); // 디버깅
+        List<OrderVO> userOrders = null;
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            System.out.println("[OrderDAO] 사용자 ID로 의뢰 데이터 조회 시도: " + userId); // 디버깅
+            // MyBatis Mapper를 사용하여 사용자 ID로 데이터 조회
+            userOrders = session.selectList("com.smhrd.db.OrderMapper.getOrdersByUserId", userId);
+            if (userOrders != null && !userOrders.isEmpty()) {
+                System.out.println("[OrderDAO] 의뢰 데이터 조회 성공: " + userOrders.size() + "건");
+            } else {
+                System.out.println("[OrderDAO] 사용자 ID에 해당하는 데이터가 없습니다.");
+            }
+        } catch (Exception e) {
+            System.err.println("[OrderDAO] 의뢰 데이터 조회 중 예외 발생");
+            e.printStackTrace();
+        }
+        return userOrders;
+    }
 }

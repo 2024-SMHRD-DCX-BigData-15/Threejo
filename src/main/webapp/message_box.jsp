@@ -26,7 +26,7 @@
     <aside class="sidebar">
       <h2>마이페이지</h2>
       <ul>
-        <li><a href="mypage.jsp">내 프로필</a></li>
+        <li><a href="mypage.jsp">내 프로필 수정</a></li>
         <li><a href="message_box.jsp" class="active">쪽지함</a></li>
         <li><a href="order_manage.jsp">의뢰관리</a></li>
         <li><a href="delete_account.jsp">회원탈퇴</a></li>

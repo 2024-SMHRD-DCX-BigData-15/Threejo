@@ -27,5 +27,16 @@
         svc_account AS svc_account
     FROM t_service;
 	</select>
+	
+	<!-- OrderManageController -->
+	<select id="getOrdersByUserId" parameterType="String" resultType="com.smhrd.Model.OrderVO">
+	    SELECT 
+	        svc_idx, svc_title, svc_content, svc_categori, svc_account, svc_ed_td, svc_id
+	    FROM 
+	        t_service
+	    WHERE 
+	        svc_id = #{userId};
+	</select>
+	
     
 </mapper>

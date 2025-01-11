@@ -9,7 +9,7 @@
 <body>
     <!-- 헤더 섹션 -->
     <div class="header">
-        <h1><a href="index.jsp">재능을IT다</a></h1>
+        <h1><a href="loginmain.jsp">재능을IT다</a></h1>
         <div class="auth-buttons">
             <a href="mypage.jsp">마이페이지</a>
             <a href="logout.jsp">로그아웃</a>

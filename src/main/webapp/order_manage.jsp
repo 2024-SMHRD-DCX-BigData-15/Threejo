@@ -1,29 +1,25 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="ko">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>의뢰 관리</title>
-  <link rel="stylesheet" href="order_manage.css">
+    <title>재능을IT다 | 의뢰 관리</title>
+    <link rel="stylesheet" type="text/css" href="order_manage.css">
 </head>
-
 <body>
-  <!-- 상단 헤더 -->
-  <header class="header">
-    <h1>
-      <a href="loginmain.jsp">재능을IT다</a>
-    </h1>
-    <div class="auth-buttons">
-      <a href="logou
-      t.jsp">로그아웃</a>
+    <!-- 헤더 -->
+    <div class="header">
+        <h1><a href="index.jsp">재능을IT다</a></h1>
+        <div class="auth-buttons">
+            <a href="mypage.jsp">마이페이지</a>
+            <a href="logout.jsp">로그아웃</a>
+        </div>
     </div>
-  </header>
 
-  <!-- 컨테이너 -->
-  <div class="container">
+
+    <!-- 메인 컨테이너 -->
+    <div class="container">
+    
     <!-- 사이드바 -->
     <aside class="sidebar">
       <h2>마이페이지</h2>
@@ -34,53 +30,46 @@
         <li><a href="delete_account.jsp">회원탈퇴</a></li>
       </ul>
     </aside>
+        <div class="main-content">
+            <h1>내 의뢰 관리</h1>
+            <!-- 의뢰 관리 테이블 -->
+            <table class="board-table">
+                <thead>
+                    <tr>
+                        <th>게시글 번호</th>
+                        <th>제목</th>
+                        <th>마감일</th>
+                        <th>삭제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 사용자 의뢰 데이터가 있을 경우 -->
+                    <c:if test="${not empty userOrders}">
+                        <c:forEach var="order" items="${userOrders}">
+                            <tr>
+                                <td>${order.svc_idx}</td> <!-- 게시글 번호 -->
+                                <td>${order.svc_title}</td> <!-- 제목 -->
+                                <td>${order.svc_ed_td}</td> <!-- 마감일 -->
+                                <td>
+                                    <!-- 삭제 버튼 -->
+                                    <form action="DeleteOrderController" method="post" style="display:inline;">
+                                        <input type="hidden" name="svc_idx" value="${order.svc_idx}" />
+                                        <button type="submit" class="delete-btn">삭제</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if>
 
-    <!-- 메인 콘텐츠 -->
-    <main class="main-content">
-      <h1>의뢰관리</h1>
-      <table class="board-table">
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>마감일</th>
-            <th>상태</th>
-          </tr>
-        </thead>
-        <tbody id="board-content">
-          <!-- JavaScript로 데이터 추가 -->
-        </tbody>
-      </table>
-    </main>
-  </div>
-
-  <script>
-    const boardContent = document.getElementById("board-content");
-
-    // 의뢰 데이터 정의
-    const requests = [
-    { number: 1, title: "첫 번째 의뢰", deadline: "2025-01-15", status: "진행 중", id: "1" },
-    { number: 2, title: "두 번째 의뢰", deadline: "2025-01-20", status: "완료", id: "2" },
-];
-
-    // 테이블에 게시물 렌더링
-function renderTable() {
-    boardContent.innerHTML = ""; // 기존 데이터 초기화
-    requests.forEach((request) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${request.number}</td>
-            <td><a href="order_detail.jsp?id=${request.id}">${request.title}</a></td>
-            <td>${request.deadline}</td>
-            <td>${request.status}</td>
-        `;
-        boardContent.appendChild(row);
-    });
-}
-
-renderTable();
-  </script>
+                    <!-- 사용자 의뢰 데이터가 없을 경우 -->
+                    <c:if test="${empty userOrders}">
+                        <tr>
+                            <td colspan="4" style="text-align: center;">등록된 의뢰가 없습니다.</td>
+                        </tr>
+                    </c:if>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
-
 </html>
-    
