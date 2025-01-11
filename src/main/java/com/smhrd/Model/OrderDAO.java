@@ -56,7 +56,7 @@ public class OrderDAO {
         String password = "1234";  // MySQL 비밀번호
         return DriverManager.getConnection(url, username, password);
     }
-    public List<OrderVO> getAllOrders() {
+    public List<OrderVO> getAllOrder() {
         List<OrderVO> orderList = new ArrayList<>();  // List 인터페이스를 사용하여 ArrayList 초기화
         String query = "SELECT writer, create_date, status, description FROM orders"; // 'orders' 테이블에서 모든 의뢰 데이터를 가져옴
         
@@ -108,4 +108,4 @@ public class OrderDAO {
         return orders;  // 의뢰 목록 반환
     }
 }
-}
+
