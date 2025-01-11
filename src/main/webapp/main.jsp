@@ -27,7 +27,7 @@
             <p>내게 필요한 전문가를 찾아보세요</p>
             
             <form class="search-box" action="" method="get">
-                <input type="text" placeholder="검색어를 입력하세요.">
+                <input type="text" placeholder="검색어를 입력하세요.">	
                 <button class="search-btn" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
