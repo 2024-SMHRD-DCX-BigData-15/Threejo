@@ -49,7 +49,7 @@
             <p>의뢰하기</p>
         </div>
         <div class="service-item">
-            <a href="order_list.jsp">
+            <a href="OrderListController">
                 <img src="requestlist.png" alt="의뢰목록">
             </a>
             <p>의뢰목록</p>
