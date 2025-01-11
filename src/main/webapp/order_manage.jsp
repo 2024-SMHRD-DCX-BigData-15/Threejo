@@ -5,6 +5,14 @@
 <head>
     <title>재능을IT다 | 의뢰 관리</title>
     <link rel="stylesheet" type="text/css" href="order_manage.css">
+    
+     <script>
+        // 삭제 버튼 클릭 시 확인 알림창 표시
+        function confirmDelete() {
+            return confirm("삭제하시겠습니까?"); // 확인 창에서 사용자가 확인을 누르면 true 반환
+        }
+    </script>
+    
 </head>
 <body>
     <!-- 헤더 -->
@@ -51,8 +59,8 @@
                                 <td>${order.svc_title}</td> <!-- 제목 -->
                                 <td>${order.svc_ed_td}</td> <!-- 마감일 -->
                                 <td>
-                                    <!-- 삭제 버튼 -->
-                                    <form action="DeleteOrderController" method="post" style="display:inline;">
+                                <!-- 삭제 버튼 -->
+                                    <form action="OrderDeleteController" method="post" onsubmit="return confirmDelete();" style="display:inline;">
                                         <input type="hidden" name="svc_idx" value="${order.svc_idx}" />
                                         <button type="submit" class="delete-btn">삭제</button>
                                     </form>

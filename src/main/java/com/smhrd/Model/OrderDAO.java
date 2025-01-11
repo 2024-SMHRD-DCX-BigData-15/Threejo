@@ -79,4 +79,24 @@ public class OrderDAO {
         }
         return userOrders;
     }
+    
+    // OrderDeleteController
+    public int deleteOrder(int svc_idx) {
+        System.out.println("[OrderDAO] deleteOrder() 호출 - 게시글 번호: " + svc_idx);
+        int result = 0;
+        try (SqlSession session = sqlSessionFactory.openSession(true)) { // 자동 커밋 설정
+            // MyBatis Mapper를 사용하여 데이터 삭제
+            result = session.delete("com.smhrd.db.OrderMapper.deleteOrder", svc_idx);
+            if (result > 0) {
+                System.out.println("[OrderDAO] 게시글 삭제 성공");
+            } else {
+                System.out.println("[OrderDAO] 게시글 삭제 실패");
+            }
+        } catch (Exception e) {
+            System.err.println("[OrderDAO] 게시글 삭제 중 예외 발생");
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
 }

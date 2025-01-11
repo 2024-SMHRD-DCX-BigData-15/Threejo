@@ -38,5 +38,10 @@
 	        svc_id = #{userId};
 	</select>
 	
+	<!-- OrderDeleteController -->
+	<delete id="deleteOrder" parameterType="int">
+	    DELETE FROM t_service WHERE svc_idx = #{svc_idx};
+	</delete>
+	
     
 </mapper>
