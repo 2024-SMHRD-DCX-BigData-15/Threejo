@@ -36,63 +36,39 @@
 
     <!-- 메인 콘텐츠 -->
     <main class="main-content">
-      <h1>의뢰 상세</h1>
-      <table class="detail-table">
-        <tr>
-          <th>작성자</th>
-          <td>사용자1</td>
-        </tr>
-        <tr>
-          <th>작성일</th>
-          <td>2025-01-09</td>
-        </tr>
-        <tr>
-          <th>예산</th>
-          <td>${order.svc_account}</td>
-        </tr>
-        <tr>
-          <th>내용</th>
-          <td>
-            <p>
-              이 의뢰는 다음과 같은 요구사항을 포함합니다:
-              <ul>
-                <li>요구사항 1: 디자인 제작</li>
-                <li>요구사항 2: 프론트엔드 개발</li>
-                <li>요구사항 3: 백엔드 연동</li>
-              </ul>
-            </p>
-          </td>
-        </tr>
-      </table>
+      <h1>의뢰 상세 정보</h1>
+        <!-- 상세 정보 테이블 -->
+        <table class="detail-table">
+            <tr>
+                <th>제목</th>
+                <td>${orderDetail.svc_title}</td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td>${orderDetail.svc_id}</td>
+            </tr>
+            <tr>
+                <th>카테고리</th>
+                <td>${orderDetail.svc_categori}</td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td>${orderDetail.svc_content}</td>
+            </tr>
+            <tr>
+                <th>예산</th>
+                <td>${orderDetail.svc_account}</td>
+            </tr>
+            <tr>
+                <th>마감일</th>
+                <td>${orderDetail.svc_ed_td}</td>
+            </tr>
+        </table>
 
-      <!-- 댓글 영역 -->
-      <section class="comments-section">
-        <h2>댓글</h2>
-        <ul class="comments-list">
-          <li>
-            <p><strong>사용자2:</strong> 의뢰에 대해 궁금한 점이 있습니다.</p>
-            <span>2025-01-09 14:30</span>
-          </li>
-          <li>
-            <p><strong>사용자3:</strong> 작업 내용이 명확하여 좋습니다.</p>
-            <span>2025-01-09 15:00</span>
-          </li>
-        </ul>
-
-        <!-- 댓글 작성 -->
-        <form id="commentForm" action="submit_comment.jsp" method="POST">
-          <textarea id="comment" name="comment" placeholder="댓글을 입력하세요" required></textarea>
-          <button type="submit">댓글 작성</button>
-        </form>
-      </section>
-
-      <!-- 목록으로 돌아가기 버튼 -->
-      <div class="back-button-container">
-        <a href="order_manage.jsp" class="back-button">목록으로 돌아가기</a>
-      </div>
-    </main>
-  </div>
+        <!-- 목록으로 돌아가기 버튼 -->
+        <div class="button-container">
+            <button onclick="location.href='OrderManageController'" class="back-button">목록으로 돌아가기</button>
+        </div>
+    </div>
 </body>
-
 </html>
-    
