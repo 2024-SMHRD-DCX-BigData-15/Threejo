@@ -8,7 +8,7 @@
   <title>1:1문의사항 페이지</title>
   <link rel="stylesheet" href="ask.css">
 </head>
-
+//1
 <body>
   <!-- 상단 헤더 -->
   <header class="header">
