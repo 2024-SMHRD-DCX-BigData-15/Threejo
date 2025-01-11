@@ -20,7 +20,7 @@ public class OrderManageController extends HttpServlet {
         System.out.println("[OrderManageController] 요청 처리 시작"); // 디버깅
 
         // 세션에서 사용자 ID 가져오기
-        String userId = (String) request.getSession().getAttribute("svc_id");
+        String userId = (String) request.getSession().getAttribute("user_id");
         System.out.println("[OrderManageController] 세션에서 가져온 사용자 ID: " + userId); // 디버깅
 
         if (userId != null) {

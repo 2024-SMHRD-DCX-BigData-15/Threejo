@@ -26,7 +26,7 @@
       <ul>
         <li><a href="mypage.jsp">내 프로필</a></li>
         <li><a href="message_box.jsp">쪽지함</a></li>
-        <li><a href="order_manage.jsp" class="active">의뢰관리</a></li>
+        <li><a href="OrderManageController" class="active">의뢰관리</a></li>
         <li><a href="delete_account.jsp">회원탈퇴</a></li>
       </ul>
     </aside>
