@@ -112,11 +112,6 @@ body {
     color: #fff;
 }
 
-.sidebar ul li a.active {
-    font-weight: bold;
-    color: #007BFF;
-}
-
 /* 메인 콘텐츠 */
 .main-content {
     width: 80%;
