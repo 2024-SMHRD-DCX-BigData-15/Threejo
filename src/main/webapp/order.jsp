@@ -1,112 +1,108 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>의뢰글 작성 게시판</title>
+  <title>전문가 매칭</title>
+  <!-- CSS 파일 연결 -->
   <link rel="stylesheet" href="order.css">
 </head>
 
 <body>
-  <!-- 페이지 제목 -->
-  <h1>의뢰글 작성</h1>
-  
-  <!-- 의뢰글 작성 폼 -->
-  <form id="writeForm">
-    <!-- 카테고리 선택 -->
-    <label for="category">카테고리</label>
-    <select id="category" required>
-      <optgroup label="웹빌더">
-        <option value="워드프레스">워드프레스</option>
-        <option value="카페24">카페24</option>
-        <option value="아임웹">아임웹</option>
-        <option value="노션">노션</option>
-      </optgroup>
-      <optgroup label="웹제작">
-        <option value="홈페이지 신규 제작">홈페이지 신규 제작</option>
-        <option value="쇼핑몰 신규 제작">쇼핑몰 신규 제작</option>
-        <option value="랜딩페이지">랜딩페이지</option>
-      </optgroup>
-      <optgroup label="웹 유지보수">
-        <option value="홈페이지 수정, 유지보수">홈페이지 수정, 유지보수</option>
-        <option value="쇼핑몰 수정, 유지보수">쇼핑몰 수정, 유지보수</option>
-        <option value="퍼블리싱">퍼블리싱</option>
-        <option value="검색최적화, SEO">검색최적화, SEO</option>
-        <option value="애널리틱스">애널리틱스</option>
-      </optgroup>
-      <optgroup label="프로그램">
-        <option value="프로그램 스토어">프로그램 스토어</option>
-        <option value="수익 자동화">수익 자동화</option>
-        <option value="업무 자동화">업무 자동화</option>
-        <option value="크롤링, 스크래핑">크롤링, 스크래핑</option>
-        <option value="일반 프로그램">일반 프로그램</option>
-        <option value="프로그램 수정, 유지보수">프로그램 수정, 유지보수</option>
-        <option value="서버, 클라우드">서버, 클라우드</option>
-        <option value="엑셀, 스프레드시트">엑셀, 스프레드시트</option>
-        <option value="봇, 챗봇">봇, 챗봇</option>
-      </optgroup>
-      <!-- 추가 카테고리는 기존 내용 참고 -->
-    </select>
+  <div class="container">
+    <!-- 제목 섹션 -->
+    <h1>전문가와의 매칭을 시작합니다.</h1>
+    <p align="center">전문가에게 어떤 서비스가 필요한지 요청해보세요</p>
 
-    <!-- 제목 입력란 -->
-    <label for="title">제목</label>
-    <input type="text" id="title" placeholder="의뢰 제목을 입력하세요" required>
+    <!-- 폼 시작 -->
+    <form id="writeForm">
+      <!-- 서비스 제목 입력 섹션 -->
+      <div class="form-section">
+        <div class="left">
+          <label for="title">서비스 요청 제목을 작성하세요.</label>
+          <p>짧고 간단하게 작성하세요. 이렇게 하면 전문가에게 빠르게 연결하는데 도움이 됩니다.</p>
+        </div>
+        <div class="right">
+          <input type="text" id="title" placeholder="예) 우리 회사를 위한 홈페이지 만들기" required>
+        </div>
+      </div>
 
-    <!-- 첨부파일 -->
-    <label for="file">첨부파일</label>
-    <input type="file" id="file" accept=".pdf,.doc,.docx,.zip">
+      <!-- 서비스 내용 입력 섹션 -->
+      <div class="form-section">
+        <div class="left">
+          <label for="content">어떤 서비스를 원하시나요?</label>
+          <p>필요한 서비스 내용을 구체적으로 작성하시면 좀 더 많은 견적서를 받을 확률이 높아집니다.</p>
+        </div>
+        <div class="right">
+          <textarea id="content" rows="6" placeholder="원하는 서비스 내용을 작성해주세요." required></textarea>
+        </div>
+      </div>
 
-    <!-- 가격 입력란 -->
-    <label for="price">가격</label>
-    <input type="number" id="price" placeholder="가격을 입력하세요" required>
+      <!-- 카테고리 선택 섹션 -->
+      <div class="form-section">
+        <div class="left">
+          <label for="mainCategory">귀하의 서비스 요청에 가장 적합한 카테고리는 무엇입니까?</label>
+          <p>카테고리에 맞는 전문가들이 제안을 하게 됩니다.</p>
+        </div>
+        <div class="right">
+          <div class="category-group">
+            <select id="mainCategory" required>
+              <option value="" disabled selected>주 카테고리 선택</option>
+              <option value="웹빌더">웹빌더</option>
+              <option value="웹제작">웹제작</option>
+              <option value="웹 유지보수">웹 유지보수</option>
+              <option value="프로그램">프로그램</option>
+              <option value="모바일">모바일</option>
+              <option value="AI">AI</option>
+              <option value="데이터">데이터</option>
+              <option value="보안, 품질관리">보안, 품질관리</option>
+              <option value="트렌드">트렌드</option>
+              <option value="직무직군">직무직군</option>
+              <option value="기타">기타</option>
+            </select>
+            <select id="subCategory" required disabled>
+              <option value="" disabled selected>세부 카테고리 선택</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-    <!-- 내용 입력란 -->
-    <label for="content">내용</label>
-    <textarea id="content" rows="5" placeholder="의뢰 내용을 입력하세요" required></textarea>
+      <!-- 예산 입력 섹션 -->
+      <div class="form-section">
+        <div class="left">
+          <label for="budget">예상 지출비용을 작성해주세요</label>
+          <p>원하는 예산을 적어주세요. 상황에 따라 예산을 변경할 수 있다면 체크박스를 체크해주세요.</p>
+        </div>
+        <div class="right">
+          <input type="text" id="budget" placeholder="예) 1,000,000원">
+          <div class="checkbox-group">
+            <input type="checkbox" id="budgetFlexible">
+            <label for="budgetFlexible" >예산은 상황에 따라 유연합니다.</label>
+          </div>
+        </div>
+      </div>
 
-    <!-- 작성완료 버튼 -->
-    <button type="button" onclick="submitPost()">완료</button>
-  </form>
+      <!-- 완료일 입력 섹션 -->
+      <div class="form-section">
+        <div class="left">
+          <label for="deadline">완료일은 언제까지인가요?</label>
+          <p>가능한 전문가를 찾아드리겠습니다.</p>
+        </div>
+        <div class="right">
+          <input type="date" id="deadline">
+        </div>
+      </div>
 
-  <script>
-    // 의뢰글 작성 완료 버튼 클릭 시
-    function submitPost() {
-      const category = document.getElementById('category').value;
-      const title = document.getElementById('title').value;
-      const content = document.getElementById('content').value;
-      const price = document.getElementById('price').value;
+      <!-- 제출 버튼 -->
+      <button type="submit" class="submit-btn">완료</button>
+    </form>
+    <!-- 폼 끝 -->
+  </div>
 
-      // 첨부파일 처리 (옵션)
-      const file = document.getElementById('file').files[0];
-      let fileName = '';
-      if (file) {
-        fileName = file.name; // 파일 이름 저장
-      }
-
-      savePost(category, title, content, price, fileName);
-    }
-
-    // 의뢰글 데이터를 로컬 스토리지에 저장
-    function savePost(category, title, content, price, fileName) {
-      const posts = JSON.parse(localStorage.getItem('posts')) || [];
-      const newPost = {
-        id: Date.now(), // 고유 ID 생성
-        category,
-        title,
-        content,
-        price,
-        fileName,
-      };
-      posts.push(newPost);
-      localStorage.setItem('posts', JSON.stringify(posts));
-
-      alert('의뢰글이 작성되었습니다!');
-      window.location.href = 'order_list.jsp'; // 게시판 페이지로 이동
-    }
-  </script>
+  <!-- JavaScript 파일 연결 -->
+  <script src="order.js"></script>
 </body>
 
 </html>

@@ -1,57 +1,118 @@
+/* 기본 스타일 */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
-  }
-  h1 {
-    text-align: center;
-  }
-  form {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-  input, textarea {
-    width: 96%; /* 입력 필드 너비 조정 */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    resize: none; /* 크기 조절 불가능 */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
 
-/* 숫자 입력 필드에서 화살표 제거 */
-input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
-  -webkit-appearance: none; /* Safari, Chrome */
-  appearance: none; /* 표준 속성 */
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0; /* 기본 여백 제거 */
+/* 제목 */
+h1, p {
+  text-align: center;
 }
 
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-button {
-  width: 100%; /* 버튼 너비를 100%로 설정 */
+p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* 폼 */
+form {
+  padding: 20px;
+}
+
+.form-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.form-section .left {
+  width: 45%;
+}
+
+.form-section .right {
+  width: 50%;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="date"], textarea, select {
+  width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+textarea {
+  resize: none;
+}
+
+/* 카테고리 섹션 */
+.category-group {
+  display: flex;
+  gap: 10px;
+}
+
+.category-group select {
+  flex: 1;
+}
+
+.char-count {
+  font-size: 12px;
+  text-align: right;
+  color: #aaa;
+}
+
+/* 체크박스 */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}	
+
+.checkbox-group label {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+/* 버튼 */
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #6f42c1;
   color: white;
   border: none;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-  button:hover {
-    background-color: #0056b3;
-  }
+button:hover {
+  background-color: #59309d;
+}
