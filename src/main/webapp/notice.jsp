@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -14,11 +13,11 @@
   <!-- 상단 헤더 -->
   <header class="header">
     <h1>
-      <a href="loginmain.jsp">재능을IT다</a>
+      <a href="../main/main.jsp">재능을IT다</a>
     </h1>
     <div class="auth-buttons">
-      <a href="mypage.jsp">마이페이지</a>
-      <a href="logout.jsp">로그아웃</a>
+      <a href="../Profile/profile.jsp">마이페이지</a>
+      <a href="../Main/main.jsp">로그아웃</a>
     </div>
   </header>
 
@@ -27,10 +26,10 @@
     <aside class="sidebar">
       <h2>고객센터</h2>
       <ul>
-        <li><a href="news.jsp">새 소식</a></li>
-        <li><a href="notice.jsp" class="active">공지사항</a></li>
-        <li><a href="ask.jsp">1:1 문의하기</a></li>
-        <li><a href="faq.jsp">자주 묻는 질문</a></li>
+        <li><a href="../News/news.jsp">새 소식</a></li>
+        <li><a href="../Notice/notice.jsp" class="active">공지사항</a></li>
+        <li><a href="../Ask/ask.jsp">1:1 문의하기</a></li>
+        <li><a href="../FAQ/faq.jsp">자주 묻는 질문</a></li>
       </ul>
     </aside>
 
@@ -63,40 +62,47 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const noticeLinks = document.querySelectorAll(".notice-section ul li a");
+    document.addEventListener("DOMContentLoaded", function () {
+      const notices = [
+        {
+          category: "운영 정보",
+          items: ["고객센터 운영 시간 변경 안내", "플랫폼 유지보수 작업 공지"]
+        },
+        {
+          category: "서비스 정책",
+          items: ["의뢰 보증 제도 시행 안내"]
+        },
+        {
+          category: "신규 기능",
+          items: ["신규 기능 안내: 프로젝트 협업 도구 추가"]
+        }
+      ];
 
-      noticeLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
-          event.preventDefault();
+      const container = document.querySelector(".main-content");
 
-          const question = link.textContent;
-          const answer = getAnswer(question);
+      notices.forEach((section) => {
+        const sectionDiv = document.createElement("div");
+        sectionDiv.className = "notice-section";
 
-          // 기존에 열려 있는 답변 숨기기
-          document.querySelectorAll(".notice-answer").forEach((answer) => answer.remove());
+        const header = document.createElement("h2");
+        header.textContent = section.category;
+        sectionDiv.appendChild(header);
 
-          // 새로운 답변 표시
-          const answerDiv = document.createElement("div");
-          answerDiv.classList.add("notice-answer");
-          answerDiv.innerHTML = answer; // HTML 포함
-          link.parentElement.appendChild(answerDiv);
+        const list = document.createElement("ul");
+        section.items.forEach((item) => {
+          const listItem = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = "#";
+          link.textContent = item;
+          listItem.appendChild(link);
+          list.appendChild(listItem);
         });
+
+        sectionDiv.appendChild(list);
+        container.appendChild(sectionDiv);
       });
     });
-
-    function getAnswer(question) {
-      const answers = {
-        "고객센터 운영 시간 변경 안내": "고객센터 운영 시간이 월~금 오전 9시 ~ 오후 6시로 변경되었습니다.",
-        "플랫폼 유지보수 작업 공지": "유지보수 작업이 2025년 1월 15일 오전 1시~5시까지 진행됩니다.",
-        "의뢰 보증 제도 시행 안내": "의뢰 보증 제도가 준비 중입니다. 보다 안전한 거래를 지원합니다.",
-        "신규 기능 안내: 프로젝트 협업 도구 추가": "프로젝트 협업 도구가 추가되었습니다. 실시간 소통이 가능합니다."
-      };
-
-      return answers[question] || "현재 답변을 준비 중입니다.";
-    }
   </script>
 </body>
 
 </html>
-    

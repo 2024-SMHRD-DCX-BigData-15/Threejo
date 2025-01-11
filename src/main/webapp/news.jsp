@@ -1,61 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>새 소식 페이지</title>
+  <title>새 소식</title>
   <link rel="stylesheet" href="news.css">
 </head>
 
 <body>
-  <!-- 상단 헤더 -->
-  <header class="header">
-    <h1>
-      <a href="loginmain.jsp">재능을IT다</a>
-    </h1>
-    <div class="auth-buttons">
-      <a href="mypage.jsp">마이페이지</a>
-      <a href="logout.jsp">로그아웃</a>
-    </div>
-  </header>
-
   <div class="container">
-    <!-- 사이드바 -->
-    <aside class="sidebar">
-      <h2>고객센터</h2>
+    <h1>새 소식</h1>
+    <p>아래는 플랫폼에 대한 최신 소식입니다. 클릭하여 자세히 확인하세요.</p>
+
+    <div class="news-section">
       <ul>
-        <li><a href="news.jsp" class="active">새 소식</a></li>
-        <li><a href="notice.jsp">공지사항</a></li>
-        <li><a href="ask.jsp">1:1 문의하기</a></li>
-        <li><a href="faq.jsp">자주 묻는 질문</a></li>
+        <li><a href="#">리뷰 및 평점 시스템 도입</a></li>
+        <li><a href="#">대시보드 업데이트</a></li>
+        <li><a href="#">신규 의뢰 카테고리 추가</a></li>
+        <li><a href="#">신규 서비스 출시 안내</a></li>
+        <li><a href="#">결제 시스템 업데이트</a></li>
+        <li><a href="#">의뢰 보증 제도 시행</a></li>
       </ul>
-    </aside>
-
-    <!-- 메인 콘텐츠 -->
-    <main class="main-content">
-      <h1>새 소식</h1>
-
-      <div class="news-section">
-        <h2>업데이트</h2>
-        <ul>
-          <li><a href="#">리뷰 및 평점 시스템 도입</a></li>
-          <li><a href="#">대시보드 업데이트</a></li>
-          <li><a href="#">신규 의뢰 카테고리 추가</a></li>
-        </ul>
-      </div>
-
-      <div class="news-section">
-        <h2>신규 서비스</h2>
-        <ul>
-          <li><a href="#">신규 서비스 출시 안내</a></li>
-          <li><a href="#">결제 시스템 업데이트</a></li>
-          <li><a href="#">의뢰 보증 제도 시행</a></li>
-        </ul>
-      </div>
-    </main>
+    </div>
   </div>
 
   <script>
@@ -102,4 +70,3 @@
 </body>
 
 </html>
-    
