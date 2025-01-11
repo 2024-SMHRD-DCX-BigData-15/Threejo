@@ -23,7 +23,7 @@
 
   <div class="container">
     <!-- 메인 콘텐츠 -->
-    <main class="main-content">
+    <main class="main-content" >
       <table class="board-table">
         <thead>
           <tr>
@@ -67,35 +67,57 @@
     </main>
   </div>
 
-  <script>
-    // 의뢰글 데이터를 불러와 게시판에 표시
-    function loadPosts() {
-      const posts = JSON.parse(localStorage.getItem('posts')) || [];
+ <script>
+  /**
+   * 의뢰글 데이터를 서버에서 불러와 게시판에 표시하는 함수
+   */
+  async function loadPosts() {
+    try {
+      console.log('[loadPosts] 데이터 로드 시작'); // 디버깅: 데이터 로드 시작
+      
+      // 서버에서 데이터 가져오기
+      const response = await fetch('/OrderListController'); // OrderListController에서 데이터 요청
+      if (!response.ok) {
+        throw new Error(`[loadPosts] 서버 요청 실패: ${response.statusText}`);
+      }
+
+      // JSON 데이터를 파싱
+      const posts = await response.json();
+      console.log('[loadPosts] 서버에서 받은 데이터:', posts); // 디버깅: 서버에서 받은 데이터
+
       const tbody = document.querySelector('#board-content');
 
       // 기존 내용 초기화
       tbody.innerHTML = '';
 
-      if (posts.length === 0) {
+      // 데이터가 없는 경우 처리
+      if (!posts || posts.length === 0) {
+        console.warn('[loadPosts] 등록된 의뢰글이 없습니다.'); // 디버깅: 데이터 없음
         tbody.innerHTML = '<tr><td colspan="5">등록된 의뢰글이 없습니다.</td></tr>';
         return;
       }
 
-      // 의뢰글 데이터 표시
+      // 의뢰글 데이터를 테이블에 추가
       posts.forEach((post) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${post.svc_id }</td>
+          <td>${post.svc_id}</td>
           <td>${post.svc_categori}</td>
           <td>${post.svc_title}</td>
           <td>${post.svc_ed_td}</td>
         `;
         tbody.appendChild(row);
+        console.log('[loadPosts] 의뢰글 추가됨:', post); // 디버깅: 개별 의뢰글 추가
       });
-    }
 
-    // 페이지 로드 시 의뢰글 로드
-    document.addEventListener('DOMContentLoaded', loadPosts);
-  </script>
+      console.log('[loadPosts] 데이터 로드 완료'); // 디버깅: 데이터 로드 완료
+    } catch (error) {
+      console.error('[loadPosts] 데이터 로드 중 오류 발생:', error); // 디버깅: 오류 발생
+    }
+  }
+
+  // 페이지 로드 시 의뢰글 데이터를 서버에서 불러오기
+  document.addEventListener('DOMContentLoaded', loadPosts);
+</script>
 </body>
 </html>

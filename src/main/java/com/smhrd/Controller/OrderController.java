@@ -61,7 +61,7 @@ public class OrderController extends HttpServlet {
 
             // 6. 결과에 따라 페이지 이동
             if (result > 0) {
-                response.sendRedirect("order_list.jsp");
+                response.sendRedirect("OrderListController");
             } else {
                 response.sendRedirect("order_fail.jsp");
             }

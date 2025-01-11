@@ -98,8 +98,6 @@
     <!-- 폼 끝 -->
   </div>
 
-  <!-- JavaScript 파일 연결 -->
-  <script src="order.js"></script>
 </body>
 
 </html>
