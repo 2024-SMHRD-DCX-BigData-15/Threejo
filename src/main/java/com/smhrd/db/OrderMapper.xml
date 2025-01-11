@@ -23,7 +23,8 @@
         svc_id AS svc_id, 
         svc_categori AS svc_categori, 
         svc_title AS svc_title, 
-        svc_ed_td AS svc_ed_td 
+        svc_ed_td AS svc_ed_td, 
+        svc_account AS svc_account
     FROM t_service;
 	</select>
     
