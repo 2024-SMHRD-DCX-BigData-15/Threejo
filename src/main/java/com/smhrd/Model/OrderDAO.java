@@ -99,4 +99,22 @@ public class OrderDAO {
         return result;
     }
     
+    // OrderDetailController
+    public OrderVO getOrderBySvcIdx(int svc_idx) {
+        System.out.println("[OrderDAO] getOrderBySvcIdx() 호출 - svc_idx: " + svc_idx); // 디버깅
+        OrderVO orderDetail = null;
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            // MyBatis를 통해 단일 데이터 조회
+            orderDetail = session.selectOne("com.smhrd.db.OrderMapper.getOrderBySvcIdx", svc_idx);
+            if (orderDetail != null) {
+                System.out.println("[OrderDAO] 데이터 조회 성공: " + orderDetail); // 디버깅
+            } else {
+                System.out.println("[OrderDAO] 데이터 조회 결과 없음");
+            }
+        } catch (Exception e) {
+            System.err.println("[OrderDAO] 데이터 조회 중 예외 발생");
+            e.printStackTrace();
+        }
+        return orderDetail;
+    
 }

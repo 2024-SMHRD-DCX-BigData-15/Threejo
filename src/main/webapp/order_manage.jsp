@@ -56,7 +56,12 @@
                         <c:forEach var="order" items="${userOrders}">
                             <tr>
                                 <td>${order.svc_idx}</td> <!-- 게시글 번호 -->
-                                <td>${order.svc_title}</td> <!-- 제목 -->
+                                <!-- 제목 클릭 시 OrderDetailController로 이동 -->
+                                <td>
+                                    <a href="OrderDetailController?svc_idx=${order.svc_idx}">
+                                        ${order.svc_title}
+                                    </a>
+                                </td>
                                 <td>${order.svc_ed_td}</td> <!-- 마감일 -->
                                 <td>
                                 <!-- 삭제 버튼 -->

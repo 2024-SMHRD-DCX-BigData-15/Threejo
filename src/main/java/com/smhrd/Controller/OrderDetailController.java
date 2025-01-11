@@ -1,7 +1,6 @@
 package com.smhrd.Controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,23 +13,32 @@ import com.smhrd.Model.OrderVO;
 
 @WebServlet("/OrderDetailController")
 public class OrderDetailController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 // 요청 파라미터로 의뢰 ID 받기
-        String orderId = request.getParameter("orderId");
+    // 의뢰 상세 정보 요청 처리
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("[OrderDetailController] 요청 처리 시작"); // 디버깅
 
-        // OrderDAO 객체 생성
-        OrderDAO orderDAO = new OrderDAO();
-        
-        // 의뢰 상세 정보 가져오기
-        OrderVO order = orderDAO.getOrderById(orderId);
-        
-        // 의뢰 정보와 댓글 목록을 JSP로 전달
-        request.setAttribute("order", order);
+        try {
+            // 요청으로부터 svc_idx 파라미터 가져오기
+            int svc_idx = Integer.parseInt(request.getParameter("svc_idx"));
+            System.out.println("[OrderDetailController] 요청받은 svc_idx: " + svc_idx); // 디버깅
 
-        // order_detail.jsp로 포워딩
-        RequestDispatcher dispatcher = request.getRequestDispatcher("order_detail.jsp");
-        dispatcher.forward(request, response);
+            // DAO를 통해 데이터 가져오기
+            OrderDAO dao = new OrderDAO();
+            OrderVO orderDetail = dao.getOrderBySvcIdx(svc_idx);
+
+            // 조회된 데이터 JSP로 전달
+            request.setAttribute("orderDetail", orderDetail);
+
+            // order_detail.jsp로 포워딩
+            RequestDispatcher dispatcher = request.getRequestDispatcher("order_detail.jsp");
+            dispatcher.forward(request, response);
+            System.out.println("[OrderDetailController] 데이터 전달 및 포워딩 완료"); // 디버깅
+
+        } catch (Exception e) {
+            System.err.println("[OrderDetailController] 요청 처리 중 예외 발생");
+            e.printStackTrace();
+        }
     }
 }

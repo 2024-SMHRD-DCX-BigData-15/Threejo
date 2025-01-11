@@ -43,5 +43,15 @@
 	    DELETE FROM t_service WHERE svc_idx = #{svc_idx};
 	</delete>
 	
+	<!-- OrderDetailController -->
+	<select id="getOrderBySvcIdx" parameterType="int" resultType="com.smhrd.Model.OrderVO">
+	    SELECT 
+	        svc_idx, svc_title, svc_content, svc_categori, svc_account, svc_ed_td, svc_id
+	    FROM 
+	        t_service
+	    WHERE 
+	        svc_idx = #{svc_idx};
+	</select>
+	
     
 </mapper>

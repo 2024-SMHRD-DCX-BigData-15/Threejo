@@ -47,8 +47,8 @@
           <td>2025-01-09</td>
         </tr>
         <tr>
-          <th>상태</th>
-          <td>진행 중</td>
+          <th>예산</th>
+          <td>${order.svc_account}</td>
         </tr>
         <tr>
           <th>내용</th>
