@@ -23,6 +23,8 @@
     <mapper resource="com/smhrd/db/BoardMapper.xml"/>
     <mapper resource="com/smhrd/db/CalenderMapper.xml"/>
     <mapper resource="com/smhrd/db/AskMapper.xml"/>
+    <mapper resource="com/smhrd/db/OrderMapper.xml"/>
+    
   </mappers>
 </configuration>
 

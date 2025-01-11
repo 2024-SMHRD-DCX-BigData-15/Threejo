@@ -3,7 +3,6 @@ package com.smhrd.Model;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.smhrd.db.SqlSessionManager;
-
 import java.util.List;
 
 public class OrderDAO {
@@ -28,21 +27,14 @@ public class OrderDAO {
         return result;
     }
 
-    // 모든 의뢰 데이터 조회 메서드
-    public List<OrderVO> selectAllOrders() {
-        List<OrderVO> orders = null;
+    // 작성자 ID 존재 여부 확인 메서드
+    public boolean isUserExists(String userId) {
+        boolean exists = false;
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            orders = session.selectList("com.smhrd.db.OrderMapper.selectAllOrders");
-
-            // 디버깅: 조회된 데이터 출력
-            if (orders != null) {
-                System.out.println("조회된 데이터: " + orders);
-            } else {
-                System.err.println("조회 결과 없음");
-            }
+            exists = session.selectOne("com.smhrd.db.OrderMapper.isUserExists", userId) != null;
         } catch (Exception e) {
             e.printStackTrace(); // 디버깅: 예외 출력
         }
-        return orders;
+        return exists;
     }
 }

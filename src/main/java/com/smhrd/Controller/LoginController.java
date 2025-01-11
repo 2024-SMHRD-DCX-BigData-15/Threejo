@@ -1,7 +1,6 @@
 package com.smhrd.Controller;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,10 +34,11 @@ public class LoginController extends HttpServlet {
             request.setAttribute("errorMessage", "아이디 또는 비밀번호가 올바르지 않습니다.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-            // 로그인 성공 처리
-            request.getSession().setAttribute("info", result);
+            // 로그인 성공 처리 - 세션에 user_id 저장
+            HttpSession session = request.getSession();
+            session.setAttribute("user_id", result.getUser_id()); // user_id를 세션에 저장
+            session.setAttribute("info", result); // 사용자 정보를 세션에 저장
             response.sendRedirect("loginsuccess.jsp");
         }
     }
-
 }
