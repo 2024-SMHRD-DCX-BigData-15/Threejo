@@ -53,6 +53,11 @@
 	        svc_idx = #{svc_idx};
 	</select>
 	
+	<!-- ListController -->
+	<select id="getOrderById" parameterType="int" resultType="com.smhrd.Model.OrderVO">
+	    SELECT * FROM t_order WHERE svc_idx = #{svc_idx}
+	</select>
+		
 		
 		
     

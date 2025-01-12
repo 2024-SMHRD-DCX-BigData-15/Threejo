@@ -116,4 +116,22 @@ public class OrderDAO {
         }
         return orderDetail;
     }
+    
+    //ListController
+    public OrderVO getOrderById(int svc_idx) {
+        SqlSession session = sqlSessionFactory.openSession();
+        OrderVO order = null;
+        try {
+            // 데이터 조회
+            order = session.selectOne("com.smhrd.db.OrderMapper.getOrderById", svc_idx);
+            System.out.println("[DEBUG] DB에서 조회된 게시글: " + order);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("[ERROR] 게시글 조회 중 오류 발생");
+        } finally {
+            session.close();
+        }
+        return order;
+    }
+
 }
