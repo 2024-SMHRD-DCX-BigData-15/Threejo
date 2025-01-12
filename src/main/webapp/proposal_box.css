@@ -108,11 +108,6 @@ body {
   color: #fff;
 }
 
-.sidebar ul li a.active {
-  font-weight: bold;
-  color: #007BFF;
-}
-
 /* 메인 콘텐츠 스타일 */
 .main-content {
     width: 80%;
@@ -126,51 +121,53 @@ body {
 }
 
 /* 테이블 스타일 */
-.message-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  table-layout: fixed; /* 고정된 열 너비 */
 }
 
-.message-table th,
-.message-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+.board-table th,
+.board-table td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 10px;
+  word-wrap: break-word; /* 텍스트 줄바꿈 */
 }
 
-/* 테이블 헤더 글자 가운데 정렬 */
-.message-table th {
+/* 테이블 헤더 스타일 */
+.board-table th {
   background-color: #f4f4f4;
   font-weight: bold;
-  text-align: center; /* 글자를 가운데 정렬 */
-  vertical-align: middle; /* 세로 방향 가운데 정렬 */
 }
 
-.message-table tr:hover {
-    background-color: #f9f9f9;
+.board-table tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
 }
 
-.message-table td {
+.board-table td {
     color: #555;
 }
 
-.message-table th:nth-child(1) {
-  width: 10px;
-  padding: 10ps;
+/* 테이블 열 너비 설정 */
+.board-table th:nth-child(1),
+.board-table td:nth-child(1) {
+  width: 10%; /* 번호 */
 }
 
-.message-table th:nth-child(2) {
-  width: 150px;
-  padding: 10ps;
+.board-table th:nth-child(2),
+.board-table td:nth-child(2) {
+  width: 60%; /* 제목 */
 }
 
-.message-table th:nth-child(3) {
-  width: 10px;
-  padding: 10ps;
+.board-table th:nth-child(3),
+.board-table td:nth-child(3) {
+  width: 20%; /* 마감일 */
 }
 
-.message-table th:nth-child(4) {
-  width: 10px;
-  padding: 10ps;
+.board-table th:nth-child(4),
+.board-table td:nth-child(4) {
+  width: 10%; /* 상태 */
 }

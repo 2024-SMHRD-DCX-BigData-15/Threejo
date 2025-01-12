@@ -42,7 +42,7 @@
       <h2>마이페이지</h2>
       <ul>
         <li><a href="mypage.jsp" class="active">내 프로필 수정</a></li>
-        <li><a href="message_box.jsp">쪽지함</a></li>
+        <li><a href="proposal_box.jsp">제안서보관함</a></li>
         <li><a href="OrderManageController">의뢰관리</a></li>
         <li><a href="delete_account.jsp">회원탈퇴</a></li>
       </ul>
