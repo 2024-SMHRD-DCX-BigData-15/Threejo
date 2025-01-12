@@ -3,7 +3,7 @@
 <mapper namespace="com.smhrd.db.CalenderMapper">
 
  	 <!-- 일정 추가 -->
-    <insert id="addEvent" parameterType="com.smhrd.Model.CalendarVO" useGeneratedKeys="true" keyProperty="sche_idx">
+    <insert id="addEvent" parameterType="com.smhrd.Model.CalendarVO">
         INSERT INTO t_schedule (sche_title, sche_st_dt, sche_ed_dt, user_id)
         VALUES (#{sche_title}, #{sche_st_dt}, #{sche_ed_dt}, #{user_id});
     </insert>

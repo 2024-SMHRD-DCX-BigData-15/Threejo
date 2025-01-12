@@ -17,23 +17,23 @@ public class CalenderUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    request.setCharacterEncoding("UTF-8");
 
-	    // 디버깅: 요청 데이터 확인
+	    // 디버깅: 전달된 데이터 확인
 	    System.out.println("[DEBUG] 전달된 데이터 확인");
-	    System.out.println("[DEBUG] sche_idx: " + request.getParameter("sche_idx"));
-	    System.out.println("[DEBUG] sche_title: " + request.getParameter("sche_title"));
-	    System.out.println("[DEBUG] sche_st_dt: " + request.getParameter("sche_st_dt"));
-	    System.out.println("[DEBUG] sche_ed_dt: " + request.getParameter("sche_ed_dt"));
+	    String sche_idx = request.getParameter("sche_idx");
+	    String sche_title = request.getParameter("sche_title");
+	    String sche_st_dt = request.getParameter("sche_st_dt");
+	    String sche_ed_dt = request.getParameter("sche_ed_dt");
+
+	    System.out.println("[DEBUG] sche_idx: " + sche_idx);
+	    System.out.println("[DEBUG] sche_title: " + sche_title);
+	    System.out.println("[DEBUG] sche_st_dt: " + sche_st_dt);
+	    System.out.println("[DEBUG] sche_ed_dt: " + sche_ed_dt);
 
 	    try {
-	        // 요청 데이터 수집
-	        String sche_idx = request.getParameter("sche_idx");
-	        String sche_title = request.getParameter("sche_title");
-	        String sche_st_dt = request.getParameter("sche_st_dt");
-	        String sche_ed_dt = request.getParameter("sche_ed_dt");
-
-	        // 필수 데이터 유효성 검사
-	        if (sche_idx == null || sche_title == null || sche_st_dt == null || sche_ed_dt == null) {
-	            throw new IllegalArgumentException("필수 데이터가 누락되었습니다.");
+	        // 종료 날짜가 비어 있는 경우 시작 날짜로 설정
+	        if (sche_ed_dt == null || sche_ed_dt.trim().isEmpty()) {
+	            sche_ed_dt = sche_st_dt;
+	            System.out.println("[DEBUG] 종료 날짜가 비어 있어 시작 날짜로 설정: " + sche_ed_dt);
 	        }
 
 	        // VO 객체 생성
@@ -47,7 +47,6 @@ public class CalenderUpdateController extends HttpServlet {
 	        CalendarDAO dao = new CalendarDAO();
 	        int result = dao.updateEvent(vo);
 
-	        // 처리 결과 확인
 	        if (result > 0) {
 	            System.out.println("[DEBUG] 일정 수정 성공");
 	            response.sendRedirect("calender.jsp");

@@ -44,7 +44,21 @@
 
     <!-- 전체 레이아웃 -->
     <div class="container">
-        <!-- 캘린더 영역 -->
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <h2>일정 추가</h2>
+            <form id="controls" method="POST" action="CalenderController?action=addEvent">
+                <label for="eventTitle">일정 제목:</label>
+                <input type="text" id="eventTitle" name="sche_title" placeholder="일정 입력" required>
+                <label for="startDate">시작 날짜:</label>
+                <input type="date" id="startDate" name="sche_st_dt" required>
+                <label for="endDate">종료 날짜:</label>
+                <input type="date" id="endDate" name="sche_ed_dt">
+                <button id="addEventBtn" type="submit">일정 등록</button>
+            </form>
+        </aside>
+
+        <!-- 메인 콘텐츠 -->
         <main class="main-content">
             <div id="calendar"></div>
         </main>
@@ -59,7 +73,7 @@
             <label for="modal-sche-st-dt">시작 날짜:</label>
             <input type="date" name="sche_st_dt" id="modal-sche-st-dt" required><br>
             <label for="modal-sche-ed-dt">종료 날짜:</label>
-            <input type="date" name="sche_ed_d" id="modal-sche-ed-dt" required>
+            <input type="date" name="sche_ed_dt" id="modal-sche-ed-dt">
             <button type="submit">수정 완료</button>
             <button type="button" onclick="closeModal()">취소</button>
         </form>
@@ -89,7 +103,7 @@
                         id: "<%= event.getSche_idx() %>",
                         title: "<%= event.getSche_title() %>",
                         start: "<%= event.getSche_st_dt() %>",
-                        end: "<%= event.getSche_ed_dt() %>",
+                        end: "<%= event.getSche_ed_dt() != null ? java.time.LocalDate.parse(event.getSche_ed_dt().substring(0, 10)).plusDays(1).toString() : null %>",
                         allDay: true,
                     },
                     <% } %>
