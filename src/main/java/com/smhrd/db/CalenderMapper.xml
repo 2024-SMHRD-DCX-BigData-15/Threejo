@@ -9,11 +9,11 @@
     </insert>
 
     <!-- 일정 조회 -->
-    <select id="getUserEvents" parameterType="String" resultType="com.smhrd.Model.CalendarVO">
-        SELECT sche_title, sche_st_dt, sche_ed_dt
+     <select id="getUserEvents" parameterType="String" resultType="com.smhrd.Model.CalendarVO">
+        SELECT *
         FROM t_schedule
         WHERE user_id = #{user_id};
-    </select>
+    </select>	
 
     <!-- 일정 삭제 -->
     <delete id="deleteEvent" parameterType="int">
@@ -21,9 +21,11 @@
     </delete>
     
     <!-- 일정 수정 -->
-    <update id="updateEvent" parameterType="com.smhrd.Model.CalendarVO">
+     <update id="updateEvent" parameterType="com.smhrd.Model.CalendarVO">
         UPDATE t_schedule
-        SET sche_title = #{sche_title}, sche_st_dt = #{sche_st_dt}, sche_ed_dt = #{sche_ed_dt}
+        SET sche_title = #{sche_title},
+            sche_st_dt = #{sche_st_dt},
+            sche_ed_dt = #{sche_ed_dt}
         WHERE sche_idx = #{sche_idx};
     </update>
 

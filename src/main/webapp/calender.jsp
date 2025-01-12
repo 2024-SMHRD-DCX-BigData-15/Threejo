@@ -44,44 +44,34 @@
 
     <!-- 전체 레이아웃 -->
     <div class="container">
-        <!-- 사이드바 -->
-        <aside class="sidebar">
-            <h2>일정 추가</h2>
-            <form id="controls" action="CalenderController" method="post">
-                <input type="hidden" name="action" value="addEvent">
-                <label for="eventTitle">일정:</label>
-                <input type="text" id="eventTitle" name="sche_title" placeholder="일정 입력" required />
-                <label for="startDate">시작 날짜:</label>
-                <input type="date" id="startDate" name="sche_st_dt" required />
-                <label for="endDate">종료 날짜:</label>
-                <input type="date" id="endDate" name="sche_ed_dt" />
-                <button id="addEventBtn" type="submit">일정 등록</button>
-            </form>
-        </aside>
-
-        <!-- 메인 콘텐츠 -->
+        <!-- 캘린더 영역 -->
         <main class="main-content">
             <div id="calendar"></div>
         </main>
     </div>
 
-    <!-- 모달 창 -->
-    <div id="modal">
-        <p>일정을 수정 또는 삭제합니다.</p>
-        <input type="text" id="modalEventTitle" placeholder="일정 제목" /> <br>
-        <input type="date" id="modalStartDate" />
-        <input type="date" id="modalEndDate" />
-        <button id="editEventBtn">수정</button>
-        <button id="deleteEventBtn">삭제</button>
+    <!-- 수정 모달창 -->
+    <div id="modal" style="display: none;">
+        <form id="editEventForm" method="POST" action="CalenderUpdateController">
+            <input type="hidden" name="sche_idx" id="modal-sche-idx">
+            <label for="modal-sche-title">일정 제목:</label> 
+            <input type="text" name="sche_title" id="modal-sche-title" required> <br>
+            <label for="modal-sche-st-dt">시작 날짜:</label>
+            <input type="date" name="sche_st_dt" id="modal-sche-st-dt" required><br>
+            <label for="modal-sche-ed-dt">종료 날짜:</label>
+            <input type="date" name="sche_ed_d" id="modal-sche-ed-dt" required>
+            <button type="submit">수정 완료</button>
+            <button type="button" onclick="closeModal()">취소</button>
+        </form>
     </div>
-    <div id="modal-overlay"></div>
+    <div id="modal-overlay" style="display: none;" onclick="closeModal()"></div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            var calendarEl = document.getElementById("calendar");
             var modal = document.getElementById("modal");
             var overlay = document.getElementById("modal-overlay");
-            var calendarEl = document.getElementById("calendar");
-            var currentEvent = null; // 클릭된 이벤트를 저장
+            var currentEvent = null;
 
             // FullCalendar 초기화
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -96,7 +86,7 @@
                 events: [
                     <% for (CalendarVO event : events) { %>
                     {
-                        id: "<%= event.getSche_idx() %>", // 일정 식별자
+                        id: "<%= event.getSche_idx() %>",
                         title: "<%= event.getSche_title() %>",
                         start: "<%= event.getSche_st_dt() %>",
                         end: "<%= event.getSche_ed_dt() %>",
@@ -105,73 +95,28 @@
                     <% } %>
                 ],
                 eventClick: function (info) {
-                    // 이벤트 클릭 시 모달 창 표시
                     currentEvent = info.event;
-                    document.getElementById("modalEventTitle").value = currentEvent.title;
-                    document.getElementById("modalStartDate").value = currentEvent.start.toISOString().split("T")[0];
-                    document.getElementById("modalEndDate").value = currentEvent.end.toISOString().split("T")[0];
-                    showModal();
+                    openModal(currentEvent);
                 },
             });
 
-            // 캘린더 렌더링
             calendar.render();
 
-            // 일정 수정
-            document.getElementById("editEventBtn").addEventListener("click", function () {
-                var updatedTitle = document.getElementById("modalEventTitle").value;
-                var updatedStartDate = document.getElementById("modalStartDate").value;
-                var updatedEndDate = document.getElementById("modalEndDate").value;
-
-                // 수정 요청
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "CalenderUpdateController", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        alert("일정이 수정되었습니다.");
-                        location.reload(); // 페이지 새로고침
-                    } else {
-                        alert("일정 수정에 실패했습니다.");
-                    }
-                };
-
-                xhr.send(
-                    `sche_idx=${currentEvent.id}&sche_title=${updatedTitle}&sche_st_dt=${updatedStartDate}&sche_ed_dt=${updatedEndDate}`
-                );
-                closeModal();
-            });
-
-            // 일정 삭제
-            document.getElementById("deleteEventBtn").addEventListener("click", function () {
-                if (confirm("정말로 이 일정을 삭제하시겠습니까?")) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "CalenderDeleteController", true);
-                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                    xhr.onload = function () {
-                        if (xhr.status === 200) {
-                            alert("일정이 삭제되었습니다.");
-                            location.reload(); // 페이지 새로고침
-                        } else {
-                            alert("일정 삭제에 실패했습니다.");
-                        }
-                    };
-                    xhr.send(`sche_idx=${currentEvent.id}`);
-                    closeModal();
-                }
-            });
-
-            function showModal() {
+            // 모달창 열기
+            function openModal(event) {
+                document.getElementById("modal-sche-idx").value = event.id;
+                document.getElementById("modal-sche-title").value = event.title;
+                document.getElementById("modal-sche-st-dt").value = event.start.toISOString().split("T")[0];
+                document.getElementById("modal-sche-ed-dt").value = event.end ? event.end.toISOString().split("T")[0] : "";
                 modal.style.display = "block";
                 overlay.style.display = "block";
             }
 
+            // 모달창 닫기
             function closeModal() {
                 modal.style.display = "none";
                 overlay.style.display = "none";
             }
-
-            overlay.addEventListener("click", closeModal);
         });
     </script>
 </body>
