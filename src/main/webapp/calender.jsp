@@ -64,18 +64,18 @@
         </main>
     </div>
 
-    <!-- 수정 모달창 -->
+    <!-- 수정 및 삭제 모달창 -->
     <div id="modal" style="display: none;">
         <form id="editEventForm" method="POST" action="CalenderUpdateController">
             <input type="hidden" name="sche_idx" id="modal-sche-idx">
-            <label for="modal-sche-title">일정 제목:</label> 
+            <label for="modal-sche-title">일정 제목:</label>
             <input type="text" name="sche_title" id="modal-sche-title" required> <br>
             <label for="modal-sche-st-dt">시작 날짜:</label>
             <input type="date" name="sche_st_dt" id="modal-sche-st-dt" required><br>
             <label for="modal-sche-ed-dt">종료 날짜:</label>
-            <input type="date" name="sche_ed_dt" id="modal-sche-ed-dt">
+            <input type="date" name="sche_ed_dt" id="modal-sche-ed-dt" required>
             <button type="submit">수정 완료</button>
-            <button type="button" onclick="closeModal()">취소</button>
+            <button type="button" id="deleteEventBtn">삭제</button>
         </form>
     </div>
     <div id="modal-overlay" style="display: none;" onclick="closeModal()"></div>
@@ -103,7 +103,10 @@
                         id: "<%= event.getSche_idx() %>",
                         title: "<%= event.getSche_title() %>",
                         start: "<%= event.getSche_st_dt() %>",
-                        end: "<%= event.getSche_ed_dt() != null ? java.time.LocalDate.parse(event.getSche_ed_dt().substring(0, 10)).plusDays(1).toString() : null %>",
+                        end: "<%= event.getSche_ed_dt() != null ? 
+     java.time.LocalDate.parse(event.getSche_ed_dt().split(" ")[0])  // 시간 제거
+       .plusDays(1).toString() 
+     : null %>",
                         allDay: true,
                     },
                     <% } %>
@@ -131,6 +134,31 @@
                 modal.style.display = "none";
                 overlay.style.display = "none";
             }
+
+            // 삭제 버튼 클릭 이벤트
+           document.getElementById("deleteEventBtn").addEventListener("click", function () {
+    if (confirm("정말로 이 일정을 삭제하시겠습니까?")) {
+        var eventId = document.getElementById("modal-sche-idx").value; // 모달에서 id 가져오기
+
+        console.log("[DEBUG] 삭제 요청된 sche_idx: " + eventId); // 디버깅
+
+        // 삭제 요청을 서버로 전송
+        var form = document.createElement("form");
+        form.method = "POST";
+        form.action = "CalenderDeleteController";
+
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "sche_idx";
+        input.value = eventId;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+});
+
+            overlay.addEventListener("click", closeModal);
         });
     </script>
 </body>
