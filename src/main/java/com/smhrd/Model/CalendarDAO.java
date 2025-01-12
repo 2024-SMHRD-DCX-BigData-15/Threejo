@@ -1,30 +1,36 @@
 package com.smhrd.Model;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.smhrd.db.SqlSessionManager;
 
 public class CalendarDAO {
-	  private Connection getConnection() throws SQLException {
-	        String url = "jdbc:mysql://localhost:3306/service_db";
-	        String username = "ChangHwan";
-	        String password = "1234";
-	        return DriverManager.getConnection(url, username, password);
-	    }
+    private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 
-	    public boolean addEvent(CalendarVO calendarVO) {
-	        String query = "INSERT INTO calendar_events (sche_title, sche_st_dt, sche_ed_dt) VALUES (?, ?, ?)";
-	        try (Connection conn = getConnection();
-	             PreparedStatement stmt = conn.prepareStatement(query)) {
-	            stmt.setString(2, calendarVO.getSche_title());
-	            stmt.setString(3, calendarVO.getSche_st_dt());
-	            stmt.setString(4, calendarVO.getSche_ed_dt());
-	            int result = stmt.executeUpdate();
-	            return result > 0;  // 성공적으로 삽입된 경우 true
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	            return false;
-	        }
-	    }
+    // 일정 추가 메소드
+    public boolean addEvent(CalendarVO vo) {
+        SqlSession session = sqlSessionFactory.openSession(true); // Auto Commit
+        try {
+            int result = session.insert("addEvent", vo);
+            System.out.println("[DEBUG] 일정 추가 결과 (영향받은 행 수): " + result);
+            return result > 0;
+        } finally {
+            session.close();
+        }
+    }
 
+    // 일정 조회 메소드
+    public List<CalendarVO> getUserEvents(String user_id) {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            List<CalendarVO> events = session.selectList("getUserEvents", user_id);
+            System.out.println("[DEBUG] 조회된 일정 수: " + (events != null ? events.size() : 0));
+            return events;
+        } finally {
+            session.close();
+        }
+    }
 }
