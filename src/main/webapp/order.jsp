@@ -49,7 +49,7 @@
         <div class="right">
           <div class="category-group">
             <select id="svc_categori" name="svc_categori" required>
-              <option value="" disabled selected>주 카테고리 선택</option>
+              <option value="" disabled selected>카테고리 선택</option>
               <option value="웹빌더">웹빌더</option>
               <option value="웹제작">웹제작</option>
               <option value="웹 유지보수">웹 유지보수</option>

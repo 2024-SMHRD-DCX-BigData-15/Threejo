@@ -61,10 +61,19 @@ p {
   margin-bottom: 10px;
 }
 
-input[type="text"], input[type="date"], textarea, select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
+.form-section p {
+  text-align: left;
+}
+
+/* 폼 입력 요소와 버튼의 공통 스타일 */
+input[type="text"], 
+input[type="date"], 
+textarea, 
+select, 
+button.submit-btn {
+  width: 100%; /* 동일한 너비 */
+  max-width: 100%; /* 부모 컨테이너를 초과하지 않음 */
+  box-sizing: border-box; /* 패딩 포함 */
   border-radius: 5px;
   font-size: 14px;
 }
@@ -101,18 +110,19 @@ textarea {
   margin-left: 5px;
 }
 
-/* 버튼 */
-button {
-  width: 100%;
+/* 버튼 스타일 */
+button.submit-btn {
+  margin-top: 20px; /* 위와 여백 추가 */
   padding: 15px;
-  background-color: #6f42c1;
+  background-color: #007BFF;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #59309d;
+  background-color: #0056b3;
 }
