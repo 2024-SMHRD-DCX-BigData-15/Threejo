@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="calendar.css">
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.15/index.global.min.js"></script>
 </head>
 <body>
     <!-- 상단 헤더 -->
@@ -64,14 +65,31 @@
         </main>
     </div>
 
+    <!-- 모달 창 -->
+    <div id="modal">
+        <p>일정 수정 또는 삭제를 선택하세요</p>
+        <button id="editEventBtn">수정</button>
+        <button id="deleteEventBtn">삭제</button>
+    </div>
+    <div id="modal-overlay"></div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var calendarEl = document.getElementById("calendar");
+            var modal = document.getElementById("modal");
+            var overlay = document.getElementById("modal-overlay");
+            var currentEvent = null;
 
             // FullCalendar 초기화
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: "dayGridMonth",
                 locale: "ko",
+                editable: true,
+                headerToolbar: {
+                    left: "prev,next today",
+                    center: "title",
+                    right: "",
+                },
                 events: [
                     <% for (CalendarVO event : events) { %>
                     {
@@ -82,10 +100,50 @@
                     },
                     <% } %>
                 ],
+                eventClick: function (info) {
+                    // 이벤트 클릭 시 모달 창 표시
+                    currentEvent = info.event;
+                    showModal();
+                },
             });
 
             // 캘린더 렌더링
             calendar.render();
+
+            // 모달 창 표시
+            function showModal() {
+                modal.style.display = "block";
+                overlay.style.display = "block";
+            }
+
+            // 모달 창 닫기
+            function closeModal() {
+                modal.style.display = "none";
+                overlay.style.display = "none";
+            }
+
+            // 일정 수정
+            document.getElementById("editEventBtn").addEventListener("click", function () {
+                var newTitle = prompt("새로운 일정 제목을 입력하세요:", currentEvent.title);
+                if (newTitle && newTitle.trim() !== "") {
+                    currentEvent.setProp("title", newTitle);
+                    alert("일정이 수정되었습니다.");
+                } else {
+                    alert("제목이 비어있어 수정이 취소되었습니다.");
+                }
+                closeModal();
+            });
+
+            // 일정 삭제
+            document.getElementById("deleteEventBtn").addEventListener("click", function () {
+                if (confirm("정말로 이 일정을 삭제하시겠습니까?")) {
+                    currentEvent.remove();
+                    alert("일정이 삭제되었습니다.");
+                }
+                closeModal();
+            });
+
+            overlay.addEventListener("click", closeModal);
         });
     </script>
 </body>
