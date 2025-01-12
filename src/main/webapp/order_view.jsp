@@ -2,11 +2,16 @@
 <%@ page import="com.smhrd.Model.OrderVO" %>
 
 <%
-    // 전달받은 데이터 가져오기
+    // request에서 전달된 order 객체 가져오기
     OrderVO order = (OrderVO) request.getAttribute("order");
 
-    // 디버깅: 전달받은 데이터 확인
-    System.out.println("[DEBUG] 전달받은 게시글: " + order);
+    if (order == null) {
+        out.println("<script>alert('조회된 데이터가 없습니다.'); location.href='order_list.jsp';</script>");
+        return;
+    }
+
+    // 디버깅: 전달된 데이터 확인
+    System.out.println("[DEBUG] order_view.jsp에서 확인된 데이터: " + order);
 %>
 
 <!DOCTYPE html>
@@ -18,15 +23,18 @@
     <link rel="stylesheet" href="order_view.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>게시글 상세보기</h1>
+        <a href="order_list.jsp">목록으로 돌아가기</a>
     </header>
-    <div>
-        <p><strong>제목:</strong> <%= order.getSvc_title() %></p>
+
+    <main>
+        <h2><%= order.getSvc_title() %></h2>
         <p><strong>작성자:</strong> <%= order.getSvc_id() %></p>
+        <p><strong>내용:</strong> <%= order.getSvc_content() %></p>
+        <p><strong>카테고리:</strong> <%= order.getSvc_categori() %></p>
         <p><strong>예산:</strong> <%= order.getSvc_account() %>원</p>
         <p><strong>완료일:</strong> <%= order.getSvc_ed_td() %></p>
-        <p><strong>내용:</strong> <%= order.getSvc_content() %></p>
-    </div>
+    </main>
 </body>
 </html>

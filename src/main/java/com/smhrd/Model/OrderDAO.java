@@ -118,11 +118,13 @@ public class OrderDAO {
     }
     
     //ListController
+    // svc_idx로 게시글 조회
     public OrderVO getOrderById(int svc_idx) {
         SqlSession session = sqlSessionFactory.openSession();
         OrderVO order = null;
+
         try {
-            // 데이터 조회
+            // MyBatis Mapper를 통해 svc_idx로 데이터 조회
             order = session.selectOne("com.smhrd.db.OrderMapper.getOrderById", svc_idx);
             System.out.println("[DEBUG] DB에서 조회된 게시글: " + order);
         } catch (Exception e) {
@@ -133,5 +135,4 @@ public class OrderDAO {
         }
         return order;
     }
-
 }

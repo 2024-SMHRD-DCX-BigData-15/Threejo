@@ -54,9 +54,12 @@
 	</select>
 	
 	<!-- ListController -->
-	<select id="getOrderById" parameterType="int" resultType="com.smhrd.Model.OrderVO">
-	    SELECT * FROM t_order WHERE svc_idx = #{svc_idx}
-	</select>
+	<!-- svc_idx로 게시글 조회 -->
+    <select id="getOrderById" parameterType="int" resultType="com.smhrd.Model.OrderVO">
+        SELECT *
+        FROM t_service
+        WHERE svc_idx = #{svc_idx}
+    </select>
 		
 		
 		
