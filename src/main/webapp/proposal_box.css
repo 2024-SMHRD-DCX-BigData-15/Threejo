@@ -120,12 +120,19 @@ body {
     font-weight: bold;
 }
 
+/* 테이블 감싸는 래퍼 스타일 */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 /* 테이블 스타일 */
 .board-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  table-layout: fixed; /* 고정된 열 너비 */
+  table-layout: auto; /* 열 너비를 내용에 따라 조정 */
 }
 
 .board-table th,
@@ -154,20 +161,35 @@ body {
 /* 테이블 열 너비 설정 */
 .board-table th:nth-child(1),
 .board-table td:nth-child(1) {
-  width: 10%; /* 번호 */
+  width: 15%; /* 게시글 제목 */
 }
 
 .board-table th:nth-child(2),
 .board-table td:nth-child(2) {
-  width: 60%; /* 제목 */
+  width: 20%; /* 제안서 제목 */
 }
 
 .board-table th:nth-child(3),
 .board-table td:nth-child(3) {
-  width: 20%; /* 마감일 */
+  width: 25%; /* 제안서 내용 */
 }
 
 .board-table th:nth-child(4),
 .board-table td:nth-child(4) {
-  width: 10%; /* 상태 */
+  width: 10%; /* 예상 금액 */
+}
+
+.board-table th:nth-child(5),
+.board-table td:nth-child(5) {
+  width: 15%; /* 예상 마감일 */
+}
+
+.board-table th:nth-child(6),
+.board-table td:nth-child(6) {
+  width: 10%; /* 채택 여부 */
+}
+
+.board-table th:nth-child(7),
+.board-table td:nth-child(7) {
+  width: 10%; /* 작성자 ID */
 }

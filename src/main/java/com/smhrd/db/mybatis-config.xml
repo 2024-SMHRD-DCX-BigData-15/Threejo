@@ -24,6 +24,7 @@
     <mapper resource="com/smhrd/db/CalenderMapper.xml"/>
     <mapper resource="com/smhrd/db/AskMapper.xml"/>
     <mapper resource="com/smhrd/db/OrderMapper.xml"/>
+    <mapper resource="com/smhrd/db/ProposalMapper.xml"/>
     
   </mappers>
 </configuration>
