@@ -20,6 +20,7 @@ public class CalenderController extends HttpServlet {
         String action = request.getParameter("action");
         if ("addEvent".equals(action)) {
             // 파라미터 수집
+        	int sche_idx = Integer.parseInt(request.getParameter("sche_idx"));
             String sche_title = request.getParameter("sche_title");
             String sche_st_dt = request.getParameter("sche_st_dt");
             String sche_ed_dt = request.getParameter("sche_ed_dt");
@@ -33,7 +34,7 @@ public class CalenderController extends HttpServlet {
             }
 
             // VO 생성 및 값 설정
-            CalendarVO vo = new CalendarVO(sche_title, sche_st_dt, sche_ed_dt, user_id);
+            CalendarVO vo = new CalendarVO(sche_idx, sche_title, sche_st_dt, sche_ed_dt, user_id);
 
             // DAO를 통한 일정 추가
             CalendarDAO dao = new CalendarDAO();

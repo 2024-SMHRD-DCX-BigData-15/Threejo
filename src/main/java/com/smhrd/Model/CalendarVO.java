@@ -12,8 +12,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CalendarVO {
+	private int sche_idx;  // 일정 제목
     private String sche_title;  // 일정 제목
     private String sche_st_dt;  // 시작 일자
     private String sche_ed_dt;  // 종료 일자
-    private String user_id;     // 사용자 ID
+    private String user_id;
+    // 사용자 ID
 }
+

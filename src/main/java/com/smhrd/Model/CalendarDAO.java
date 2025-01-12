@@ -33,4 +33,16 @@ public class CalendarDAO {
             session.close();
         }
     }
+        
+        // 일정 수정 메소드
+        public boolean updateEvent(CalendarVO vo) {
+            SqlSession session = sqlSessionFactory.openSession(true); // Auto Commit
+            try {
+                int result = session.update("updateEvent", vo);
+                System.out.println("[DEBUG] 일정 수정 결과 (영향받은 행 수): " + result);
+                return result > 0;
+            } finally {
+                session.close();
+            }
+    }
 }
