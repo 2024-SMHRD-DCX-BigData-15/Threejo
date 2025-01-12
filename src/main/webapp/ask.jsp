@@ -8,7 +8,7 @@
   <title>1:1문의사항 페이지</title>
   <link rel="stylesheet" href="ask.css">
 </head>
-//1
+
 <body>
   <!-- 상단 헤더 -->
   <header class="header">
@@ -35,26 +35,34 @@
     </aside>
 
     <!-- 메인 콘텐츠 -->
+    
     <main class="main-content">
-      <h1>1:1 문의하기</h1>
-      <form action="submit_inquiry.jsp" method="POST">
+      <form id="ask">
+        <h1>1:1 문의하기</h1>
         <div class="form-group">
-          <label for="title">제목:</label>
-          <input type="text" id="title" name="title" placeholder="문의사항의 제목을 입력해주세요." class="search-txt">
+          <label for="title">제목 <span class="required">*</span></label>
+          <input type="text" id="title" name="title" placeholder="문의사항의 제목을 입력하세요." required>
         </div>
         <div class="form-group">
-          <label for="writer">작성자:</label>
-          <input type="text" id="writer" name="writer" placeholder="작성자의 이름을 입력해주세요.">
+          <label for="description">설명 <span class="required">*</span></label>
+          <textarea id="description" name="description" placeholder="요청에 대한 세부 정보를 입력하세요." required></textarea>
         </div>
         <div class="form-group">
-          <label for="content">내용:</label>
-          <textarea id="content" name="content" placeholder="문의사항의 내용을 입력해주세요."></textarea>
+          <label for="alt_email">이메일 <span class="required">*</span></label>
+          <input type="email" id="alt_email" name="alt_email" placeholder="이메일을 입력하세요." required>
         </div>
         <div class="form-group">
-          <button type="submit" class="search-btn">작성 완료</button>
+          <label for="phone">휴대폰 번호 <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요." required>
         </div>
+        <div class="form-group">
+          <label for="file">첨부 파일</label>
+          <input type="file" id="file" name="file">
+        </div>
+        <button type="submit" class="submit-button">제출</button>
       </form>
     </main>
+    
   </div>
 
   <script>

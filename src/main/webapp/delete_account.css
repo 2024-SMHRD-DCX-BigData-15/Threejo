@@ -151,7 +151,7 @@ form {
     font-size: 14px;
     font-weight: bold;
 }
-
+.form-item input[type="text"],
 .form-item input[type="password"],
 .form-item select {
     width: 100%;
@@ -162,7 +162,7 @@ form {
     box-sizing: border-box;
 }
 
-button.delete-button {
+.delete-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -176,6 +176,28 @@ button.delete-button {
     font-weight: bold;
 }
 
-button.delete-button:hover {
+.delete-button:hover {
     background-color: #C9302C;
 }
+
+/* 라디오 버튼과 라벨 수평 정렬 */
+.form-item div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* 라디오 버튼 간 간격 */
+}
+
+.form-item div input[type="radio"] {
+    margin-right: 10px; /* 라디오 버튼과 라벨 간 여백 */
+}
+
+.form-item-checkbox input[type="checkbox"] {
+    margin-right: 10px; /* 체크박스와 라벨 사이 간격 */
+}
+
+
+.divider {
+    border: none;
+    border-bottom: 2px solid #ddd; /* 실선 스타일 */
+    margin: 10px 0; /* 상하 여백 */
+  }

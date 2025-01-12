@@ -118,36 +118,36 @@ body {
 }
 
 /* FAQ 섹션 스타일 */
-.FAQ-section {
+.faq-section {
   margin-bottom: 30px;
 }
 
-.FAQ-section h2 {
+.faq-section h2 {
   font-size: 1.2em;
   margin-bottom: 15px;
   color: #333;
 }
 
-.FAQ-section ul {
+.faq-section ul {
   list-style: none;
   padding: 0;
 }
 
-.FAQ-section ul li {
+.faq-section ul li {
   margin-bottom: 10px;
 }
 
-.FAQ-section ul li a {
+.faq-section ul li a {
   text-decoration: none;
   color: #007bff;
   font-size: 1em;
 }
 
-.FAQ-section ul li a:hover {
+.faq-section ul li a:hover {
   text-decoration: underline;
 }
 
-.FAQ-answer {
+.faq-answer {
   margin-top: 10px;
   padding: 10px;
   background-color: #f9f9f9;

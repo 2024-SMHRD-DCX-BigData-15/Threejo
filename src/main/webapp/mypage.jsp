@@ -41,7 +41,7 @@
     <aside class="sidebar">
       <h2>마이페이지</h2>
       <ul>
-        <li><a href="mypage.jsp" class="active">내 프로필 수정</a></li>
+        <li><a href="mypage.jsp">내 프로필</a></li>
         <li><a href="proposal_box.jsp">제안서보관함</a></li>
         <li><a href="OrderManageController">의뢰관리</a></li>
         <li><a href="delete_account.jsp">회원탈퇴</a></li>
@@ -49,7 +49,7 @@
     </aside>
 
     <main class="main-content">
-      <h1>내 프로필 수정</h1>
+      <h1>내 프로필</h1>
       <form id="profileForm" action="UpdateController" method="post">
         <input type="hidden" name="user_id" value="${info.user_id}">
 
