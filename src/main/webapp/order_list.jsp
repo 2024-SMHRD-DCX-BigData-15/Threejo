@@ -38,7 +38,7 @@
                             <tr>
                                 <td>${order.svc_id}</td> <!-- 작성자 ID -->
                                 <td>${order.svc_categori}</td> <!-- 카테고리 -->
-                                <td>${order.svc_title}</td> <!-- 제목 -->
+                                <td><a href="L">${order.svc_title}</a></td> <!-- 제목 -->
                                 <td>${order.svc_ed_td}</td> <!-- 마감기간 -->
                                 <td>${order.svc_account}</td> <!-- 예산 -->
                             </tr>
