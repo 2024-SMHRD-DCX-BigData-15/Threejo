@@ -12,31 +12,27 @@ import com.smhrd.Model.CalendarDAO;
 @WebServlet("/CalenderDeleteController")
 public class CalenderDeleteController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 요청 데이터 인코딩
         request.setCharacterEncoding("UTF-8");
 
-        // 삭제 요청 데이터 수집
-        String sche_idx = request.getParameter("sche_idx");
+        // 전달된 sche_idx 값 확인
+        String sche_idx_str = request.getParameter("sche_idx");
+        System.out.println("[DEBUG] 전달된 sche_idx: " + sche_idx_str);
 
-        // 디버깅: 전달된 데이터 확인
-        System.out.println("[DEBUG] 전달된 sche_idx: " + sche_idx);
+        int sche_idx = Integer.parseInt(sche_idx_str);
 
-        if (sche_idx == null || sche_idx.trim().isEmpty()) {
-            System.out.println("[ERROR] sche_idx가 전달되지 않았습니다.");
-            response.sendRedirect("calender.jsp?error=invalidData");
-            return;
-        }
-
-        // DAO 호출
+        // DAO를 통해 데이터 삭제
         CalendarDAO dao = new CalendarDAO();
-        boolean isDeleted = dao.deleteEvent(Integer.parseInt(sche_idx));
+        boolean isDeleted = dao.deleteEvent(sche_idx);
 
-        // 결과 처리
+        // 디버깅: 삭제 성공 여부 확인
         if (isDeleted) {
             System.out.println("[DEBUG] 일정 삭제 성공");
             response.sendRedirect("calender.jsp");
         } else {
             System.out.println("[ERROR] 일정 삭제 실패");
-            response.sendRedirect("calender.jsp?error=deleteFailed");
+            request.setAttribute("error", "일정 삭제에 실패했습니다.");
+            request.getRequestDispatcher("calender.jsp").forward(request, response);
         }
     }
 }

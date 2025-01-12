@@ -17,7 +17,7 @@
 
     <!-- 일정 삭제 -->
     <delete id="deleteEvent" parameterType="int">
-        DELETE FROM t_calendar
+        DELETE FROM t_schedule
         WHERE sche_idx = #{sche_idx}
     </delete>
     

@@ -69,21 +69,22 @@ public class CalendarDAO {
 
     // 일정 삭제
     public boolean deleteEvent(int sche_idx) {
-        SqlSession session = factory.openSession(true);
-        boolean result = false;
+        SqlSession session = factory.openSession();
+        int result = 0;
 
         try {
-            System.out.println("[DEBUG] 삭제할 일정 sche_idx: " + sche_idx);
-            int count = session.delete("deleteEvent", sche_idx); // 쿼리 실행
-            System.out.println("[DEBUG] 일정 삭제 결과 (영향받은 행 수): " + count);
-            result = count > 0; // 영향받은 행 수가 0보다 크면 성공
+            System.out.println("[DEBUG] 실행할 SQL: DELETE FROM t_schedule WHERE sche_idx = " + sche_idx);
+            result = session.delete("com.smhrd.db.CalenderMapper.deleteEvent", sche_idx);
+            System.out.println("[DEBUG] 삭제 결과 (영향받은 행 수): " + result);
+            session.commit();
         } catch (Exception e) {
             System.out.println("[ERROR] 일정 삭제 중 오류 발생");
             e.printStackTrace();
+            session.rollback();
         } finally {
             session.close();
         }
-        return result;
-    }
 
+        return result > 0;
+    }
 }
