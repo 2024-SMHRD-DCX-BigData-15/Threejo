@@ -120,19 +120,15 @@ public class OrderDAO {
     //ListController
     // svc_idx로 게시글 조회
     public OrderVO getOrderById(int svc_idx) {
-        SqlSession session = sqlSessionFactory.openSession();
         OrderVO order = null;
-
-        try {
-            // MyBatis Mapper를 통해 svc_idx로 데이터 조회
+        try (SqlSession session = sqlSessionFactory.openSession()) {
             order = session.selectOne("com.smhrd.db.OrderMapper.getOrderById", svc_idx);
-            System.out.println("[DEBUG] DB에서 조회된 게시글: " + order);
+            System.out.println("[DEBUG] 조회된 OrderVO: " + order); // 디버깅
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("[ERROR] 게시글 조회 중 오류 발생");
-        } finally {
-            session.close();
+            System.out.println("[ERROR] 데이터 조회 중 오류 발생");
         }
         return order;
     }
+
 }
