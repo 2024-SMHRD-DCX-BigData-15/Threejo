@@ -56,7 +56,7 @@ public class ProposalWriteController extends HttpServlet {
 
     	        // 결과에 따라 리다이렉트
     	        if (result > 0) {
-    	            response.sendRedirect("proposal_box.jsp");
+    	            response.sendRedirect("ProposalBoxController");
     	        } else {
     	            response.sendRedirect("proposal_write.jsp?error=1");
     	        }

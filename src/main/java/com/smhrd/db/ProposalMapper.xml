@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.ProposalMapper">
+	
+	<!-- ProposalWriteController -->
     <!-- 제안 데이터 삽입 -->
     <insert id="insertProposal" parameterType="com.smhrd.Model.ProposalVO">
         INSERT INTO t_proposal 
@@ -8,5 +10,25 @@
         VALUES 
         (#{prop_title}, #{prop_content}, #{prop_account}, #{prop_ed_td}, #{prop_tell}, #{svc_idx}, #{prop_id});
     </insert>
+    
+    <!-- ProposalBoxController -->
+     <!-- 보낸 제안서 조회 -->
+    <select id="getSentProposals" parameterType="string" resultType="com.smhrd.Model.ProposalVO">
+        SELECT p.*, s.svc_id, s.svc_categori
+        FROM t_proposal p
+        JOIN t_service s ON p.svc_idx = s.svc_idx
+        WHERE p.prop_id = #{user_id}
+    </select>
+
+    <!-- 받은 제안서 조회 -->
+    <select id="getReceivedProposals" parameterType="map" resultType="com.smhrd.Model.ProposalVO">
+        SELECT * FROM t_proposal
+        WHERE svc_idx = #{svc_idx}
+          AND EXISTS (
+              SELECT 1 FROM t_service
+              WHERE t_service.svc_idx = t_proposal.svc_idx
+              AND t_service.svc_id = #{user_id}
+          )
+    </select>
     
 </mapper>
