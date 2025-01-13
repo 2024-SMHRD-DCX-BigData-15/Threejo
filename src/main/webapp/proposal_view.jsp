@@ -1,55 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>제안서 보기</title>
-  <!-- CSS 파일 연결 -->
-  <link rel="stylesheet" href="proposal_view.css">
+    <meta charset="UTF-8">
+    <title>제안서 상세보기</title>
+    <link rel="stylesheet" type="text/css" href="proposal_view.css">
 </head>
-
 <body>
-  <div class="proposal-container">
-    <h1>제안서</h1>
-    <p>아래 제안서를 검토한 후 채택 여부를 결정하세요.</p>
-
-    <div class="proposal-card">
-      <!-- 제목 -->
-      <div class="proposal-section">
-        <h2>제목</h2>
-        <p id="prop_title"></p>
-      </div>
-
-      <!-- 제안 내용 -->
-      <div class="proposal-section">
-        <h2>제안 내용</h2>
-        <p id="prop_content"></p>
-      </div>
-
-      <!-- 예산 -->
-      <div class="proposal-section">
-        <h2>예상 예산</h2>
-        <p id="prop_account"></p>
-      </div>
-
-      <!-- 완료일 -->
-      <div class="proposal-section">
-        <h2>완료일</h2>
-        <p id="prop_ed_td"></p>
-      </div>
-
-      <!-- 연락 가능한 전화번호 -->
-      <div class="proposal-section">
-        <h2>전화번호</h2>
-        <p id="prop_tell"></p>
-      </div>
-
-      <!-- 목록 버튼 -->
-      <button id="selectButton">목록가기</button>
+    <div class="container">
+        <h1>제안서 상세보기</h1>
+        <table class="proposal-detail">
+            <tr>
+                <th>제목</th>
+                <td>${proposal.prop_title}</td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td>${proposal.prop_content}</td>
+            </tr>
+            <tr>
+                <th>예산</th>
+                <td>${proposal.prop_account}</td>
+            </tr>
+            <tr>
+                <th>마감일</th>
+                <td>${proposal.prop_ed_td}</td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td>${proposal.prop_id}</td>
+            </tr>
+            <tr>
+                <th>카테고리</th>
+                <td>${proposal.svc_categori}</td>
+            </tr>
+        </table>
+        <a href="proposal_box.jsp">목록으로 돌아가기</a>
     </div>
-  </div>
+
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

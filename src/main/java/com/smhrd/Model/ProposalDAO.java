@@ -69,6 +69,5 @@ public class ProposalDAO {
         }
         return proposal;
     }
-
     
 }
