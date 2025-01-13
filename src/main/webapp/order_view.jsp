@@ -20,6 +20,7 @@
       <p><strong>작성자:</strong> ${order.svc_id}</p>
       <p><strong>카테고리:</strong> ${order.svc_categori}</p>
       <p><strong>제목:</strong> ${order.svc_title}</p>
+      <p><strong>내용:</strong> ${order.svc_content}</p>
       <p><strong>마감일:</strong> ${order.svc_ed_td}</p>
       <p><strong>예산:</strong> ${order.svc_account}</p>
     </div>
