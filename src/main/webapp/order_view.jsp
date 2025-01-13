@@ -26,8 +26,8 @@
     </div>
     <!-- 버튼 그룹 -->
     <div class="button-group">
-      <button id="editRequest" onclick="location.href='<%= request.getContextPath() %>/editRequest.jsp?svc_idx=${order.svc_idx}'">제안하기</button>
-      <button id="deleteRequest" onclick="location.href='<%= request.getContextPath() %>/order_list.jsp'">목록으로</button>
+      <button id="editRequest" onclick="location.href='<%= request.getContextPath() %>/proposal_write.jsp?svc_idx=${order.svc_idx}'">제안하기</button>
+      <button id="deleteRequest" onclick="location.href='<%= request.getContextPath() %>/OrderListController'">목록으로</button>
     </div>
   </div>
 </body>

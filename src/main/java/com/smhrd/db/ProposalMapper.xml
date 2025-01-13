@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.smhrd.db.ProposalMapper"></mapper>
+<mapper namespace="com.smhrd.db.ProposalMapper">
+    <!-- 제안 데이터 삽입 -->
+    <insert id="insertProposal" parameterType="com.smhrd.Model.ProposalVO">
+        INSERT INTO t_proposal 
+        (prop_title, prop_content, prop_account, prop_ed_td, prop_tell, svc_idx, prop_id)
+        VALUES 
+        (#{prop_title}, #{prop_content}, #{prop_account}, #{prop_ed_td}, #{prop_tell}, #{svc_idx}, #{prop_id});
+    </insert>
+    
+</mapper>

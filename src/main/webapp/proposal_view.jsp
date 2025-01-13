@@ -46,8 +46,8 @@
         <p id="viewPhoneNumber"></p>
       </div>
 
-      <!-- 채택 버튼 -->
-      <button id="selectButton">채택하기</button>
+      <!-- 목록 버튼 -->
+      <button id="selectButton">목록가기</button>
     </div>
   </div>
 

@@ -15,7 +15,7 @@
     <h1>제안서를 작성하세요</h1>
     <p>여기서 제안서를 작성하고 제출해주세요.</p>
 
-    <form id="proposalForm">
+    <form action="<%= request.getContextPath() %>/ProposalWriteController" method="post">
       <!-- 제안서 제목 -->
       <div class="form-section">
         <div class="left">
@@ -23,7 +23,7 @@
           <p>귀하의 제안서 제목을 간결하고 명확하게 작성해 주세요.</p>
         </div>
         <div class="right">
-          <input type="text" id="proposalTitle" placeholder="예) 홈페이지 제작 제안" required>
+          <input type="text" id="prop_title" name="prop_title" placeholder="예) 홈페이지 제작 제안" required>
         </div>
       </div>
 
@@ -34,7 +34,7 @@
           <p>구체적인 제안 내용을 작성해주세요. 고객의 요구를 충족하는 방법을 설명해주세요.</p>
         </div>
         <div class="right">
-          <textarea id="proposalContent" rows="6" placeholder="원하는 서비스를 작성해주세요." required></textarea>
+          <textarea id="prop_content" name="prop_content" rows="6" placeholder="원하는 서비스를 작성해주세요." required></textarea>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
           <p>이 프로젝트에 대한 예상 예산을 입력해주세요.</p>
         </div>
         <div class="right">
-          <input type="text" id="budget" placeholder="예) 1,500,000원" required>
+          <input type="text" id="prop_account" name="prop_account" placeholder="예) 1,500,000원" required>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
           <p>프로젝트 완료일을 설정해 주세요.</p>
         </div>
         <div class="right">
-          <input type="date" id="deadline" required>
+          <input type="date" id="prop_ed_td" name="prop_ed_td" required>
         </div>
       </div>
 
@@ -67,9 +67,15 @@
           <p>연락 가능한 전화번호를 입력해주세요.</p>
         </div>
         <div class="right">
-          <input type="tel" id="phoneNumber" placeholder="예) 010-1234-5678" required>
+          <input type="tel" id="prop_tell" name="prop_tell" placeholder="예) 010-1234-5678" required>
         </div>
       </div>
+      
+       <!-- 글 식별자 (svc_idx) -->
+        <input type="hidden" name="svc_idx" value="<%= request.getParameter("svc_idx") %>" />
+
+        <!-- 등록자 아이디 (prop_id) -->
+        <input type="hidden" name="prop_id" value="<%= (String) session.getAttribute("user_id") %>" />
 
       <!-- 제출 버튼 -->
       <button type="submit" class="submit-btn">제출</button>
@@ -94,7 +100,7 @@
 
       // 알림 후 보기 페이지로 이동
       alert("제안서가 성공적으로 저장되었습니다!");
-      window.location.href = "../Proposal_box/proposal_view.html";
+      window.location.href = "proposal_view.jsp";
     });
   </script>
 </body>
