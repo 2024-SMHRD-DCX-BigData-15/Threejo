@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>재능을IT다 | 의뢰 관리</title>
+    <title>재능을IT다</title>
     <link rel="stylesheet" type="text/css" href="order_manage.css">
     
      <script>
