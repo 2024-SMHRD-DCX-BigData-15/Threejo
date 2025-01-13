@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -15,7 +16,7 @@
     <h1>제안서를 작성하세요</h1>
     <p>여기서 제안서를 작성하고 제출해주세요.</p>
 
-    <form action="<%= request.getContextPath() %>/ProposalWriteController" method="post">
+    <form action="ProposalWriteController" method="post" accept-charset="UTF-8">
       <!-- 제안서 제목 -->
       <div class="form-section">
         <div class="left">
