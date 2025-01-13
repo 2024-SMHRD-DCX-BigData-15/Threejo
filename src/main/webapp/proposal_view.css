@@ -23,7 +23,7 @@ h1 {
 
 .proposal-detail {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: collapse; /* 테두리가 겹치지 않도록 설정 */
   margin: 20px auto; /* 테이블 가운데 정렬 */
 }
 
@@ -31,6 +31,7 @@ h1 {
 .proposal-detail td {
   padding: 12px;
   text-align: center; /* 셀 내부 텍스트 가운데 정렬 */
+  border: 1px solid #ddd; /* 테두리 추가 */
 }
 
 .proposal-detail th {
