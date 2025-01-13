@@ -25,7 +25,7 @@
 <body>
     <header class="header">
         <h1>게시글 상세보기</h1>
-        <a href="order_list.jsp">목록으로 돌아가기</a>
+        <a href="OrderListController">목록으로 돌아가기</a>
     </header>
 
     <main>
