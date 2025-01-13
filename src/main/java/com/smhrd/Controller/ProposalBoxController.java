@@ -45,7 +45,11 @@ public class ProposalBoxController extends HttpServlet {
 
             // 받은 제안서 조회
             List<ProposalVO> receivedProposals = (svc_idx != -1) ? dao.getReceivedProposals(svc_idx, user_id) : new ArrayList<>();
-            System.out.println("[DEBUG] 받은 제안서 수: " + receivedProposals.size());
+            System.out.println("[DEBUG] 받은 제안서 조회 결과: " + receivedProposals.size() + "건");
+            for (ProposalVO proposal : receivedProposals) {
+                System.out.println("[DEBUG] 받은 제안서 내용: " + proposal);
+            }
+
 
             // 데이터 설정
             request.setAttribute("sentProposals", sentProposals);
