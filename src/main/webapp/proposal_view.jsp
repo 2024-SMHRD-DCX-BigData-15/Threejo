@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <h1>제안서 상세보기</h1>
+        <p>아래 제안서를 검토한 후 채택 여부를 결정하세요.</p>
         <table class="proposal-detail">
             <tr>
                 <th>제목</th>
