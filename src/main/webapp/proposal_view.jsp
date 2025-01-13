@@ -36,7 +36,9 @@
                 <td>${proposal.svc_categori}</td>
             </tr>
         </table>
-        <a href="proposal_box.jsp">목록으로 돌아가기</a>
+        <a href="PaymentController">결제하기</a>
+        <a href="ProposalBoxController">목록으로 돌아가기</a>
+        
     </div>
 
 
