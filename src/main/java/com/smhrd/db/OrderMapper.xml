@@ -20,8 +20,10 @@
     <!-- OrderListController -->
     <select id="getAllOrders" resultType="com.smhrd.Model.OrderVO">
     SELECT 
+    	svc_idx AS svc_idx,
         svc_id AS svc_id, 
         svc_categori AS svc_categori, 
+        svc_content AS svc_content, 
         svc_title AS svc_title, 
         svc_ed_td AS svc_ed_td, 
         svc_account AS svc_account
