@@ -12,44 +12,47 @@ import java.util.List;
 
 @WebServlet("/ListController")
 public class ListController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("[ListController] 요청 처리 시작"); // 디버깅 로그
+        // 디버깅: 시작 로그
+        System.out.println("[DEBUG] ListController - 요청 시작");
 
-        // 전달된 svc_idx 파라미터 확인
-        String svcIdxParam = request.getParameter("svc_idx");
-        System.out.println("[DEBUG] 전달된 svc_idx (원본): " + svcIdxParam);
+        // 요청 파라미터에서 svc_idx 가져오기
+        String svcIdx = request.getParameter("svc_idx");
+        System.out.println("[DEBUG] svc_idx: " + svcIdx); // 디버깅: 전달된 svc_idx 출력
 
-        if (svcIdxParam == null || svcIdxParam.trim().isEmpty()) {
-            System.out.println("[ERROR] svc_idx가 전달되지 않았습니다.");
-            response.sendRedirect("order_list.jsp");
-            return;
-        }
+        // svc_idx가 존재하는 경우 데이터 조회
+        if (svcIdx != null) {
+            try {
+                // DAO를 통해 데이터 조회
+                OrderDAO orderDAO = new OrderDAO();
+                OrderVO order = orderDAO.getOrderById(Integer.parseInt(svcIdx));
 
-        try {
-            int svc_idx = Integer.parseInt(svcIdxParam); // 파라미터를 정수로 변환
-            System.out.println("[DEBUG] 변환된 svc_idx: " + svc_idx);
+                // 디버깅: 조회된 데이터 출력
+                if (order != null) {
+                    System.out.println("[DEBUG] 조회된 데이터: " + order.toString());
+                } else {
+                    System.out.println("[DEBUG] 해당 svc_idx에 대한 데이터가 없습니다.");
+                }
 
-            // DAO를 통해 svc_idx로 데이터 조회
-            OrderDAO dao = new OrderDAO();
-            OrderVO order = dao.getOrderById(svc_idx);
-
-            if (order != null) {
-                System.out.println("[DEBUG] 조회된 OrderVO: " + order);
-
-                // 조회된 데이터를 request에 저장하고 JSP로 전달
+                // 조회한 데이터를 request에 담기
                 request.setAttribute("order", order);
-                request.getRequestDispatcher("order_view.jsp").forward(request, response);
-            } else {
-                System.out.println("[ERROR] svc_idx에 해당하는 데이터가 없습니다.");
-                response.sendRedirect("order_list.jsp");
+            } catch (NumberFormatException e) {
+                System.err.println("[ERROR] svc_idx 변환 중 오류 발생: " + e.getMessage());
+            } catch (Exception e) {
+                System.err.println("[ERROR] 데이터 조회 중 오류 발생: " + e.getMessage());
             }
-        } catch (NumberFormatException e) {
-            System.out.println("[ERROR] svc_idx가 숫자가 아닙니다.");
-            response.sendRedirect("order_list.jsp");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("[ERROR] 데이터 조회 중 오류 발생");
-            response.sendRedirect("order_list.jsp");
+        } else {
+            System.out.println("[DEBUG] svc_idx가 null입니다.");
         }
+
+        // order_view.jsp로 이동
+        RequestDispatcher dispatcher = request.getRequestDispatcher("order_view.jsp");
+        dispatcher.forward(request, response);
+
+        // 디버깅: 종료 로그
+        System.out.println("[DEBUG] ListController - 요청 종료");
     }
 }

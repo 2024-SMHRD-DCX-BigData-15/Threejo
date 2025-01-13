@@ -120,15 +120,28 @@ public class OrderDAO {
     //ListController
     // svc_idx로 게시글 조회
     public OrderVO getOrderById(int svc_idx) {
-        OrderVO order = null;
-        try (SqlSession session = sqlSessionFactory.openSession()) {
+        System.out.println("[OrderDAO] getOrderById() 호출 - svc_idx: " + svc_idx); // 디버깅: 메서드 호출 및 입력값 로그
+        OrderVO order = null; // 조회 결과를 저장할 변수 초기화
+
+        try (SqlSession session = sqlSessionFactory.openSession()) { // MyBatis 세션 열기
+            System.out.println("[OrderDAO] svc_idx로 데이터 조회 시도"); // 디버깅: 조회 시도 메시지
+            // MyBatis Mapper를 통해 svc_idx로 데이터 조회
             order = session.selectOne("com.smhrd.db.OrderMapper.getOrderById", svc_idx);
-            System.out.println("[DEBUG] 조회된 OrderVO: " + order); // 디버깅
+
+            // 디버깅: 조회 결과 확인
+            if (order != null) {
+                System.out.println("[OrderDAO] 데이터 조회 성공: " + order); // 성공 시 데이터 출력
+            } else {
+                System.out.println("[OrderDAO] 데이터 조회 결과 없음"); // 결과가 없을 경우 메시지 출력
+            }
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("[ERROR] 데이터 조회 중 오류 발생");
+            // 디버깅: 예외 발생 시 메시지 출력
+            System.err.println("[OrderDAO] 데이터 조회 중 예외 발생");
+            e.printStackTrace(); // 예외 스택 트레이스 출력
         }
-        return order;
+
+        System.out.println("[OrderDAO] getOrderById() 종료 - 조회 결과 반환"); // 디버깅: 메서드 종료 메시지
+        return order; // 조회 결과 반환
     }
 
 }
