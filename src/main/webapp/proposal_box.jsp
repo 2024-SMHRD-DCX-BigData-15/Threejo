@@ -22,11 +22,12 @@
     <div class="container">
         <!-- 사이드바 -->
         <div class="sidebar">
+        <h2>마이페이지</h2>
             <ul>
                 <li><a href="mypage.jsp">내 프로필</a></li>
-                <li><a href="proposal_box.jsp">제안서 보관함</a></li>
-                <li><a href="order_management.jsp">의뢰 관리</a></li>
-                <li><a href="account_deletion.jsp">회원 탈퇴</a></li>
+                <li><a href="proposal_box.jsp">제안서보관함</a></li>
+                <li><a href="OrderManageController">의뢰 관리</a></li>
+                <li><a href="delete_account.jsp">회원 탈퇴</a></li>
             </ul>
         </div>
 
