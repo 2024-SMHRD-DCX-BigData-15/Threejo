@@ -36,7 +36,7 @@ public class ListController extends HttpServlet {
                 } else {
                     System.out.println("[DEBUG] 해당 svc_idx에 대한 데이터가 없습니다.");
                 }
-
+                System.out.println("조회"+order.getSvc_content());
                 // 조회한 데이터를 request에 담기
                 request.setAttribute("order", order);
             } catch (NumberFormatException e) {

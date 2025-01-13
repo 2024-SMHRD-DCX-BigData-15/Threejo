@@ -58,7 +58,7 @@
 	<!-- ListController -->
 	<!-- svc_idx로 게시글 조회 -->
     <select id="getOrderById" parameterType="int" resultType="com.smhrd.Model.OrderVO">
-	    SELECT svc_idx, svc_id, svc_categori, svc_title, svc_ed_td, svc_account
+	    SELECT svc_idx, svc_content, svc_id, svc_categori, svc_title, svc_ed_td, svc_account
 	    FROM t_service
 	    WHERE svc_idx = #{svc_idx}
 	</select>
