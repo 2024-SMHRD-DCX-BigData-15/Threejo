@@ -39,15 +39,16 @@
       </ul>
     </aside>
         <div class="main-content">
-            <h1>내 의뢰 관리</h1>
+            <h1>의뢰관리</h1>
             <!-- 의뢰 관리 테이블 -->
             <table class="board-table">
                 <thead>
                     <tr>
                         <th>카테고리</th>
                         <th>제목</th>
-                        <th>마감일</th>
+                        <th>마감기간</th>
                         <th>삭제</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
