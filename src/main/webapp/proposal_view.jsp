@@ -36,7 +36,15 @@
                 <td>${proposal.svc_categori}</td>
             </tr>
         </table>
-        <a href="PaymentController">결제하기</a>
+        <!-- 결제하기 버튼 -->
+        <form action="PaymentController" method="post">
+            <input type="hidden" name="prop_title" value="${proposal.prop_title}">
+            <input type="hidden" name="prop_account" value="${proposal.prop_account}">
+            <input type="hidden" name="user_email" value="${sessionScope.user_email}">
+            <input type="hidden" name="pay_id" value="${sessionScope.user_id}">
+            <input type="hidden" name="pay_tell" value="${sessionScope.user_tell}">
+            <input type="hidden" name="prop_idx" value="${proposal.prop_idx}">
+            <button type="submit" class="pay-button">결제하기</button>
         <a href="ProposalBoxController">목록으로 돌아가기</a>
         
     </div>

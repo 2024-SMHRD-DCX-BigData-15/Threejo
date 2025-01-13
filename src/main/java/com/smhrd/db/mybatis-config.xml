@@ -30,6 +30,7 @@
     <mapper resource="com/smhrd/db/AskMapper.xml"/>
     <mapper resource="com/smhrd/db/OrderMapper.xml"/>
     <mapper resource="com/smhrd/db/ProposalMapper.xml"/>
+    <mapper resource="com/smhrd/db/PaymentMapper.xml"/>
     
   </mappers>
   
