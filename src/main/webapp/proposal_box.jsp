@@ -21,7 +21,7 @@
     <div class="container">
         <!-- 사이드바 -->
         <div class="sidebar">
-        <h2>마이페이지</h2>
+            <h2>마이페이지</h2>
             <ul>
                 <li><a href="mypage.jsp">내 프로필</a></li>
                 <li><a href="proposal_box.jsp">제안서보관함</a></li>
@@ -52,7 +52,7 @@
                         <c:forEach var="receivedProposal" items="${receivedProposals}">
                             <tr>
                                 <td>${receivedProposal.prop_id}</td>
-                                <td>${receivedProposal.svc_category}</td>
+                                <td>${receivedProposal.svc_categori}</td>
                                 <td>${receivedProposal.prop_title}</td>
                                 <td>${receivedProposal.prop_ed_td}</td>
                                 <td>${receivedProposal.prop_account}</td>
@@ -81,7 +81,6 @@
                             <th>제목</th>
                             <th>마감기간</th>
                             <th>예산</th>
-                            <th>결제여부</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,17 +91,11 @@
                                 <td>${sentProposal.prop_title}</td>
                                 <td>${sentProposal.prop_ed_td}</td>
                                 <td>${sentProposal.prop_account}</td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${sentProposal.selected_yn == 'Y'}">결제 완료</c:when>
-                                        <c:otherwise>미결제</c:otherwise>
-                                    </c:choose>
-                                </td>
                             </tr>
                         </c:forEach>
                         <c:if test="${empty sentProposals}">
                             <tr>
-                                <td colspan="6" style="text-align: center;">보낸 제안서가 없습니다.</td>
+                                <td colspan="5" style="text-align: center;">보낸 제안서가 없습니다.</td>
                             </tr>
                         </c:if>
                     </tbody>
