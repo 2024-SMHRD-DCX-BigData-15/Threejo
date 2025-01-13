@@ -8,7 +8,7 @@
     <title>Login First</title>
     <script>
         // 로그아웃 완료 메시지 표시
-        alert("회원가입이나 로그인 먼저 해주세요");
+        alert("혹시 회원가입이나 로그인 먼저 하셨나요?");
         // 확인 버튼 클릭 후 메인 페이지로 이동
         window.location.href = "main.jsp";
     </script>
