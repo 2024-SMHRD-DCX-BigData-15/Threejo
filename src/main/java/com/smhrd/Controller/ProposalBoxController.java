@@ -3,7 +3,6 @@ package com.smhrd.Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,13 +27,15 @@ public class ProposalBoxController extends HttpServlet {
 
         // 요청된 svc_idx 파라미터 확인
         String svcIdxParam = request.getParameter("svc_idx");
-        Integer svc_idx = -1;
+        Integer svc_idx = -1; // 기본값 설정
         if (svcIdxParam != null && !svcIdxParam.isEmpty()) {
             try {
                 svc_idx = Integer.parseInt(svcIdxParam);
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] svc_idx 파싱 오류: " + svcIdxParam);
             }
+        } else {
+            System.out.println("[DEBUG] svc_idx 파라미터가 전달되지 않음");
         }
         System.out.println("[DEBUG] 요청된 svc_idx: " + svc_idx);
 
@@ -47,7 +48,7 @@ public class ProposalBoxController extends HttpServlet {
 
         // 받은 제안서 조회
         List<ProposalVO> receivedProposals = new ArrayList<>();
-        if (svc_idx != -1) {
+        if (svc_idx != -1) { // svc_idx가 유효할 경우에만 조회
             System.out.println("[DEBUG] DAO로 받은 제안서 조회 호출 - svc_idx: " + svc_idx + ", user_id: " + user_id);
             receivedProposals = dao.getReceivedProposals(svc_idx, user_id);
             System.out.println("[DEBUG] 받은 제안서 조회 결과: " + receivedProposals.size() + "건");
