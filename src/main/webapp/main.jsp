@@ -37,25 +37,25 @@
     
     <nav class="services">
         <div class="service-item">
-            <a href="news.jsp">
+            <a href="loginfirst.jsp">
                 <img src="customer-service.png" alt="고객센터">
             </a>
             <p>고객센터</p>
         </div>
         <div class="service-item">
-            <a href="order.jsp">
+            <a href="loginfirst.jsp">
                 <img src="To_request.png" alt="의뢰하기">
             </a>
             <p>의뢰하기</p>
         </div>
         <div class="service-item">
-            <a href="order_list.jsp">
+            <a href="loginfirst.jsp">
                 <img src="requestlist.png" alt="의뢰목록">
             </a>
             <p>의뢰목록</p>
         </div>
         <div class="service-item">
-            <a href="calender.jsp">
+            <a href="loginfirst.jsp" >
                 <img src="Schedule_Management.png" alt="일정관리">
             </a>
             <p>일정관리</p>

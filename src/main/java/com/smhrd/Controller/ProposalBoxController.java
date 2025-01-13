@@ -31,12 +31,14 @@ public class ProposalBoxController extends HttpServlet {
         if (svcIdxParam != null && !svcIdxParam.isEmpty()) {
             try {
                 svc_idx = Integer.parseInt(svcIdxParam);
+                System.out.println("[DEBUG] 유효한 svc_idx 파라미터: " + svc_idx);
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] svc_idx 파싱 오류: " + svcIdxParam);
             }
         } else {
             System.out.println("[DEBUG] svc_idx 파라미터가 전달되지 않음");
         }
+
         System.out.println("[DEBUG] 요청된 svc_idx: " + svc_idx);
 
         // DAO 객체 생성
@@ -48,7 +50,7 @@ public class ProposalBoxController extends HttpServlet {
 
         // 받은 제안서 조회
         List<ProposalVO> receivedProposals = new ArrayList<>();
-        if (svc_idx != -1) { // svc_idx가 유효할 경우에만 조회
+        if (svc_idx != -1) {
             System.out.println("[DEBUG] DAO로 받은 제안서 조회 호출 - svc_idx: " + svc_idx + ", user_id: " + user_id);
             receivedProposals = dao.getReceivedProposals(svc_idx, user_id);
             System.out.println("[DEBUG] 받은 제안서 조회 결과: " + receivedProposals.size() + "건");
