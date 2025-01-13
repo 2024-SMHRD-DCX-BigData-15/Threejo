@@ -46,10 +46,16 @@ public class ProposalBoxController extends HttpServlet {
         System.out.println("[DEBUG] 보낸 제안서 조회 결과: " + sentProposals);
 
         // 받은 제안서 조회
-        List<ProposalVO> receivedProposals = (svc_idx != -1) ? dao.getReceivedProposals(svc_idx, user_id) : new ArrayList<>();
-        System.out.println("[DEBUG] 받은 제안서 조회 결과: " + receivedProposals.size() + "건");
-        for (ProposalVO proposal : receivedProposals) {
-            System.out.println("[DEBUG] 받은 제안서 내용: " + proposal);
+        List<ProposalVO> receivedProposals = new ArrayList<>();
+        if (svc_idx != -1) {
+            System.out.println("[DEBUG] DAO로 받은 제안서 조회 호출 - svc_idx: " + svc_idx + ", user_id: " + user_id);
+            receivedProposals = dao.getReceivedProposals(svc_idx, user_id);
+            System.out.println("[DEBUG] 받은 제안서 조회 결과: " + receivedProposals.size() + "건");
+            for (ProposalVO proposal : receivedProposals) {
+                System.out.println("[DEBUG] 받은 제안서 내용: " + proposal);
+            }
+        } else {
+            System.out.println("[DEBUG] 유효하지 않은 svc_idx: " + svc_idx);
         }
 
         // JSP에 데이터 전달
