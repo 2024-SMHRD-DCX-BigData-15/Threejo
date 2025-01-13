@@ -3,7 +3,6 @@ package com.smhrd.Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,6 @@ import com.smhrd.Model.ProposalVO;
 @WebServlet("/ProposalBoxController")
 public class ProposalBoxController extends HttpServlet {
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("[DEBUG] ProposalBoxController 호출됨");
 
@@ -29,17 +27,16 @@ public class ProposalBoxController extends HttpServlet {
 
         // 요청된 svc_idx 파라미터 확인
         String svcIdxParam = request.getParameter("svc_idx");
-        Integer svc_idx = -1; // 기본값으로 -1 설정
+        Integer svc_idx = -1;
         if (svcIdxParam != null && !svcIdxParam.isEmpty()) {
             try {
                 svc_idx = Integer.parseInt(svcIdxParam);
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] svc_idx 파싱 오류: " + svcIdxParam);
             }
-        } else {
-            System.out.println("[DEBUG] svc_idx 파라미터가 전달되지 않음");
         }
-        System.out.println("[DEBUG] 요청된 svc_idx: " + svc_idx);
+        // 디버깅: svc_idx와 user_id 값을 출력
+        System.out.println("[DEBUG] svc_idx: " + svc_idx + ", user_id: " + user_id);
 
         // DAO 객체 생성
         ProposalDAO dao = new ProposalDAO();
@@ -49,17 +46,8 @@ public class ProposalBoxController extends HttpServlet {
         System.out.println("[DEBUG] 보낸 제안서 조회 결과: " + sentProposals);
 
         // 받은 제안서 조회
-        List<ProposalVO> receivedProposals = new ArrayList<>();
-        if (svc_idx != -1) {
-            System.out.println("[DEBUG] 유효한 svc_idx: " + svc_idx);
-            receivedProposals = dao.getReceivedProposals(svc_idx, user_id);
-        } else {
-            System.out.println("[DEBUG] 유효하지 않은 svc_idx: " + svc_idx);
-        }
+        List<ProposalVO> receivedProposals = dao.getReceivedProposals(svc_idx, user_id);
         System.out.println("[DEBUG] 받은 제안서 조회 결과: " + receivedProposals.size() + "건");
-        for (ProposalVO proposal : receivedProposals) {
-            System.out.println("[DEBUG] 받은 제안서 내용: " + proposal);
-        }
 
         // JSP에 데이터 전달
         request.setAttribute("sentProposals", sentProposals);
@@ -69,7 +57,6 @@ public class ProposalBoxController extends HttpServlet {
         request.getRequestDispatcher("proposal_box.jsp").forward(request, response);
     }
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
