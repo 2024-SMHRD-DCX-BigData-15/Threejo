@@ -36,6 +36,6 @@
         <p><strong>예산:</strong> <%= order.getSvc_account() %>원</p>
         <p><strong>완료일:</strong> <%= order.getSvc_ed_td() %></p>
     </main>
-</body>
+</body>		
 </html>
 	

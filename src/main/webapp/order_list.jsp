@@ -38,8 +38,10 @@
                             <tr>
                                 <td>${order.svc_id}</td> <!-- 작성자 ID -->
                                 <td>${order.svc_categori}</td> <!-- 카테고리 -->
-                                <!-- 제목에 svc_idx+1을 전달 -->
-                                <td><a href="ListController?svc_idx=${order.svc_idx}">${order.svc_title}</a></td>
+                                <td>
+								    <a href="ListController?svc_idx=${order.svc_idx}">${order.svc_title}</a>
+								</td>
+								 <!-- 제목 -->
                                 <td>${order.svc_ed_td}</td> <!-- 마감기간 -->
                                 <td>${order.svc_account}</td> <!-- 예산 -->
                             </tr>
