@@ -30,6 +30,24 @@
       <button id="deleteRequest" onclick="location.href='<%= request.getContextPath() %>/OrderListController'">목록으로</button>
     </div>
   </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // 세션에 저장된 user_id 가져오기
+    const sessionUserId = "<%= (String) session.getAttribute("user_id") %>";
+    const currentUserId = "${order.svc_id}";
+
+    // 제안하기 버튼 클릭 이벤트
+    document.getElementById("editRequest").addEventListener("click", function (event) {
+      if (sessionUserId === currentUserId) {
+        event.preventDefault(); // 기본 동작 중단
+        alert("자신의 의뢰에는 제안할 수 없습니다.");
+        // OrderListController로 이동
+        location.href = '<%= request.getContextPath() %>/OrderListController';
+      }
+    });
+  });
+</script>
+
 </body>
 
 </html>
