@@ -28,6 +28,14 @@
 	    WHERE (#{svc_idx} = -1 OR p.svc_idx = #{svc_idx})
 	      AND s.svc_id = #{user_id};
 	</select>
-
+	
+	<!-- ProposalViewController -->
+	<select id="getProposalById" parameterType="int" resultType="com.smhrd.Model.ProposalVO">
+	    SELECT p.*, s.svc_id, s.svc_categori
+	    FROM t_proposal p
+	    JOIN t_service s ON p.svc_idx = s.svc_idx
+	    WHERE p.prop_idx = #{prop_idx};
+	</select>
+	
     
 </mapper>

@@ -56,6 +56,19 @@ public class ProposalDAO {
         }
         return proposals;
     }
+    
+    // ProposalViewController
+    public ProposalVO getProposalById(int prop_idx) {
+        ProposalVO proposal = null;
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            System.out.println("[DEBUG] getProposalById 호출 - prop_idx: " + prop_idx);
+            proposal = session.selectOne("com.smhrd.db.ProposalMapper.getProposalById", prop_idx);
+            System.out.println("[DEBUG] 조회된 ProposalVO: " + proposal);
+        } catch (Exception e) {
+            System.out.println("[ERROR] getProposalById 예외 발생: " + e.getMessage());
+        }
+        return proposal;
+    }
 
     
 }

@@ -19,31 +19,31 @@
       <!-- 제목 -->
       <div class="proposal-section">
         <h2>제목</h2>
-        <p id="viewTitle"></p>
+        <p id="prop_title"></p>
       </div>
 
       <!-- 제안 내용 -->
       <div class="proposal-section">
         <h2>제안 내용</h2>
-        <p id="viewContent"></p>
+        <p id="prop_content"></p>
       </div>
 
       <!-- 예산 -->
       <div class="proposal-section">
         <h2>예상 예산</h2>
-        <p id="viewBudget"></p>
+        <p id="prop_account"></p>
       </div>
 
       <!-- 완료일 -->
       <div class="proposal-section">
         <h2>완료일</h2>
-        <p id="viewDeadline"></p>
+        <p id="prop_ed_td"></p>
       </div>
 
       <!-- 연락 가능한 전화번호 -->
       <div class="proposal-section">
         <h2>전화번호</h2>
-        <p id="viewPhoneNumber"></p>
+        <p id="prop_tell"></p>
       </div>
 
       <!-- 목록 버튼 -->
@@ -58,11 +58,11 @@
 
       // 데이터가 존재하면 화면에 표시
       if (proposalData) {
-        document.getElementById("viewTitle").textContent = proposalData.title;
-        document.getElementById("viewContent").textContent = proposalData.content;
-        document.getElementById("viewBudget").textContent = proposalData.budget;
-        document.getElementById("viewDeadline").textContent = proposalData.deadline;
-        document.getElementById("viewPhoneNumber").textContent = proposalData.phoneNumber;
+        document.getElementById("prop_title").textContent = proposalData.prop_title;
+        document.getElementById("prop_content").textContent = proposalData.prop_content;
+        document.getElementById("prop_account").textContent = proposalData.prop_account;
+        document.getElementById("prop_ed_td").textContent = proposalData.prop_ed_td;
+        document.getElementById("prop_tell").textContent = proposalData.prop_tell;
       }
 
       // 채택하기 버튼 클릭 이벤트

@@ -53,7 +53,7 @@
                 <tr>
                     <td>${receivedProposal.prop_id}</td>
                     <td>${receivedProposal.svc_categori}</td>
-                    <td>${receivedProposal.prop_title}</td>
+                    <td><a href="ProposalViewController?svc_idx=${receivedProposal.svc_idx}">${receivedProposal.prop_title}</a></td>
                     <td>${receivedProposal.prop_ed_td}</td>
                     <td>${receivedProposal.prop_account}</td>
                     <td>
