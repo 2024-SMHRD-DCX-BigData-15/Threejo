@@ -44,7 +44,7 @@
             <table class="board-table">
                 <thead>
                     <tr>
-                        <th>게시글 번호</th>
+                        <th>카테고리</th>
                         <th>제목</th>
                         <th>마감일</th>
                         <th>삭제</th>

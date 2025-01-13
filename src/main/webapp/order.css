@@ -86,6 +86,7 @@ textarea {
 .category-group {
   display: flex;
   gap: 10px;
+  
 }
 
 .category-group select {

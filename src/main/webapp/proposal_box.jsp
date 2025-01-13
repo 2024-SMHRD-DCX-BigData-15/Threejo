@@ -41,13 +41,12 @@
       <table class="board-table">
         <thead>
           <tr>
-            <th>게시글 제목</th>
-            <th>제안서 제목</th>
-            <th>제안서 내용</th>
-            <th>예상 금액</th>
-            <th>예상 마감일</th>
-            <th>채택 여부</th>
-            <th>작성자 ID</th>
+            <th>작성자</th>
+            <th>카테고리</th>
+            <th>제목</th>
+            <th>마감기간</th>
+            <th>예산</th>
+            <th>결제</th>
           </tr>
         </thead>
         <tbody id="received-proposals">
@@ -60,13 +59,12 @@
       <table class="board-table">
         <thead>
           <tr>
-            <th>게시글 제목</th>
-            <th>제안서 제목</th>
-            <th>제안서 내용</th>
-            <th>예상 금액</th>
-            <th>예상 마감일</th>
-            <th>채택 여부</th>
-            <th>수신자 ID</th>
+            <th>수신자</th>
+            <th>카테고리</th>
+            <th>제목</th>
+            <th>마감기간</th>
+            <th>예산</th>
+            <th>결제여부</th>
           </tr>
         </thead>
         <tbody id="sent-proposals">
@@ -78,17 +76,6 @@
 
   <!-- JavaScript 코드 삽입 -->
   <script>
-    // 받은 제안서 데이터
-    const receivedProposals = [
-        { svc_title: "홈페이지 제작", prop_title: "홈페이지 견적 제안", prop_content: "10페이지 제작 가능", prop_account: "1,500,000원", prop_td: "2025-02-10", selected_yn: "Y", seller_id: "seller01" },
-        { svc_title: "로고 디자인", prop_title: "로고 디자인 제안", prop_content: "3가지 시안 제공", prop_account: "500,000원", prop_td: "2025-01-20", selected_yn: "N", seller_id: "seller02" }
-    ];
-
-    // 보낸 제안서 데이터
-    const sentProposals = [
-        { svc_title: "홈페이지 제작", prop_title: "홈페이지 견적 제안", prop_content: "10페이지 제작 가능", prop_account: "1,500,000원", prop_td: "2025-02-10", selected_yn: "Y", recipient_id: "buyer01" },
-        { svc_title: "로고 디자인", prop_title: "로고 디자인 제안", prop_content: "3가지 시안 제공", prop_account: "500,000원", prop_td: "2025-01-20", selected_yn: "N", recipient_id: "buyer02" }
-    ];
 
     // 받은 제안서 렌더링
     function renderReceivedProposals() {
